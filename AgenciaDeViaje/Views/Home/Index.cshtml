@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section header
+{
+
+
+    <script id="scriptInit" type="text/javascript">
+        $(document).ready(function () {
+            $("#wijcarousel0").wijcarousel({
+                display: 1,
+                showTimer: true,
+                showPager: true,
+                loop: true,
+                pagerType: "numbers",
+                showContorlsOnHover: false
+            });
+        });
+    </script>
+    <style type="text/css">
+        #wijcarousel0
+        {
+            width:700x;
+            height: 300px;
+        }
+    </style>
+}
+<h2>@ViewBag.Message</h2>
+<div >
+    <div>
+        <div id="wijcarousel0">
+            <ul>
+                <li>
+                    <img src="../../Content/images/Imágenes de muestra/IMG00309-20121007-1952.jpg" alt="Imagen 1" />
+                    <span>
+                        <h3>
+                            Ejemplo 1</h3>
+                        Ejemplo 1</span> </li>
+                <li>
+                    <img src="../../Content/images/Imágenes de muestra/IMG00310-20121007-1952.jpg" alt="Imagen 2" />
+                    <span>Ejemplo 2</span></li>
+                <li>
+                    <img src="../../Content/images/Imágenes de muestra/IMG00311-20121007-1953.jpg" alt="Imagen 3" />
+                    <span>Ejemplo 3</span></li>
+                <li>
+                    <img src="../../Content/images/Imágenes de muestra/IMG00315-20121007-1958.jpg" alt="Imagen 4" />
+                    <span>Ejemplo 4</span></li>
+            </ul>
+        </div>
+    </div>
+  
+</div>
+
+

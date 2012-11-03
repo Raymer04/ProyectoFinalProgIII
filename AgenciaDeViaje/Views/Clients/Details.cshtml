@@ -1,0 +1,34 @@
+﻿@model AgenciaDeViaje.Models.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Cliente</legend>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">@Model.nombre</div>
+
+    <div class="display-label">apellido</div>
+    <div class="display-field">@Model.apellido</div>
+
+    <div class="display-label">telefono</div>
+    <div class="display-field">@Model.telefono</div>
+
+    <div class="display-label">fechaDeNacimiento</div>
+    <div class="display-field">@String.Format("{0:g}", Model.fechaDeNacimiento)</div>
+
+    <div class="display-label">correo</div>
+    <div class="display-field">@Model.correo</div>
+
+    <div class="display-label">password</div>
+    <div class="display-field">@Model.password</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+</p>
+

@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LineaAereaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="LineaAereaModelStoreContainer">
+          <EntitySet Name="Aeropuerto" EntityType="LineaAereaModel.Store.Aeropuerto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Avion" EntityType="LineaAereaModel.Store.Avion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Usuarios" EntityType="LineaAereaModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vuelos" EntityType="LineaAereaModel.Store.Vuelos" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Vuelos_Aeropuerto_Destino" Association="LineaAereaModel.Store.FK_Vuelos_Aeropuerto_Destino">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelos" EntitySet="Vuelos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelos_Avion" Association="LineaAereaModel.Store.FK_Vuelos_Avion">
+            <End Role="Avion" EntitySet="Avion" />
+            <End Role="Vuelos" EntitySet="Vuelos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelos_Vuelos_Procedencia" Association="LineaAereaModel.Store.FK_Vuelos_Vuelos_Procedencia">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelos" EntitySet="Vuelos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aeropuerto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Lugar" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Avion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="varchar(max)" />
+          <Property Name="Modelo" Type="varchar(max)" />
+          <Property Name="CapacidadPasajeros" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Apellido" Type="varchar(max)" />
+          <Property Name="Usuario" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Vuelos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Avion" Type="int" Nullable="false" />
+          <Property Name="Procedencia" Type="int" Nullable="false" />
+          <Property Name="Destino" Type="int" Nullable="false" />
+          <Property Name="Salida" Type="datetime" />
+          <Property Name="Llegada" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Vuelos_Aeropuerto_Destino">
+          <End Role="Aeropuerto" Type="LineaAereaModel.Store.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelos" Type="LineaAereaModel.Store.Vuelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vuelos">
+              <PropertyRef Name="Destino" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelos_Avion">
+          <End Role="Avion" Type="LineaAereaModel.Store.Avion" Multiplicity="1" />
+          <End Role="Vuelos" Type="LineaAereaModel.Store.Vuelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vuelos">
+              <PropertyRef Name="ID_Avion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vuelos_Vuelos_Procedencia">
+          <End Role="Aeropuerto" Type="LineaAereaModel.Store.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelos" Type="LineaAereaModel.Store.Vuelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aeropuerto">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vuelos">
+              <PropertyRef Name="Procedencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LineaAereaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="LineaAereaEntities">
+          <EntitySet Name="Aeropuerto" EntityType="LineaAereaModel.Aeropuerto" />
+          <EntitySet Name="Avion" EntityType="LineaAereaModel.Avion" />
+          <EntitySet Name="Usuarios" EntityType="LineaAereaModel.Usuarios" />
+          <EntitySet Name="Vuelos" EntityType="LineaAereaModel.Vuelos" />
+          <AssociationSet Name="FK_Vuelos_Aeropuerto_Destino" Association="LineaAereaModel.FK_Vuelos_Aeropuerto_Destino">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelos" EntitySet="Vuelos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelos_Vuelos_Procedencia" Association="LineaAereaModel.FK_Vuelos_Vuelos_Procedencia">
+            <End Role="Aeropuerto" EntitySet="Aeropuerto" />
+            <End Role="Vuelos" EntitySet="Vuelos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vuelos_Avion" Association="LineaAereaModel.FK_Vuelos_Avion">
+            <End Role="Avion" EntitySet="Avion" />
+            <End Role="Vuelos" EntitySet="Vuelos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aeropuerto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Lugar" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Vuelos" Relationship="LineaAereaModel.FK_Vuelos_Aeropuerto_Destino" FromRole="Aeropuerto" ToRole="Vuelos" />
+          <NavigationProperty Name="Vuelos1" Relationship="LineaAereaModel.FK_Vuelos_Vuelos_Procedencia" FromRole="Aeropuerto" ToRole="Vuelos" />
+        </EntityType>
+        <EntityType Name="Avion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Modelo" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CapacidadPasajeros" Type="Int32" />
+          <NavigationProperty Name="Vuelos" Relationship="LineaAereaModel.FK_Vuelos_Avion" FromRole="Avion" ToRole="Vuelos" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Apellido" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Usuario" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vuelos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salida" Type="DateTime" />
+          <Property Name="Llegada" Type="DateTime" />
+          <NavigationProperty Name="Destino" Relationship="LineaAereaModel.FK_Vuelos_Aeropuerto_Destino" FromRole="Vuelos" ToRole="Aeropuerto" />
+          <NavigationProperty Name="Procedencia" Relationship="LineaAereaModel.FK_Vuelos_Vuelos_Procedencia" FromRole="Vuelos" ToRole="Aeropuerto" />
+          <NavigationProperty Name="Avion" Relationship="LineaAereaModel.FK_Vuelos_Avion" FromRole="Vuelos" ToRole="Avion" />
+        </EntityType>
+        <Association Name="FK_Vuelos_Aeropuerto_Destino">
+          <End Role="Aeropuerto" Type="LineaAereaModel.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelos" Type="LineaAereaModel.Vuelos" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Vuelos_Vuelos_Procedencia">
+          <End Role="Aeropuerto" Type="LineaAereaModel.Aeropuerto" Multiplicity="1" />
+          <End Role="Vuelos" Type="LineaAereaModel.Vuelos" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Vuelos_Avion">
+          <End Role="Avion" Type="LineaAereaModel.Avion" Multiplicity="1" />
+          <End Role="Vuelos" Type="LineaAereaModel.Vuelos" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="LineaAereaModelStoreContainer" CdmEntityContainer="LineaAereaEntities">
+          <EntitySetMapping Name="Aeropuerto"><EntityTypeMapping TypeName="LineaAereaModel.Aeropuerto"><MappingFragment StoreEntitySet="Aeropuerto">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Avion"><EntityTypeMapping TypeName="LineaAereaModel.Avion"><MappingFragment StoreEntitySet="Avion">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Marca" ColumnName="Marca" />
+            <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+            <ScalarProperty Name="CapacidadPasajeros" ColumnName="CapacidadPasajeros" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Usuarios"><EntityTypeMapping TypeName="LineaAereaModel.Usuarios"><MappingFragment StoreEntitySet="Usuarios">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+            <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+            <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Vuelos"><EntityTypeMapping TypeName="LineaAereaModel.Vuelos"><MappingFragment StoreEntitySet="Vuelos">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Salida" ColumnName="Salida" />
+            <ScalarProperty Name="Llegada" ColumnName="Llegada" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_Vuelos_Aeropuerto_Destino" TypeName="LineaAereaModel.FK_Vuelos_Aeropuerto_Destino" StoreEntitySet="Vuelos">
+            <EndProperty Name="Aeropuerto">
+              <ScalarProperty Name="ID" ColumnName="Destino" />
+            </EndProperty>
+            <EndProperty Name="Vuelos">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Vuelos_Vuelos_Procedencia" TypeName="LineaAereaModel.FK_Vuelos_Vuelos_Procedencia" StoreEntitySet="Vuelos">
+            <EndProperty Name="Aeropuerto">
+              <ScalarProperty Name="ID" ColumnName="Procedencia" />
+            </EndProperty>
+            <EndProperty Name="Vuelos">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Vuelos_Avion" TypeName="LineaAereaModel.FK_Vuelos_Avion" StoreEntitySet="Vuelos">
+            <EndProperty Name="Avion">
+              <ScalarProperty Name="ID" ColumnName="ID_Avion" />
+            </EndProperty>
+            <EndProperty Name="Vuelos">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Linea">
+        <EntityTypeShape EntityType="LineaAereaModel.Aeropuerto" Width="1.5" PointX="0.75" PointY="1" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAereaModel.Avion" Width="1.5" PointX="0.75" PointY="5" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAereaModel.Usuarios" Width="1.5" PointX="4.75" PointY="4.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAereaModel.Vuelos" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906249996" IsExpanded="true" />
+        <AssociationConnector Association="LineaAereaModel.FK_Vuelos_Aeropuerto_Destino" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="3" PointY="1.9901432291666668" />
+        </AssociationConnector>
+        <AssociationConnector Association="LineaAereaModel.FK_Vuelos_Vuelos_Procedencia" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.4325716145833334" />
+          <ConnectorPoint PointX="3" PointY="1.4325716145833334" />
+        </AssociationConnector>
+        <AssociationConnector Association="LineaAereaModel.FK_Vuelos_Avion" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.9901432291666667" />
+          <ConnectorPoint PointX="3.75" PointY="5.9901432291666667" />
+          <ConnectorPoint PointX="3.75" PointY="3.0475878906249996" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

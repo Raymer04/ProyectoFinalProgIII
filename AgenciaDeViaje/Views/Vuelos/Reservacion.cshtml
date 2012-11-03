@@ -1,0 +1,47 @@
+﻿@model AgenciaDeViaje.Models.Vuelo
+@{
+    ViewBag.Title = "Reservacion";
+}
+@section header
+{
+<script id="scriptInitial" type="text/javascript">
+    $(document).ready(function () {
+        $("#calendar").wijcalendar({
+            popupMode: true,
+            selectedDatesChanged: function () {
+                var selDate = $(this).wijcalendar("getSelectedDate");
+                if (!!selDate) $("#popdate").val(selDate.toDateString());
+            }
+        });
+
+        $("#popdate").click(function () {
+            $("#calendar").wijcalendar("popup", {
+                of: $("#popdate"),
+                offset: '0 2'
+            });
+        })
+    });
+	</script>
+ } 
+
+<h2>Reservaciones</h2>
+         <div>
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Procedencia)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Procedencia)            
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Destino)
+            </div>
+         </div>
+
+      <div id="calendar">
+	</div>
+	<label for="popdate">Choose a Date:</label>
+	<input name="popdate" type="text" id="popdate" style="width: 180px;" />
+
+
+

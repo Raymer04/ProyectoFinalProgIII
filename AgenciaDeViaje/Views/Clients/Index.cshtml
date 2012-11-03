@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AgenciaDeViaje.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section header{
+    <script id="scriptInit" type="text/javascript">
+        $(document).ready(function () {
+            $("#lista").wijgrid({
+                allowSorting: true,
+                allowPaging: true,
+                pageSize: 10
+
+            });
+        });
+    </script>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
+</p>
+<table id="lista">
+	<thead>
+    <tr>
+        <th></th>
+        <th>
+            nombre
+        </th>
+        <th>
+            apellido
+        </th>
+        <th>
+            telefono
+        </th>
+        <th>
+            fechaDeNacimiento
+        </th>
+        <th>
+            correo
+        </th>
+        <th>
+            password
+        </th>
+    </tr>
+	</thead>
+	<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", null, new { id=item.Id }, new { @class = "button" }) 
+            @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
+            @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
+        </td>
+        <td>
+            @item.nombre
+        </td>
+        <td>
+            @item.apellido
+        </td>
+        <td>
+            @item.telefono
+        </td>
+        <td>
+            @String.Format("{0:g}", item.fechaDeNacimiento)
+        </td>
+        <td>
+            @item.correo
+        </td>
+        <td>
+            @item.password
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});
+	});
+</script>
+
