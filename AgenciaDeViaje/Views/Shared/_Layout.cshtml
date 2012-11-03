@@ -20,7 +20,7 @@
     <div class="page">
         <div id="header">
             <div>
-                <img src="../../Content/images/Logo.png" style="margin-top: -30px; float: left; margin-left: -10px;" />
+                <img alt="" src="../../Content/images/Logo.png" style="margin-top: -30px; float: left; margin-left: -10px;" />
                  <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
                 </div>
@@ -29,11 +29,9 @@
             <div id="menucontainer">
                 <ul id="nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>                    
-                    <li>@Html.ActionLink("Reservas", "Reservacion", "Reservacion")</li>
+                    <li>@Html.ActionLink("Reservacion y Compra de Vuelos", "Index", "Vuelo")</li>
+                    <li>@Html.ActionLink("Mi Perfil", "Details", "Clients")</li>
                     <li>@Html.ActionLink("Acerca de nosotros", "About", "Home")</li>
-                    <li>@Html.ActionLink("Usuarios", "Index", "Clients")</li>
-                    <li>@Html.ActionLink("Vuelos", "Index", "Vuelo")</li>
-                    <li>@Html.ActionLink("Boletos", "Index", "Boletos")</li>
                 </ul>
             </div>
             <div id="main">

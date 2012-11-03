@@ -24,10 +24,19 @@ namespace AgenciaDeViaje.Controllers
         //
         // GET: /Clients/Details/5
 
-        public ViewResult Details(int id)
+        public ActionResult  Details()
         {
-            Cliente cliente = db.Clientes.Find(id);
-            return View(cliente);
+            if (Session["usuario"] != null)
+            {
+                
+                Cliente cliente = (Cliente)Session["usuario"];
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Clients");
+            }
+            
         }
 
         //
@@ -46,10 +55,9 @@ namespace AgenciaDeViaje.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("IniciarSesion", "Clients");  
             }
 
             return View(cliente);
@@ -99,6 +107,34 @@ namespace AgenciaDeViaje.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult IniciarSesion()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult IniciarSesion(IniciarSesion model, string returnUrl)
+        {
+            if (db.Clientes.Count(p => p.correo == model.Correo && p.password == model.Password) > 0)
+            {
+                Session["usuario"] = db.Clientes.Where(p=>p.correo==model.Correo && p.password==model.Password);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+        public ActionResult Salir()
+        {
+            
+
+            return RedirectToAction("Index", "Home");
+        }
+
+      
 
         protected override void Dispose(bool disposing)
         {

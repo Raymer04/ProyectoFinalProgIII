@@ -10,4 +10,5 @@ namespace AgenciaDeViaje.Models
         public int Id { get; set; }
         public Vuelo vuelo { get; set; }
     }
+
 }

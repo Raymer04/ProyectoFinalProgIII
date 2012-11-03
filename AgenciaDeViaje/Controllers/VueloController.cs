@@ -18,7 +18,7 @@ namespace AgenciaDeViaje.Controllers
 
         public ViewResult Index()
         {
-            return View(db.Vuelos.ToList());
+            return View(db.Vueloes.ToList());
         }
 
         //
@@ -26,7 +26,7 @@ namespace AgenciaDeViaje.Controllers
 
         public ViewResult Details(int id)
         {
-            Vuelo vuelo = db.Vuelos.Find(id);
+            Vuelo vuelo = db.Vueloes.Find(id);
             return View(vuelo);
         }
 
@@ -46,7 +46,7 @@ namespace AgenciaDeViaje.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Vuelos.Add(vuelo);
+                db.Vueloes.Add(vuelo);
                 db.SaveChanges();
                 return RedirectToAction("Index");  
             }
@@ -59,7 +59,7 @@ namespace AgenciaDeViaje.Controllers
  
         public ActionResult Edit(int id)
         {
-            Vuelo vuelo = db.Vuelos.Find(id);
+            Vuelo vuelo = db.Vueloes.Find(id);
             return View(vuelo);
         }
 
@@ -83,7 +83,7 @@ namespace AgenciaDeViaje.Controllers
  
         public ActionResult Delete(int id)
         {
-            Vuelo vuelo = db.Vuelos.Find(id);
+            Vuelo vuelo = db.Vueloes.Find(id);
             return View(vuelo);
         }
 
@@ -93,8 +93,8 @@ namespace AgenciaDeViaje.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Vuelo vuelo = db.Vuelos.Find(id);
-            db.Vuelos.Remove(vuelo);
+            Vuelo vuelo = db.Vueloes.Find(id);
+            db.Vueloes.Remove(vuelo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

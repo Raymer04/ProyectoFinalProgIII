@@ -64,16 +64,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BoletosController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ReservacionController.cs" />
     <Compile Include="Controllers\VueloController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AgenciaDB.cs" />
     <Compile Include="Models\Boleto.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -98,12 +95,12 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\Create.tt" />
-    <Content Include="CodeTemplates\AddView\CSHTML\Delete.tt" />
-    <Content Include="CodeTemplates\AddView\CSHTML\Details.tt" />
-    <Content Include="CodeTemplates\AddView\CSHTML\Edit.tt" />
-    <Content Include="CodeTemplates\AddView\CSHTML\Empty.tt" />
-    <None Include="CodeTemplates\AddView\CSHTML\List.tt" />
+    <Content Include="Content\CodeTemplates\AddView\CSHTML\Create.tt" />
+    <Content Include="Content\CodeTemplates\AddView\CSHTML\Delete.tt" />
+    <Content Include="Content\CodeTemplates\AddView\CSHTML\Details.tt" />
+    <Content Include="Content\CodeTemplates\AddView\CSHTML\Edit.tt" />
+    <Content Include="Content\CodeTemplates\AddView\CSHTML\Empty.tt" />
+    <None Include="Content\CodeTemplates\AddView\CSHTML\List.tt" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -132,10 +129,6 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
@@ -158,11 +151,11 @@
     <Content Include="Views\Boletos\Create.cshtml" />
     <Content Include="Views\Boletos\Edit.cshtml" />
     <Content Include="Views\Boletos\Delete.cshtml" />
+    <Content Include="Views\Clients\Registro.cshtml" />
+    <Content Include="Views\Clients\CambiarClave.cshtml" />
+    <Content Include="Views\Clients\IniciarSesion.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Details.cshtml" />
-    <Content Include="Views\Vuelo\Create.cshtml" />
-    <Content Include="Views\Vuelo\Edit.cshtml" />
-    <Content Include="Views\Vuelo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

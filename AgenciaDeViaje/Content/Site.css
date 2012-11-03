@@ -3,6 +3,29 @@ The base color for this template is #5c87b2. If you'd like
 to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
+.botonCss{
+border:1px solid #495267; -webkit-border-radius: 3px; -moz-border-radius: 3px;font-family:arial, helvetica, sans-serif; 
+padding: 0px 10px 10px 10px; 
+font-weight:bold; text-align: center; color: #FFFFFF; background-color: #606c88;
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #606c88), color-stop(100%, #3f4c6b));
+ background-image: -webkit-linear-gradient(top, #606c88, #3f4c6b);
+ background-image: -moz-linear-gradient(top, #606c88, #3f4c6b);
+ background-image: -ms-linear-gradient(top, #606c88, #3f4c6b);
+ background-image: -o-linear-gradient(top, #606c88, #3f4c6b);
+ background-image: linear-gradient(top, #606c88, #3f4c6b);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#606c88, endColorstr=#3f4c6b);
+ border-radius: 3px;
+ text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+}
+.botonCss:hover{
+ border:1px solid #363d4c; background-color: #B5BDCB;
+ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B5BDCB), color-stop(100%, #2c354b));
+ background-image: -webkit-linear-gradient(top, #B5BDCB, #2c354b);
+ background-image: -moz-linear-gradient(top, #B5BDCB, #2c354b);
+ background-image: -ms-linear-gradient(top, #B5BDCB, #2c354b);
+ background-image: -o-linear-gradient(top, #B5BDCB, #2c354b);
+ background-image: linear-gradient(top, #B5BDCB, #2c354b);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B5BDCB, endColorstr=#2c354b);
+ }
 body
 {
     font-size: .75em;

@@ -10,8 +10,9 @@ namespace AgenciaDeViaje.Models
 {
     public class AgenciaDB: DbContext
     {
-        public DbSet<Vuelo> Vuelos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Boleto> Boletos { get; set; }
+
+        public DbSet<Vuelo> Vueloes { get; set; }
     }
 }

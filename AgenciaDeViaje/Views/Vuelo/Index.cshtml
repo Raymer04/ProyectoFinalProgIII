@@ -4,15 +4,44 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Buscar Vuelos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
+<table>
+<tr>
+<td>
+<label>Procedencia</label>
+</td>
+<td>
+   <select>
+   <option></option>
+   </select>
+   </td>
+   <td>
+   <label>Destino</label>
+   </td>
+   <td>
+   <select>
+   <option></option>
+   </select>
+   </td>
+   </tr>
+   <tr>
+   <td>
+   <label>Fecha</label>
+   </td>
+   <td>
+   <input type="date" />
+   </td>
+   <td colspan="2" align="right">
+   <button class="botonCss">Buscar</button>
+   </td>
+   </tr>
+   </table>
 </p>
-<table id="listGrid">
-	<thead>
+@if(Model.Count(p=>p.Id>0)>0){
+<table>
     <tr>
-        <th></th>
         <th>
             Procedencia
         </th>
@@ -25,35 +54,31 @@
         <th>
             Llegada
         </th>
+        <th></th>
     </tr>
-	</thead>
-	<tbody>
+    </table>
+    }
+
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", null, new { id=item.Id }, new { @class = "button" }) 
-            @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
-            @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
+            @Html.DisplayFor(modelItem => item.Procedencia)
         </td>
         <td>
-            @item.Procedencia
+            @Html.DisplayFor(modelItem => item.Destino)
         </td>
         <td>
-            @item.Destino
+            @Html.DisplayFor(modelItem => item.Salida)
         </td>
         <td>
-            @String.Format("{0:g}", item.Salida)
+            @Html.DisplayFor(modelItem => item.Llegada)
         </td>
         <td>
-            @String.Format("{0:g}", item.Llegada)
+            @Html.ActionLink("Reservar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Comprar", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
-</tbody>
-</table>
-<script type="text/javascript">
-	$(document).ready(function () {
-		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});
-	});
-</script>
 
+</table>
