@@ -118,7 +118,8 @@ namespace AgenciaDeViaje.Controllers
         {
             if (db.Clientes.Count(p => p.correo == model.Correo && p.password == model.Password) > 0)
             {
-                Session["usuario"] = db.Clientes.Where(p=>p.correo==model.Correo && p.password==model.Password);
+                Cliente cliente = db.Clientes.Where(p => p.correo == model.Correo && p.password == model.Password).First();
+                Session["usuario"] = cliente;
                 return RedirectToAction("Index", "Home");
             }
             else
