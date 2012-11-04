@@ -1,0 +1,53 @@
+﻿@model LineaAerea.Models.Usuarios.CambiarClave
+
+@{
+    ViewBag.Title = "Cambiar Contraseña";
+}
+
+<h2>Change Password</h2>
+<p>
+    Use el formulario debajo para cambiar su contraseña. 
+</p>
+<p>
+    La contraseña nueva debe tener un mínimo de @ViewBag.PasswordLength caracteres de tamaño.
+</p>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "El cambio de contraseña no tuvo exito. Por favor corrija los errores e intente de nuevo.")
+    <div>
+        <fieldset>
+            <legend>Información de cuenta</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.ContraseñaAntigua)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.ContraseñaAntigua)
+                @Html.ValidationMessageFor(m => m.ContraseñaAntigua)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.ContraseñaNueva)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.ContraseñaNueva)
+                @Html.ValidationMessageFor(m => m.ContraseñaNueva)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.ConfirmarContraseña)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.ConfirmarContraseña)
+                @Html.ValidationMessageFor(m => m.ConfirmarContraseña)
+            </div>
+
+            <p>
+                <input type="submit" value="Cambiar contraseña" />
+            </p>
+        </fieldset>
+    </div>
+}

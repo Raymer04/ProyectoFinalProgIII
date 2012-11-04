@@ -7,7 +7,7 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
     <!--Theme-->
-    <link href="http://cdn.wijmo.com/themes/aristo/jquery-wijmo.css" rel="stylesheet" type="text/css" title="sterling-jqueryui" />
+    <link href="http://cdn.wijmo.com/themes/sterling/jquery-wijmo.css" rel="stylesheet" type="text/css" title="sterling-jqueryui" />
     <!--Wijmo Widgets CSS-->
     <link href="http://cdn.wijmo.com/jquery.wijmo-complete.all.2.0.5.min.css" rel="stylesheet" type="text/css" />
     <!--Wijmo Widgets JavaScript-->
@@ -19,21 +19,19 @@
     <div class="page">
         <div id="header">
             <div id="title">
-                <h1>
-                    My MVC Application</h1>
+                <h1>Linea Aerea</h1>
             </div>
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
             </div>
             <div id="menucontainer">
                 <ul id="nav">
-                       <ul id="nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>                    
-                    <li>@Html.ActionLink("Vuelos", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Aviones", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Aeropuertos", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>            
+                    <li>@Html.ActionLink("Vuelos", "Index", "Vuelo")</li>
+                    <li>@Html.ActionLink("Aviones", "Index", "Avion")</li>
+                    <li>@Html.ActionLink("Aeropuertos", "Index", "Aeropuerto")</li>
                 </ul>
-                </ul>
+               
             </div>
         </div>
         <div id="main">

@@ -29,7 +29,7 @@ namespace AgenciaDeViaje.Models
         public string telefono { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Fecha de Nacimiento")]
         public DateTime fechaDeNacimiento { get; set;}
 

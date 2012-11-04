@@ -1,0 +1,32 @@
+﻿@model LineaAerea.Models.Usuarios
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Usuarios</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
+
+    <div class="display-label">Apellido</div>
+    <div class="display-field">@Model.Apellido</div>
+
+    <div class="display-label">Usuario</div>
+    <div class="display-field">@Model.Usuario</div>
+
+    <div class="display-label">Password</div>
+    <div class="display-field">@Model.Password</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+    </p>
+}
+
+

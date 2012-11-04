@@ -1,7 +1,7 @@
-﻿@if(Request.IsAuthenticated) {
+﻿@if(Session["usuario"]!=null) { 
     <text>Welcome <strong>@Context.User.Identity.Name</strong>!
-    @Html.ActionLink("Log Off", "LogOff", "Account", null, new { @class = "button" })</text>
+    @Html.ActionLink("Salir", "Salir", "Usuarios", null, new { @class = "button" })</text>
 }
 else {
-    @:@Html.ActionLink("Log On", "LogOn", "Account", null, new { @class = "button" })
+    @:@Html.ActionLink("Iniciar Sesión", "IniciarSesion", "Usuarios", null, new { @class = "button" })
 }

@@ -34,7 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages" />
     <Reference Include="System.Web.Helpers" />
@@ -58,15 +62,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AeropuertoController.cs" />
     <Compile Include="Controllers\AvionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VueloController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Aeropuerto.cs" />
+    <Compile Include="Models\Avion.cs" />
+    <Compile Include="Models\LineaAereaDB.cs" />
+    <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,10 +120,10 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Usuarios\CambiarContraseña.cshtml" />
+    <Content Include="Views\Usuarios\ContraseñaCambiada.cshtml" />
+    <Content Include="Views\Usuarios\IniciarSesion.cshtml" />
+    <Content Include="Views\Usuarios\Registrar.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
@@ -125,6 +133,27 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Avion\Index.cshtml" />
+    <Content Include="Views\Avion\Details.cshtml" />
+    <Content Include="Views\Avion\Create.cshtml" />
+    <Content Include="Views\Avion\Edit.cshtml" />
+    <Content Include="Views\Avion\Delete.cshtml" />
+    <Content Include="Views\Aeropuerto\Index.cshtml" />
+    <Content Include="Views\Aeropuerto\Details.cshtml" />
+    <Content Include="Views\Aeropuerto\Create.cshtml" />
+    <Content Include="Views\Aeropuerto\Edit.cshtml" />
+    <Content Include="Views\Aeropuerto\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Vuelo\Index.cshtml" />
+    <Content Include="Views\Vuelo\Details.cshtml" />
+    <Content Include="Views\Vuelo\Create.cshtml" />
+    <Content Include="Views\Vuelo\Edit.cshtml" />
+    <Content Include="Views\Vuelo\Delete.cshtml" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,7 +12,6 @@ namespace AgenciaDeViaje.Models
     {
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Boleto> Boletos { get; set; }
-
         public DbSet<Vuelo> Vueloes { get; set; }
     }
 }

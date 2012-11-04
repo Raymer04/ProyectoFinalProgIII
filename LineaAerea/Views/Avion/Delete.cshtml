@@ -1,0 +1,29 @@
+﻿@model LineaAerea.Models.Avion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Avion</legend>
+
+    <div class="display-label">Marca</div>
+    <div class="display-field">@Model.Marca</div>
+
+    <div class="display-label">Modelo</div>
+    <div class="display-field">@Model.Modelo</div>
+
+    <div class="display-label">CapacidadPasajeros</div>
+    <div class="display-field">@Model.CapacidadPasajeros</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+    </p>
+}
+
+

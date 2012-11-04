@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LineaAerea.Models.Vuelo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
+</p>
+<table id="listGrid">
+	<thead>
+    <tr>
+        <th></th>
+        <th>
+            Procedencia
+        </th>
+        <th>
+            Destino
+        </th>
+        <th>
+            Salida
+        </th>
+        <th>
+            Llegada
+        </th>
+    </tr>
+	</thead>
+	<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", null, new { id=item.Id }, new { @class = "button" }) 
+            @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
+            @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
+        </td>
+        <td>
+            @item.Procedencia
+        </td>
+        <td>
+            @item.Destino
+        </td>
+        <td>
+            @String.Format("{0:g}", item.Salida)
+        </td>
+        <td>
+            @String.Format("{0:g}", item.Llegada)
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});
+	});
+</script>
+

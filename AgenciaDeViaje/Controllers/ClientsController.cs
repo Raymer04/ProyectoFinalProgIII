@@ -130,8 +130,6 @@ namespace AgenciaDeViaje.Controllers
 
         public ActionResult Salir()
         {
-            
-
             return RedirectToAction("Index", "Home");
         }
 

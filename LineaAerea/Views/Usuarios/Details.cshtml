@@ -1,0 +1,28 @@
+﻿@model LineaAerea.Models.Usuarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Usuarios</legend>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">@Model.Nombre</div>
+
+    <div class="display-label">Apellido</div>
+    <div class="display-field">@Model.Apellido</div>
+
+    <div class="display-label">Usuario</div>
+    <div class="display-field">@Model.Usuario</div>
+
+    <div class="display-label">Password</div>
+    <div class="display-field">@Model.Password</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+</p>
+

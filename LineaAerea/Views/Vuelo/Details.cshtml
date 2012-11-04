@@ -1,0 +1,28 @@
+﻿@model LineaAerea.Models.Vuelo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Vuelo</legend>
+
+    <div class="display-label">Procedencia</div>
+    <div class="display-field">@Model.Procedencia</div>
+
+    <div class="display-label">Destino</div>
+    <div class="display-field">@Model.Destino</div>
+
+    <div class="display-label">Salida</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Salida)</div>
+
+    <div class="display-label">Llegada</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Llegada)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+</p>
+
