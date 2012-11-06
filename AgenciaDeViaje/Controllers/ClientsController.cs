@@ -120,6 +120,7 @@ namespace AgenciaDeViaje.Controllers
             {
                 Cliente cliente = db.Clientes.Where(p => p.correo == model.Correo && p.password == model.Password).First();
                 Session["usuario"] = cliente;
+                Session["nombre"] = cliente.nombre + " " + cliente.apellido;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -130,6 +131,7 @@ namespace AgenciaDeViaje.Controllers
 
         public ActionResult Salir()
         {
+            Session["usuario"] = null;
             return RedirectToAction("Index", "Home");
         }
 
