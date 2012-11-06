@@ -7,12 +7,17 @@ using System.Web;
 using System.Web.Mvc;
 using AgenciaDeViaje.Models;
 
+
 namespace AgenciaDeViaje.Controllers
 { 
     public class VueloController : Controller
     {
-        private AgenciaDB db = new AgenciaDB();
 
+      
+       
+        
+        private AgenciaDB db = new AgenciaDB();
+        
         //
         // GET: /Vuelo/
 
@@ -80,11 +85,21 @@ namespace AgenciaDeViaje.Controllers
 
         //
         // GET: /Vuelo/Delete/5
- 
+         
         public ActionResult Delete(int id)
         {
             Vuelo vuelo = db.Vueloes.Find(id);
             return View(vuelo);
+        }
+
+        public ActionResult BuscarVuelo(int id)
+        {
+            ServicioWeb.ServicioDeComunicacion a = new ServicioWeb.ServicioDeComunicacion();
+            DataTable tabla;
+            DateTime fecha = new DateTime().Date;
+            tabla = a.VuelosDisponibles("", "", fecha);
+ 
+            return View(tabla);
         }
 
         //

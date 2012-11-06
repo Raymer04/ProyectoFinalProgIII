@@ -50,6 +50,7 @@
    </tr>
    </table>
 </p>
+
 @if(Model.Count(p=>p.Id>0)>0){
 <table>
     <tr>
@@ -85,9 +86,9 @@
             @Html.DisplayFor(modelItem => item.Llegada)
         </td>
         <td>
-            @Html.ActionLink("Reservar", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Comprar", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Delete", new { id = item.Id })
+            @Html.ActionLink("Reservar", "reservar", new { id=item.Id }) |
+            @Html.ActionLink("Comprar", "comprar", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.Id })
         </td>
     </tr>
 }

@@ -6,6 +6,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineaAerea", "LineaAerea\LineaAerea.csproj", "{06BB18C8-8A8C-442F-9D01-ED9D33EA7AEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenciaDeViaje", "AgenciaDeViaje\AgenciaDeViaje.csproj", "{C798B8A1-76E4-4B64-91E1-9694C7823915}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B9915A9E-38D6-48DF-B247-CAE2F550A8DE} = {B9915A9E-38D6-48DF-B247-CAE2F550A8DE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
