@@ -78,13 +78,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\wijmo\css\jquery-ui.css" />
+    <Content Include="App_Data\wijmo\css\jquery-wijmo.css" />
+    <Content Include="App_Data\wijmo\css\jquery.wijmo-complete.all.2.0.5.min.css" />
+    <Content Include="App_Data\wijmo\js\globalize.cultures.js" />
+    <Content Include="App_Data\wijmo\js\jquery-1.7.1.min.js" />
+    <Content Include="App_Data\wijmo\js\jquery-ui.min.js" />
+    <Content Include="App_Data\wijmo\js\jquery.wijmo-complete.all.2.0.5.min.js" />
+    <Content Include="App_Data\wijmo\js\jquery.wijmo-open.all.2.0.5.min.js" />
+    <Content Include="Content\images\1346174974_433089229_1.jpg" />
     <Content Include="Content\images\Background.png" />
-    <Content Include="Content\images\Imágenes de muestra\IMG00309-20121007-1952.jpg" />
-    <Content Include="Content\images\Imágenes de muestra\IMG00310-20121007-1952.jpg" />
-    <Content Include="Content\images\Imágenes de muestra\IMG00311-20121007-1953.jpg" />
-    <Content Include="Content\images\Imágenes de muestra\IMG00315-20121007-1958.jpg" />
-    <Content Include="Content\images\Imágenes de muestra\IMG00335-20121007-2104.jpg" />
+    <Content Include="Content\images\Calendar-icon.png" />
     <Content Include="Content\images\Logo.png" />
+    <Content Include="Content\wijmo\css\jquery-ui.css" />
+    <Content Include="Content\wijmo\css\jquery-wijmo.css" />
+    <Content Include="Content\wijmo\css\jquery.wijmo-complete.all.2.0.5.min.css" />
+    <Content Include="Content\wijmo\js\globalize.cultures.js" />
+    <Content Include="Content\wijmo\js\jquery-1.7.1.min.js" />
+    <Content Include="Content\wijmo\js\jquery-ui.min.js" />
+    <Content Include="Content\wijmo\js\jquery.wijmo-complete.all.2.0.5.min.js" />
+    <Content Include="Content\wijmo\js\jquery.wijmo-open.all.2.0.5.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -157,9 +170,7 @@
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Details.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
