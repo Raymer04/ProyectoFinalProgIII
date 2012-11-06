@@ -1,7 +1,8 @@
 ﻿@if(Session["usuario"]!=null) {
    
-    <text>Bienvenido <strong>@Context.User.Identity.Name</strong>!
-    @Html.ActionLink("Salir", "LogOff", "Clients", null, new { @class = "button" })</text>
+   
+    <a style="color:Black;">Bienvenido <strong style="color:Black;">@Session["nombre"].ToString()</strong>!
+    @Html.ActionLink("Salir", "Salir", "Clients", null, new { @class = "button" })</a>
 }
 else {
     @:@Html.ActionLink("Entrar", "IniciarSesion", "Clients", null, new { @class = "button" })

@@ -15,13 +15,15 @@
 
 @Html.ValidationSummary(true, "No se pudo iniciar sesion. Por favor intente de nuevo.")
 
-@using (Html.BeginForm()) {
+
+@using (Html.BeginForm())
+{
     <div>
         <fieldset>
             <legend>Información de la cuenta</legend>
 
             <div class="editor-label">
-                @Html.LabelFor(m => m.Correo,"Correo")
+                @Html.LabelFor(m => m.Correo, "Correo")
             </div>
             <div class="editor-field">
                 @Html.TextBoxFor(m => m.Correo)
@@ -30,16 +32,11 @@
             </div>
 
             <div class="editor-label">
-                @Html.LabelFor(m => m.Password,"Contraseña")
+                @Html.LabelFor(m => m.Password, "Contraseña")
             </div>
             <div class="editor-field">
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
-            </div>
-
-            <div class="editor-label">
-                @Html.CheckBoxFor(m => m.RememberMe)
-                @Html.LabelFor(m => m.RememberMe)
             </div>
 
             <p>
