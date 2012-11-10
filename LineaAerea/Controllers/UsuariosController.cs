@@ -117,21 +117,22 @@ namespace LineaAerea.Controllers
             {
                 Usuarios usuario = db.Usuario.Where(p => p.Usuario == model.Usuario && p.Password == model.Password).First();
                 Session["usuario"] = usuario;
+                Session["nombre"] = usuario.Nombre + " " + usuario.Apellido;
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                return View(model);
+                ModelState.AddModelError("", "");
             }
+            return View(model);
+
         }
 
         public ActionResult Salir()
         {
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 
-      
-
-       
     }
  }

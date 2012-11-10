@@ -193,9 +193,7 @@
     <None Include="Web References\ServicioWeb\ServicioDeComunicacion.wsdl" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
@@ -232,7 +230,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>34396</DevelopmentServerPort>
+          <DevelopmentServerPort>9868</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

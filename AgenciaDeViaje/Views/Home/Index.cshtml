@@ -1,28 +1,7 @@
-﻿@{
+﻿@model AgenciaDeViaje.Models.Vuelo
+@{
     ViewBag.Title = "Home Page";
 }
-    
-    <script type="text/javascript">
-        $(function () {
-            $("#datepicker").datepicker({
-                numberOfMonths: 3,
-                showButtonPanel: true,
-                buttonImage: '../../Content/images/Calendar-icon.png',
-                buttonImageOnly: true
-            });
-        });
-    </script>
-
-      <script type="text/javascript">
-          $(function () {
-              $("#datepicker1").datepicker({
-                  numberOfMonths: 3,
-                  showButtonPanel: true,
-                  buttonImage: '../../Content/images/Calendar-icon.png',
-                  buttonImageOnly: true
-              });
-          });
-    </script>
 
     <script id="scriptInitial" type="text/javascript">
         $(document).ready(function () {
@@ -30,31 +9,12 @@
         });
 	</script>
 
-      <script id="scriptInit" type="text/javascript">
-          $(document).ready(function () {
-              $("#wijcarousel0").wijcarousel({
-                  display: 1,
-                  showTimer: false
-              });
-          });
-          function changeProperties() {
-              var animationOptions = {
-                  queue: $('#chkQueue').val(),
-                  easing: $('#selEasing').val()
-              };
-              $('#wijcarousel0').wijcarousel({
-                  animation: animationOptions
-              });
-          }
-    </script>
-
-
 <h2>@ViewBag.Message</h2>
 
-        <div id="tabs" style="width: 350px;">
+        <div id="tabs" style="width: 300px;">
         <ul>
 			<li><a href="#tabs-1">Vuelos</a></li>
-            <li><a href="#tabs-2">Hoteles</a></li>
+           
 		</ul>
             <div id="tabs-1">
                 <table style="border:hidden" cellpadding="5">
@@ -67,79 +27,40 @@
                     </tr>
                     <tr>
                          <td>Procedencia:</td>
-                         <td><select style="width: 150px"><option>Venezuela</option></select></td>
+                         <td><select style="width: 150px">
+                         <option>Venezuela</option>
+                         <option>Colombia</option>
+                         </select></td>
                          
                     </tr>
 
                     <tr>
                          <td>Destino:</td>
-                         <td> <select style="width: 150px"><option>Mexico</option></select></td>
+                         <td> <select style="width: 150px">
+                         <option>Mexico</option>
+                         <option>EE.UU</option>
+                         </select></td>
                     
                     </tr>
                     <tr>
-                        <td><label for="popdate">Salida:</label></td>
-                       <td><input name="popdate" type="text" id="datepicker" placeholder="dd/mm/yyyy"/></td>
+                        <td><label>Salida:</label></td>
+                       <td> @Html.EditorFor(m=>Model.Salida)</td>
                     
 	                
                     </tr>
                     <tr>
-                           <td><label for="popdate1">Llegada:</label></td>
-                       <td><input name="popdate1" type="text" id="datepicker1" placeholder="dd/mm/yyyy" /></td>
+                           <td><label>Llegada:</label></td>
+                       <td>@Html.EditorFor(m=>Model.Llegada)</td>
                     
                     </tr>
-                    <tr>
-                         <td colspan="2">Adultos:
-                        <select>
-                        @for (int i = 0; i <= 9; i++)
-                        {
-                            <option>@i</option>
-                        }
-                        </select>
-                        Niños:
-                       <select>
-                        @for (int i = 0; i <= 9; i++)
-                        {
-                            <option>@i</option>
-                        }
-                        </select>
-                        Bebes:
-                        <select>
-                        @for (int i = 0; i <= 9; i++)
-                        {
-                            <option>@i</option>
-                        }
-                        </select></td>
-                    </tr>
+                    
                     <tr><td colspan="2" align="right"><button type="submit" class="btn">Buscar</button></td></tr>
                 </table>
             </div>
-            <div id="tabs-2">algo</div>
+           
         </div>
 
-        <div id="wijcarousel0" style=" width: 400px; margin-left:40%; margin-top:-20%;"  >
-                    <ul class="">
-                        <li class="">
-                            <img alt="1" src="http://lorempixum.com/750/300/abstract/1" title="Word" /><span>Word Caption 1</span></li>
-                        <li class="">
-                            <img alt="2" src="http://lorempixum.com/750/300/abstract/2" title="Word2" /><span>Word Caption 2</span></li>
-                        <li class="">
-                            <img alt="3" src="http://lorempixum.com/750/300/abstract/3" title="Word3" /><span>Word Caption 3</span></li>
-                        <li class="">
-                            <img alt="4" src="http://lorempixum.com/750/300/abstract/4" title="Word4" /><span>Word Caption 4</span></li>
-                        <li class="">
-                            <img alt="5" src="http://lorempixum.com/750/300/abstract/5" title="Word5" /><span>Word Caption 5</span></li>
-                        <li class="">
-                            <img alt="1" src="http://lorempixum.com/750/300/abstract/6" title="Word" /><span>Word Caption 1</span></li>
-                        <li class="">
-                            <img alt="2" src="http://lorempixum.com/750/300/abstract/7" title="Word2" /><span>Word Caption 2</span></li>
-                        <li class="">
-                            <img alt="3" src="http://lorempixum.com/750/300/abstract/8" title="Word3" /><span>Word Caption 3</span></li>
-                        <li class="">
-                            <img alt="4" src="http://lorempixum.com/750/300/abstract/9" title="Word4" /><span>Word Caption 4</span></li>
-                        <li class="">
-                            <img alt="5" src="http://lorempixum.com/750/300/abstract/10" title="Word5" /><span>Word Caption 5</span></li>
-                    </ul>
-                </div>
+       
     
         
     

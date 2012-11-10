@@ -1,7 +1,9 @@
-﻿@if(Session["usuario"]!=null) { 
-    <text>Welcome <strong>@Context.User.Identity.Name</strong>!
-    @Html.ActionLink("Salir", "Salir", "Usuarios", null, new { @class = "button" })</text>
-}
+﻿<body>
+</body>
+    @if(Session["usuario"]!=null) { 
+    <text ><p style="color: #000000">Bienvenido/a <strong >@Session["nombre"].ToString()</strong>
+    @Html.ActionLink("Salir", "Salir", "Usuarios", null, new { @class = "button" })</p></text>
+    }
 else {
     @:@Html.ActionLink("Iniciar Sesión", "IniciarSesion", "Usuarios", null, new { @class = "button" })
 }

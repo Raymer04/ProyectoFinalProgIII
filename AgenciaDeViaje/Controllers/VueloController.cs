@@ -13,8 +13,6 @@ namespace AgenciaDeViaje.Controllers
     public class VueloController : Controller
     {
 
-      
-       
         
         private AgenciaDB db = new AgenciaDB();
         

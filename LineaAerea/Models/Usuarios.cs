@@ -28,7 +28,7 @@ namespace LineaAerea.Models
         public string Usuario { get; set; }
 
         [Required]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 

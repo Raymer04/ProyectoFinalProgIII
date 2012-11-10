@@ -1,8 +1,86 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model LineaAerea.Models.Usuarios.IniciarSesion
+
+@{
+    ViewBag.Title = "Iniciar Sesión";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+@section header
+{
+    <script id="scriptInit" type="text/javascript">
+        $(document).ready(function () {
+            //$(":wijmo-wijdialog").wijdialog("destroy").remove();
+            $("#dialog-confirm").wijdialog({
+                autoOpen: true,
+                resizable: false,
+                height: 400,
+                width: 600,
+                modal: true,
+                buttons: {
+                    "Iniciar Sesión": function () {
+                        $(this).wijdialog("close");
+                    },
+                    Cancel: function () {
+                        $(this).wijdialog("close");
+                    }
+                },
+                captionButtons: {
+                    pin: { visible: false },
+                    refresh: { visible: false },
+                    toggle: { visible: false },
+                    minimize: { visible: false },
+                    maximize: { visible: false }
+                }
+                
+                  
+
+            });
+        });
+    </script>
+}
+<h2>
+    Welcome</h2>
+<div class="main demo">
+    <div>
+        <div id="dialog-confirm" title="Inicio de sesion">
+            <p>
+                <span class="ui-icon ui-icon-alert"></span></p>
+                @using (Html.BeginForm()) {
+    <div>
+        <fieldset>
+            <legend>Información de cuenta</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Usuario)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Usuario)
+                @Html.ValidationMessageFor(m => m.Usuario)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+
+            <div class="editor-label">
+                @Html.CheckBoxFor(m => m.Recordarme)
+                @Html.LabelFor(m => m.Recordarme)
+            </div>
+
+            <p>
+                <input type="submit" value="Iniciar Sesión" />
+            </p>
+        </fieldset>
+    </div>
+}
+               
+        </div>
+    </div>
+   
+</div>
+
