@@ -82,10 +82,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\ServicioWeb\Reference.cs">
+    <Compile Include="Service References\ServicioWeb\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -115,11 +115,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\ServicioWeb\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
+    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Vuelos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServicioWeb\ServicioDeComunicacion.disco" />
+    <None Include="Service References\ServicioWeb\configuration91.svcinfo" />
+    <None Include="Service References\ServicioWeb\configuration.svcinfo" />
+    <None Include="Service References\ServicioWeb\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\ServicioWeb\ServicioDeComunicacion.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -190,28 +195,17 @@
     <Content Include="Views\Clients\IniciarSesion.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Details.cshtml" />
-    <None Include="Web References\ServicioWeb\ServicioDeComunicacion.wsdl" />
+    <None Include="Service References\ServicioWeb\ServicioDeComunicacion.wsdl" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServicioWeb\" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:1335/ServicioDeComunicacion.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\ServicioWeb\</RelPath>
-      <UpdateFromURL>http://localhost:1335/ServicioDeComunicacion.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>AgenciaDeViaje_ServicioWeb_ServicioDeComunicacion</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

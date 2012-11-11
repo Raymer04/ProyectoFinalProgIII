@@ -10,7 +10,9 @@
 	</script>
 
 <h2>@ViewBag.Message</h2>
-
+@using (Html.BeginForm())
+{
+ 
         <div id="tabs" style="width: 300px;">
         <ul>
 			<li><a href="#tabs-1">Vuelos</a></li>
@@ -37,6 +39,7 @@
                     <tr>
                          <td>Destino:</td>
                          <td> <select style="width: 150px">
+                         
                          <option>Mexico</option>
                          <option>EE.UU</option>
                          </select></td>
@@ -44,13 +47,13 @@
                     </tr>
                     <tr>
                         <td><label>Salida:</label></td>
-                       <td> @Html.EditorFor(m=>Model.Salida)</td>
+                       <td> @Html.EditorFor(m => Model.Salida)</td>
                     
 	                
                     </tr>
                     <tr>
                            <td><label>Llegada:</label></td>
-                       <td>@Html.EditorFor(m=>Model.Llegada)</td>
+                       <td>@Html.EditorFor(m => Model.Llegada)</td>
                     
                     </tr>
                     
@@ -59,7 +62,7 @@
             </div>
            
         </div>
-
+}
        
     
         

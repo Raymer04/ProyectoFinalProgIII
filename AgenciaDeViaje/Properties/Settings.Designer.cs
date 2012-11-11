@@ -22,15 +22,5 @@ namespace AgenciaDeViaje.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1335/ServicioDeComunicacion.asmx")]
-        public string AgenciaDeViaje_ServicioWeb_ServicioDeComunicacion {
-            get {
-                return ((string)(this["AgenciaDeViaje_ServicioWeb_ServicioDeComunicacion"]));
-            }
-        }
     }
 }

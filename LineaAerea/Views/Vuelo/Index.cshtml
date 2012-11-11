@@ -14,12 +14,6 @@
     <tr>
         <th></th>
         <th>
-            Procedencia
-        </th>
-        <th>
-            Destino
-        </th>
-        <th>
             Salida
         </th>
         <th>
@@ -34,12 +28,6 @@
             @Html.ActionLink("Edit", "Edit", null, new { id=item.Id }, new { @class = "button" }) 
             @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
             @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
-        </td>
-        <td>
-            @item.Procedencia
-        </td>
-        <td>
-            @item.Destino
         </td>
         <td>
             @String.Format("{0:g}", item.Salida)

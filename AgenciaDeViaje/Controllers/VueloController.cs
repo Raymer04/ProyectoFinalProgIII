@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AgenciaDeViaje.Models;
+using System.Web.UI.WebControls;
 
 
 namespace AgenciaDeViaje.Controllers
@@ -19,9 +20,32 @@ namespace AgenciaDeViaje.Controllers
         //
         // GET: /Vuelo/
 
-        public ViewResult Index()
+        public ViewResult Index(Vuelo model)
         {
-            return View(db.Vueloes.ToList());
+            
+           // return View(db.Vueloes.ToList());
+            ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
+
+          //  DataGrid vuelosDisponibles = new DataGrid();
+
+            //Vuelo.vuelosDisponibles.AutoGenerateColumns = true;
+            //vuelosDisponibles.DataSource = a.VuelosDisponibles(model.Procedencia, model.Destino, model.Salida);
+          //  System.Collections.Generic.IEnumerable<AgenciaDeViaje.Models.Vuelo> lista;
+            var b= a.VuelosDisponibles(model.Procedencia, model.Destino, model.Salida);
+
+            List<Vuelo> vuelos = new List<Vuelo>();
+              foreach (var dato in b)
+              {
+                  Vuelo vuelo = new Vuelo();
+                  vuelo.Destino = dato.DestinoReference.ToString();
+                  vuelo.Procedencia = dato.ProcedenciaReference.ToString();
+                 
+                  vuelos.Add(vuelo);
+                  
+           
+              }
+            return View(vuelos);
+            
         }
 
         //
@@ -33,84 +57,12 @@ namespace AgenciaDeViaje.Controllers
             return View(vuelo);
         }
 
-        //
-        // GET: /Vuelo/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Vuelo/Create
-
-        [HttpPost]
-        public ActionResult Create(Vuelo vuelo)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Vueloes.Add(vuelo);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
-            }
-
-            return View(vuelo);
-        }
         
-        //
-        // GET: /Vuelo/Edit/5
- 
-        public ActionResult Edit(int id)
+/*
+        public ActionResult BuscarVuelos(Vuelo model)
         {
-            Vuelo vuelo = db.Vueloes.Find(id);
-            return View(vuelo);
-        }
-
-        //
-        // POST: /Vuelo/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Vuelo vuelo)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(vuelo).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(vuelo);
-        }
-
-        //
-        // GET: /Vuelo/Delete/5
-         
-        public ActionResult Delete(int id)
-        {
-            Vuelo vuelo = db.Vueloes.Find(id);
-            return View(vuelo);
-        }
-
-        public ActionResult BuscarVuelo(int id)
-        {
-            ServicioWeb.ServicioDeComunicacion a = new ServicioWeb.ServicioDeComunicacion();
-            DataTable tabla;
-            DateTime fecha = new DateTime().Date;
-            tabla = a.VuelosDisponibles("", "", fecha);
- 
-            return View(tabla);
-        }
-
-        //
-        // POST: /Vuelo/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            Vuelo vuelo = db.Vueloes.Find(id);
-            db.Vueloes.Remove(vuelo);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+           
+        }*/
 
         protected override void Dispose(bool disposing)
         {

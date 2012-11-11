@@ -35,6 +35,13 @@ namespace LineaAerea.Controllers
 
         public ActionResult Create()
         {
+            var query1 = db.Aeropuerto.Select(a => new { a.Id, a.Lugar });
+            ViewBag.Procedencias = new SelectList(query1.AsEnumerable(), "Id", "Lugar");
+
+
+            var query2 = db.Aeropuerto.Select(a => new { a.Id, a.Lugar });
+            ViewBag.Destinos = new SelectList(query2.AsEnumerable(), "Id", "Lugar");
+
             return View();
         } 
 

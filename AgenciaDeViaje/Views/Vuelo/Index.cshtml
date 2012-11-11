@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<AgenciaDeViaje.Models.Vuelo>
+           
 
 @{
     ViewBag.Title = "Index";
@@ -11,45 +12,7 @@
 
 <h2>Buscar Vuelos</h2>
 
-<p>
-<table>
-<tr>
-<td>
-<label>Procedencia</label>
-</td>
-<td>
-   <select>
-   <option></option>
-   </select>
-   </td>
-   <td>
-   <label>Destino</label>
-   </td>
-   <td>
-   <select>
-   <option></option>
-   </select>
-   </td>
-   </tr>
-   <tr>
-   <td>
-   <label>Fecha</label>
-   </td>
-   <td>
- <div id="calendar">
-	</div>
-	<label for="popdate">Choose a Date:</label>
-	<input name="popdate" type="text" id="popdate" style="width: 180px;" />
-	<!-- End demo markup -->
 
-
-   </td>
-   <td colspan="2" align="right">
-   <button class="botonCss">Buscar</button>
-   </td>
-   </tr>
-   </table>
-</p>
 
 @if(Model.Count(p=>p.Id>0)>0){
 <table>

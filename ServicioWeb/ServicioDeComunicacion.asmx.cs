@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Data;
+using System.Web.UI.WebControls;
 
 namespace ServicioWeb
 {
@@ -19,11 +20,13 @@ namespace ServicioWeb
     {
 
         [WebMethod]
-        public DataTable VuelosDisponibles(String procedencia, String destino, DateTime fecha)
+        public List<Vuelos> VuelosDisponibles(String procedencia, String destino, DateTime fecha)
         {
             LineaAereaEntities lineab = new LineaAereaEntities();
 
-            DataTable vuelos = null;//lineab.Vuelos.Where(v => v.Destino.Lugar == destino && v.Procedencia.Lugar == procedencia);
+
+            List<Vuelos> vuelos = lineab.Vuelos.Where(v => v.Destino.Lugar == destino && v.Procedencia.Lugar == procedencia).ToList();
+           
             return vuelos;
         }
     }

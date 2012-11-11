@@ -39,6 +39,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages" />
     <Reference Include="System.Web.Helpers" />
@@ -78,6 +80,59 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\datetime picker\i18n\i18n.html" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-cs.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-de.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-es.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-fr.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-hr.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-it.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-ja.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-nl.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-pl.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-pt-BR.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-sl.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-sv.js" />
+    <Content Include="Content\datetime picker\i18n\jquery.ui.timepicker-tr.js" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\datetime picker\include\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\datetime picker\include\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\datetime picker\include\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\datetime picker\include\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\datetime picker\include\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\datetime picker\include\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\datetime picker\include\jquery-1.5.1.min.js" />
+    <Content Include="Content\datetime picker\include\jquery-ui-1.8.14.custom.css" />
+    <Content Include="Content\datetime picker\include\jquery.ui.core.min.js" />
+    <Content Include="Content\datetime picker\include\jquery.ui.position.min.js" />
+    <Content Include="Content\datetime picker\include\jquery.ui.tabs.min.js" />
+    <Content Include="Content\datetime picker\include\jquery.ui.widget.min.js" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\datetime picker\include\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\datetime picker\jquery-ui-timepicker-addon.js" />
+    <Content Include="Content\datetime picker\jquery.ui.timepicker.css" />
+    <Content Include="Content\datetime picker\jquery.ui.timepicker.js" />
+    <Content Include="Content\themes\base\jquery.ptTimeSelect.css" />
+    <Content Include="Content\themes\base\jquery.ptTimeSelect.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -133,6 +188,12 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="packages.config" />
     <Content Include="Views\Avion\Index.cshtml" />
     <Content Include="Views\Avion\Details.cshtml" />
     <Content Include="Views\Avion\Create.cshtml" />
@@ -143,17 +204,11 @@
     <Content Include="Views\Aeropuerto\Create.cshtml" />
     <Content Include="Views\Aeropuerto\Edit.cshtml" />
     <Content Include="Views\Aeropuerto\Delete.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\Usuarios\Details.cshtml" />
-    <Content Include="Views\Usuarios\Create.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
-    <Content Include="Views\Usuarios\Delete.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
     <Content Include="Views\Vuelo\Details.cshtml" />
     <Content Include="Views\Vuelo\Create.cshtml" />
     <Content Include="Views\Vuelo\Edit.cshtml" />
     <Content Include="Views\Vuelo\Delete.cshtml" />
-    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
