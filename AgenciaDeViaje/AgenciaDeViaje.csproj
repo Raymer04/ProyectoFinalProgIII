@@ -188,7 +188,6 @@
     <Content Include="Views\Boletos\Index.cshtml" />
     <Content Include="Views\Boletos\Details.cshtml" />
     <Content Include="Views\Boletos\Create.cshtml" />
-    <Content Include="Views\Boletos\Edit.cshtml" />
     <Content Include="Views\Boletos\Delete.cshtml" />
     <Content Include="Views\Clients\Registro.cshtml" />
     <Content Include="Views\Clients\CambiarClave.cshtml" />

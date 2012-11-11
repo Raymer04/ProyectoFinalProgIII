@@ -14,7 +14,7 @@ namespace AgenciaDeViaje.Controllers
             
             ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
             ViewBag.Message = "Bienvenidos a nuestra agencia de viajes";
-            var aux = a.TodosVuelos().Select(x => new {x.ID, x.DestinoReference.EntityKey.EntityKeyValues });
+            var aux = a.TodosVuelos().Select(x => new {x.ID, x.DestinoReference });
             ViewBag.Destinos = new SelectList(aux.AsEnumerable(), "Id", "DestinoID");
              
             var aux2 = a.TodosVuelos().Select(x => new { x.ID, x.Llegada });

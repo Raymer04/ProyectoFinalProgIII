@@ -16,9 +16,20 @@ namespace AgenciaDeViaje.Controllers
         //
         // GET: /Boletos/
 
-        public ViewResult Index()
+        public ActionResult Index(int tipo)
         {
-            return View(db.Boletos.ToList());
+            if (Session["usuario"] != null)
+            {
+
+                Cliente cliente = (Cliente)Session["usuario"];
+                return View(db.Boletos.Where(p => p.tipo == tipo).ToList());
+            }
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Clients");
+            }
+            
+           
         }
 
         //

@@ -30,7 +30,14 @@
             <div id="menucontainer">
                 <ul id="nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>                
-                    <li>@Html.ActionLink("Mi Perfil", "Details", "Clients")</li>
+                    <li>@Html.ActionLink("Mi Perfil", "Details", "Clients")
+                        <ul> 
+                            <li> @Html.ActionLink("Boletos Comprados", "Index", "Boletos", new { tipo = 1 }, new { @class = "label" })</li>
+                            <li> @Html.ActionLink("Boletos Reservados", "Index", "Boletos", new { tipo = 2 }, new { @class = "label" })</li>
+                            <li> @Html.ActionLink("Lista De Espera", "Index", "Boletos", new { tipo = 3 }, new { @class = "label" })</li>
+                         </ul>
+                    </li>
+                    
                     <li>@Html.ActionLink("Acerca de nosotros", "About", "Home")</li>
                 </ul>
             </div>
