@@ -18,7 +18,8 @@ namespace LineaAerea.Controllers
 
         public ViewResult Index()
         {
-            return View(db.Vuelo.ToList());
+            var vuelo = db.Vuelo.Include(v => v.Procedencia).Include(v => v.Destino);
+            return View(vuelo.ToList());
         }
 
         //
@@ -35,13 +36,8 @@ namespace LineaAerea.Controllers
 
         public ActionResult Create()
         {
-            var query1 = db.Aeropuerto.Select(a => new { a.Id, a.Lugar });
-            ViewBag.Procedencias = new SelectList(query1.AsEnumerable(), "Id", "Lugar");
-
-
-            var query2 = db.Aeropuerto.Select(a => new { a.Id, a.Lugar });
-            ViewBag.Destinos = new SelectList(query2.AsEnumerable(), "Id", "Lugar");
-
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Lugar");
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Lugar");
             return View();
         } 
 
@@ -58,6 +54,8 @@ namespace LineaAerea.Controllers
                 return RedirectToAction("Index");  
             }
 
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.ProcedenciaID);
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.DestinoID);
             return View(vuelo);
         }
         
@@ -67,6 +65,8 @@ namespace LineaAerea.Controllers
         public ActionResult Edit(int id)
         {
             Vuelo vuelo = db.Vuelo.Find(id);
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.ProcedenciaID);
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.DestinoID);
             return View(vuelo);
         }
 
@@ -82,6 +82,8 @@ namespace LineaAerea.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.ProcedenciaID);
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.DestinoID);
             return View(vuelo);
         }
 

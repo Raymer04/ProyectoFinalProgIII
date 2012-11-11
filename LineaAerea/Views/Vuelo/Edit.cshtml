@@ -17,6 +17,22 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.ProcedenciaID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProcedenciaID)
+            @Html.ValidationMessageFor(model => model.ProcedenciaID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DestinoID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DestinoID)
+            @Html.ValidationMessageFor(model => model.DestinoID)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Salida)
         </div>
         <div class="editor-field">
