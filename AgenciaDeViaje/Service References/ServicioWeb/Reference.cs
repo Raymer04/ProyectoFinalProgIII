@@ -22,6 +22,14 @@ namespace AgenciaDeViaje.ServicioWeb {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelos[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
         Vuelos[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/TodosVuelos", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelos[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
+        Vuelos[] TodosVuelos();
     }
     
     /// <remarks/>
@@ -360,6 +368,10 @@ namespace AgenciaDeViaje.ServicioWeb {
         
         public Vuelos[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha) {
             return base.Channel.VuelosDisponibles(procedencia, destino, fecha);
+        }
+        
+        public Vuelos[] TodosVuelos() {
+            return base.Channel.TodosVuelos();
         }
     }
 }

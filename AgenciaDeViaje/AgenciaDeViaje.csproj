@@ -200,7 +200,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServicioWeb\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

@@ -29,5 +29,16 @@ namespace ServicioWeb
            
             return vuelos;
         }
+
+        [WebMethod]
+        public List<Vuelos> TodosVuelos()
+        {
+            LineaAereaEntities lineab = new LineaAereaEntities();
+
+
+            List<Vuelos> vuelos = lineab.Vuelos.ToList();
+
+            return vuelos;
+        }
     }
 }

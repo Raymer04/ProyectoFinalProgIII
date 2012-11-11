@@ -29,20 +29,20 @@
                     </tr>
                     <tr>
                          <td>Procedencia:</td>
-                         <td><select style="width: 150px">
-                         <option>Venezuela</option>
-                         <option>Colombia</option>
-                         </select></td>
+                         <td>
+                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Destinos)
+                         </td>
                          
                     </tr>
 
                     <tr>
                          <td>Destino:</td>
-                         <td> <select style="width: 150px">
                          
-                         <option>Mexico</option>
-                         <option>EE.UU</option>
-                         </select></td>
+                         <td>
+                         
+                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Destinos)
+          
+                         </td>
                     
                     </tr>
                     <tr>
