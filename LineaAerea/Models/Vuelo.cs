@@ -13,7 +13,10 @@ namespace LineaAerea.Models
     {
         public int Id { get; set; }
 
+        public int ProcedenciaID { get; set; }
         public Aeropuerto Procedencia { get; set; }
+
+        public int DestinoID { get; set; }
         public Aeropuerto Destino { get; set; }
 
         [Required]
