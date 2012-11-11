@@ -9,79 +9,96 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("LineaAereaModel", "FK_Vuelos_Aeropuerto_Destino", "Aeropuerto", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServicioWeb.Aeropuerto), "Vuelos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServicioWeb.Vuelos))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("LineaAereaModel", "FK_Vuelos_Vuelos_Procedencia", "Aeropuerto", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServicioWeb.Aeropuerto), "Vuelos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServicioWeb.Vuelos))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("LineaAereaModel", "FK_Vuelos_Avion", "Avion", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServicioWeb.Avion), "Vuelos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServicioWeb.Vuelos))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Aeropuertoes", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServicioWeb.Aeropuertoes), "Vueloes", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServicioWeb.Vueloes))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID", "Aeropuertoes", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ServicioWeb.Aeropuertoes), "Vueloes", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServicioWeb.Vueloes))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Avions", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ServicioWeb.Avions), "Vueloes", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ServicioWeb.Vueloes))]
 
 // Original file name:
-// Generation date: 24/10/2012 12:04:08 a.m.
+// Generation date: 11/11/2012 06:22:31 p.m.
 namespace ServicioWeb
 {
     
     /// <summary>
-    /// There are no comments for LineaAereaEntities in the schema.
+    /// There are no comments for LinaAereaEntities in the schema.
     /// </summary>
-    public partial class LineaAereaEntities : global::System.Data.Objects.ObjectContext
+    public partial class LinaAereaEntities : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// Initializes a new LineaAereaEntities object using the connection string found in the 'LineaAereaEntities' section of the application configuration file.
+        /// Initializes a new LinaAereaEntities object using the connection string found in the 'LinaAereaEntities' section of the application configuration file.
         /// </summary>
-        public LineaAereaEntities() : 
-                base("name=LineaAereaEntities", "LineaAereaEntities")
+        public LinaAereaEntities() : 
+                base("name=LinaAereaEntities", "LinaAereaEntities")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new LineaAereaEntities object.
+        /// Initialize a new LinaAereaEntities object.
         /// </summary>
-        public LineaAereaEntities(string connectionString) : 
-                base(connectionString, "LineaAereaEntities")
+        public LinaAereaEntities(string connectionString) : 
+                base(connectionString, "LinaAereaEntities")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new LineaAereaEntities object.
+        /// Initialize a new LinaAereaEntities object.
         /// </summary>
-        public LineaAereaEntities(global::System.Data.EntityClient.EntityConnection connection) : 
-                base(connection, "LineaAereaEntities")
+        public LinaAereaEntities(global::System.Data.EntityClient.EntityConnection connection) : 
+                base(connection, "LinaAereaEntities")
         {
             this.OnContextCreated();
         }
         partial void OnContextCreated();
         /// <summary>
-        /// There are no comments for Aeropuerto in the schema.
+        /// There are no comments for C__MigrationHistory in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Aeropuerto> Aeropuerto
+        public global::System.Data.Objects.ObjectQuery<C__MigrationHistory> C__MigrationHistory
         {
             get
             {
-                if ((this._Aeropuerto == null))
+                if ((this._C__MigrationHistory == null))
                 {
-                    this._Aeropuerto = base.CreateQuery<Aeropuerto>("[Aeropuerto]");
+                    this._C__MigrationHistory = base.CreateQuery<C__MigrationHistory>("[C__MigrationHistory]");
                 }
-                return this._Aeropuerto;
+                return this._C__MigrationHistory;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Aeropuerto> _Aeropuerto;
+        private global::System.Data.Objects.ObjectQuery<C__MigrationHistory> _C__MigrationHistory;
         /// <summary>
-        /// There are no comments for Avion in the schema.
+        /// There are no comments for Aeropuertoes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Avion> Avion
+        public global::System.Data.Objects.ObjectQuery<Aeropuertoes> Aeropuertoes
         {
             get
             {
-                if ((this._Avion == null))
+                if ((this._Aeropuertoes == null))
                 {
-                    this._Avion = base.CreateQuery<Avion>("[Avion]");
+                    this._Aeropuertoes = base.CreateQuery<Aeropuertoes>("[Aeropuertoes]");
                 }
-                return this._Avion;
+                return this._Aeropuertoes;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Avion> _Avion;
+        private global::System.Data.Objects.ObjectQuery<Aeropuertoes> _Aeropuertoes;
+        /// <summary>
+        /// There are no comments for Avions in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<Avions> Avions
+        {
+            get
+            {
+                if ((this._Avions == null))
+                {
+                    this._Avions = base.CreateQuery<Avions>("[Avions]");
+                }
+                return this._Avions;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<Avions> _Avions;
         /// <summary>
         /// There are no comments for Usuarios in the schema.
         /// </summary>
@@ -100,37 +117,45 @@ namespace ServicioWeb
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<Usuarios> _Usuarios;
         /// <summary>
-        /// There are no comments for Vuelos in the schema.
+        /// There are no comments for Vueloes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Vuelos> Vuelos
+        public global::System.Data.Objects.ObjectQuery<Vueloes> Vueloes
         {
             get
             {
-                if ((this._Vuelos == null))
+                if ((this._Vueloes == null))
                 {
-                    this._Vuelos = base.CreateQuery<Vuelos>("[Vuelos]");
+                    this._Vueloes = base.CreateQuery<Vueloes>("[Vueloes]");
                 }
-                return this._Vuelos;
+                return this._Vueloes;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Vuelos> _Vuelos;
+        private global::System.Data.Objects.ObjectQuery<Vueloes> _Vueloes;
         /// <summary>
-        /// There are no comments for Aeropuerto in the schema.
+        /// There are no comments for C__MigrationHistory in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToAeropuerto(Aeropuerto aeropuerto)
+        public void AddToC__MigrationHistory(C__MigrationHistory c__MigrationHistory)
         {
-            base.AddObject("Aeropuerto", aeropuerto);
+            base.AddObject("C__MigrationHistory", c__MigrationHistory);
         }
         /// <summary>
-        /// There are no comments for Avion in the schema.
+        /// There are no comments for Aeropuertoes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToAvion(Avion avion)
+        public void AddToAeropuertoes(Aeropuertoes aeropuertoes)
         {
-            base.AddObject("Avion", avion);
+            base.AddObject("Aeropuertoes", aeropuertoes);
+        }
+        /// <summary>
+        /// There are no comments for Avions in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToAvions(Avions avions)
+        {
+            base.AddObject("Avions", avions);
         }
         /// <summary>
         /// There are no comments for Usuarios in the schema.
@@ -141,63 +166,171 @@ namespace ServicioWeb
             base.AddObject("Usuarios", usuarios);
         }
         /// <summary>
-        /// There are no comments for Vuelos in the schema.
+        /// There are no comments for Vueloes in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToVuelos(Vuelos vuelos)
+        public void AddToVueloes(Vueloes vueloes)
         {
-            base.AddObject("Vuelos", vuelos);
+            base.AddObject("Vueloes", vueloes);
         }
     }
     /// <summary>
-    /// There are no comments for LineaAereaModel.Aeropuerto in the schema.
+    /// There are no comments for LineaAerea.Models.LineaAereaDBModel.C__MigrationHistory in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// ID
+    /// MigrationId
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAereaModel", Name="Aeropuerto")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAerea.Models.LineaAereaDBModel", Name="C__MigrationHistory")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Aeropuerto : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class C__MigrationHistory : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Aeropuerto object.
+        /// Create a new C__MigrationHistory object.
         /// </summary>
-        /// <param name="id">Initial value of ID.</param>
+        /// <param name="migrationId">Initial value of MigrationId.</param>
+        /// <param name="model">Initial value of Model.</param>
+        /// <param name="productVersion">Initial value of ProductVersion.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Aeropuerto CreateAeropuerto(int id)
+        public static C__MigrationHistory CreateC__MigrationHistory(string migrationId, byte[] model, string productVersion)
         {
-            Aeropuerto aeropuerto = new Aeropuerto();
-            aeropuerto.ID = id;
-            return aeropuerto;
+            C__MigrationHistory c__MigrationHistory = new C__MigrationHistory();
+            c__MigrationHistory.MigrationId = migrationId;
+            c__MigrationHistory.Model = model;
+            c__MigrationHistory.ProductVersion = productVersion;
+            return c__MigrationHistory;
         }
         /// <summary>
-        /// There are no comments for property ID in the schema.
+        /// There are no comments for property MigrationId in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int ID
+        public string MigrationId
         {
             get
             {
-                return this._ID;
+                return this._MigrationId;
             }
             set
             {
-                this.OnIDChanging(value);
-                this.ReportPropertyChanging("ID");
-                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ID");
-                this.OnIDChanged();
+                this.OnMigrationIdChanging(value);
+                this.ReportPropertyChanging("MigrationId");
+                this._MigrationId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("MigrationId");
+                this.OnMigrationIdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _ID;
+        private string _MigrationId;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanging(int value);
+        partial void OnMigrationIdChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanged();
+        partial void OnMigrationIdChanged();
+        /// <summary>
+        /// There are no comments for property Model in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public byte[] Model
+        {
+            get
+            {
+                return global::System.Data.Objects.DataClasses.StructuralObject.GetValidValue(this._Model);
+            }
+            set
+            {
+                this.OnModelChanging(value);
+                this.ReportPropertyChanging("Model");
+                this._Model = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Model");
+                this.OnModelChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private byte[] _Model;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnModelChanging(byte[] value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnModelChanged();
+        /// <summary>
+        /// There are no comments for property ProductVersion in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ProductVersion
+        {
+            get
+            {
+                return this._ProductVersion;
+            }
+            set
+            {
+                this.OnProductVersionChanging(value);
+                this.ReportPropertyChanging("ProductVersion");
+                this._ProductVersion = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("ProductVersion");
+                this.OnProductVersionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ProductVersion;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnProductVersionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnProductVersionChanged();
+    }
+    /// <summary>
+    /// There are no comments for LineaAerea.Models.LineaAereaDBModel.Aeropuertoes in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAerea.Models.LineaAereaDBModel", Name="Aeropuertoes")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Aeropuertoes : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Aeropuertoes object.
+        /// </summary>
+        /// <param name="id">Initial value of Id.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static Aeropuertoes CreateAeropuertoes(int id)
+        {
+            Aeropuertoes aeropuertoes = new Aeropuertoes();
+            aeropuertoes.Id = id;
+            return aeropuertoes;
+        }
+        /// <summary>
+        /// There are no comments for property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _Id;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIdChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIdChanged();
         /// <summary>
         /// There are no comments for property Nombre in the schema.
         /// </summary>
@@ -253,99 +386,101 @@ namespace ServicioWeb
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnLugarChanged();
         /// <summary>
-        /// There are no comments for Vuelos in the schema.
+        /// There are no comments for Vueloes in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAereaModel", "FK_Vuelos_Aeropuerto_Destino", "Vuelos")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Vueloes")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Vuelos> Vuelos
+        public global::System.Data.Objects.DataClasses.EntityCollection<Vueloes> Vueloes
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Vuelos>("LineaAereaModel.FK_Vuelos_Aeropuerto_Destino", "Vuelos");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Vueloes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Vueloes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Vuelos>("LineaAereaModel.FK_Vuelos_Aeropuerto_Destino", "Vuelos", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Vueloes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Vueloes", value);
                 }
             }
         }
         /// <summary>
-        /// There are no comments for Vuelos1 in the schema.
+        /// There are no comments for Vueloes1 in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAereaModel", "FK_Vuelos_Vuelos_Procedencia", "Vuelos")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID", "Vueloes")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Vuelos> Vuelos1
+        public global::System.Data.Objects.DataClasses.EntityCollection<Vueloes> Vueloes1
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Vuelos>("LineaAereaModel.FK_Vuelos_Vuelos_Procedencia", "Vuelos");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Vueloes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" +
+                        "", "Vueloes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Vuelos>("LineaAereaModel.FK_Vuelos_Vuelos_Procedencia", "Vuelos", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Vueloes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" +
+                            "", "Vueloes", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for LineaAereaModel.Avion in the schema.
+    /// There are no comments for LineaAerea.Models.LineaAereaDBModel.Avions in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// ID
+    /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAereaModel", Name="Avion")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAerea.Models.LineaAereaDBModel", Name="Avions")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Avion : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class Avions : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Avion object.
+        /// Create a new Avions object.
         /// </summary>
-        /// <param name="id">Initial value of ID.</param>
+        /// <param name="id">Initial value of Id.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Avion CreateAvion(int id)
+        public static Avions CreateAvions(int id)
         {
-            Avion avion = new Avion();
-            avion.ID = id;
-            return avion;
+            Avions avions = new Avions();
+            avions.Id = id;
+            return avions;
         }
         /// <summary>
-        /// There are no comments for property ID in the schema.
+        /// There are no comments for property Id in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int ID
+        public int Id
         {
             get
             {
-                return this._ID;
+                return this._Id;
             }
             set
             {
-                this.OnIDChanging(value);
-                this.ReportPropertyChanging("ID");
-                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ID");
-                this.OnIDChanged();
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _ID;
+        private int _Id;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanging(int value);
+        partial void OnIdChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanged();
+        partial void OnIdChanged();
         /// <summary>
         /// There are no comments for property Marca in the schema.
         /// </summary>
@@ -406,7 +541,7 @@ namespace ServicioWeb
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<int> CapacidadPasajeros
+        public string CapacidadPasajeros
         {
             get
             {
@@ -416,47 +551,47 @@ namespace ServicioWeb
             {
                 this.OnCapacidadPasajerosChanging(value);
                 this.ReportPropertyChanging("CapacidadPasajeros");
-                this._CapacidadPasajeros = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this._CapacidadPasajeros = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("CapacidadPasajeros");
                 this.OnCapacidadPasajerosChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<int> _CapacidadPasajeros;
+        private string _CapacidadPasajeros;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnCapacidadPasajerosChanging(global::System.Nullable<int> value);
+        partial void OnCapacidadPasajerosChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnCapacidadPasajerosChanged();
         /// <summary>
-        /// There are no comments for Vuelos in the schema.
+        /// There are no comments for Vueloes in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAereaModel", "FK_Vuelos_Avion", "Vuelos")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Vueloes")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Vuelos> Vuelos
+        public global::System.Data.Objects.DataClasses.EntityCollection<Vueloes> Vueloes
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Vuelos>("LineaAereaModel.FK_Vuelos_Avion", "Vuelos");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Vueloes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Vueloes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Vuelos>("LineaAereaModel.FK_Vuelos_Avion", "Vuelos", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Vueloes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Vueloes", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for LineaAereaModel.Usuarios in the schema.
+    /// There are no comments for LineaAerea.Models.LineaAereaDBModel.Usuarios in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// ID
+    /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAereaModel", Name="Usuarios")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAerea.Models.LineaAereaDBModel", Name="Usuarios")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class Usuarios : global::System.Data.Objects.DataClasses.EntityObject
@@ -464,45 +599,53 @@ namespace ServicioWeb
         /// <summary>
         /// Create a new Usuarios object.
         /// </summary>
-        /// <param name="id">Initial value of ID.</param>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="nombre">Initial value of Nombre.</param>
+        /// <param name="apellido">Initial value of Apellido.</param>
+        /// <param name="usuario">Initial value of Usuario.</param>
+        /// <param name="password">Initial value of Password.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Usuarios CreateUsuarios(int id)
+        public static Usuarios CreateUsuarios(int id, string nombre, string apellido, string usuario, string password)
         {
             Usuarios usuarios = new Usuarios();
-            usuarios.ID = id;
+            usuarios.Id = id;
+            usuarios.Nombre = nombre;
+            usuarios.Apellido = apellido;
+            usuarios.Usuario = usuario;
+            usuarios.Password = password;
             return usuarios;
         }
         /// <summary>
-        /// There are no comments for property ID in the schema.
+        /// There are no comments for property Id in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int ID
+        public int Id
         {
             get
             {
-                return this._ID;
+                return this._Id;
             }
             set
             {
-                this.OnIDChanging(value);
-                this.ReportPropertyChanging("ID");
-                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ID");
-                this.OnIDChanged();
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _ID;
+        private int _Id;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanging(int value);
+        partial void OnIdChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanged();
+        partial void OnIdChanged();
         /// <summary>
         /// There are no comments for property Nombre in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string Nombre
@@ -515,7 +658,7 @@ namespace ServicioWeb
             {
                 this.OnNombreChanging(value);
                 this.ReportPropertyChanging("Nombre");
-                this._Nombre = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this._Nombre = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
                 this.ReportPropertyChanged("Nombre");
                 this.OnNombreChanged();
             }
@@ -529,7 +672,7 @@ namespace ServicioWeb
         /// <summary>
         /// There are no comments for property Apellido in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string Apellido
@@ -542,7 +685,7 @@ namespace ServicioWeb
             {
                 this.OnApellidoChanging(value);
                 this.ReportPropertyChanging("Apellido");
-                this._Apellido = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this._Apellido = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
                 this.ReportPropertyChanged("Apellido");
                 this.OnApellidoChanged();
             }
@@ -556,7 +699,7 @@ namespace ServicioWeb
         /// <summary>
         /// There are no comments for property Usuario in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string Usuario
@@ -569,7 +712,7 @@ namespace ServicioWeb
             {
                 this.OnUsuarioChanging(value);
                 this.ReportPropertyChanging("Usuario");
-                this._Usuario = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this._Usuario = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
                 this.ReportPropertyChanged("Usuario");
                 this.OnUsuarioChanged();
             }
@@ -583,7 +726,7 @@ namespace ServicioWeb
         /// <summary>
         /// There are no comments for property Password in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public string Password
@@ -596,7 +739,7 @@ namespace ServicioWeb
             {
                 this.OnPasswordChanging(value);
                 this.ReportPropertyChanging("Password");
-                this._Password = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this._Password = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
                 this.ReportPropertyChanged("Password");
                 this.OnPasswordChanged();
             }
@@ -609,61 +752,65 @@ namespace ServicioWeb
         partial void OnPasswordChanged();
     }
     /// <summary>
-    /// There are no comments for LineaAereaModel.Vuelos in the schema.
+    /// There are no comments for LineaAerea.Models.LineaAereaDBModel.Vueloes in the schema.
     /// </summary>
     /// <KeyProperties>
-    /// ID
+    /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAereaModel", Name="Vuelos")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="LineaAerea.Models.LineaAereaDBModel", Name="Vueloes")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Vuelos : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class Vueloes : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Vuelos object.
+        /// Create a new Vueloes object.
         /// </summary>
-        /// <param name="id">Initial value of ID.</param>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="salida">Initial value of Salida.</param>
+        /// <param name="llegada">Initial value of Llegada.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Vuelos CreateVuelos(int id)
+        public static Vueloes CreateVueloes(int id, global::System.DateTime salida, global::System.DateTime llegada)
         {
-            Vuelos vuelos = new Vuelos();
-            vuelos.ID = id;
-            return vuelos;
+            Vueloes vueloes = new Vueloes();
+            vueloes.Id = id;
+            vueloes.Salida = salida;
+            vueloes.Llegada = llegada;
+            return vueloes;
         }
         /// <summary>
-        /// There are no comments for property ID in the schema.
+        /// There are no comments for property Id in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public int ID
+        public int Id
         {
             get
             {
-                return this._ID;
+                return this._Id;
             }
             set
             {
-                this.OnIDChanging(value);
-                this.ReportPropertyChanging("ID");
-                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ID");
-                this.OnIDChanged();
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private int _ID;
+        private int _Id;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanging(int value);
+        partial void OnIdChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnIDChanged();
+        partial void OnIdChanged();
         /// <summary>
         /// There are no comments for property Salida in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<global::System.DateTime> Salida
+        public global::System.DateTime Salida
         {
             get
             {
@@ -679,18 +826,18 @@ namespace ServicioWeb
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<global::System.DateTime> _Salida;
+        private global::System.DateTime _Salida;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnSalidaChanging(global::System.Nullable<global::System.DateTime> value);
+        partial void OnSalidaChanging(global::System.DateTime value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSalidaChanged();
         /// <summary>
         /// There are no comments for property Llegada in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<global::System.DateTime> Llegada
+        public global::System.DateTime Llegada
         {
             get
             {
@@ -706,28 +853,28 @@ namespace ServicioWeb
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<global::System.DateTime> _Llegada;
+        private global::System.DateTime _Llegada;
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnLlegadaChanging(global::System.Nullable<global::System.DateTime> value);
+        partial void OnLlegadaChanging(global::System.DateTime value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnLlegadaChanged();
         /// <summary>
         /// There are no comments for Destino in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAereaModel", "FK_Vuelos_Aeropuerto_Destino", "Aeropuerto")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Aeropuertoes")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Aeropuerto Destino
+        public Aeropuertoes Destino
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Aeropuerto_Destino", "Aeropuerto").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Aeropuertoes").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Aeropuerto_Destino", "Aeropuerto").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Aeropuertoes").Value = value;
             }
         }
         /// <summary>
@@ -736,37 +883,39 @@ namespace ServicioWeb
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Aeropuerto> DestinoReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Aeropuertoes> DestinoReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Aeropuerto_Destino", "Aeropuerto");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Aeropuertoes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Aeropuerto_Destino", "Aeropuerto", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID", "Aeropuertoes", value);
                 }
             }
         }
         /// <summary>
         /// There are no comments for Procedencia in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAereaModel", "FK_Vuelos_Vuelos_Procedencia", "Aeropuerto")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID", "Aeropuertoes")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Aeropuerto Procedencia
+        public Aeropuertoes Procedencia
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Vuelos_Procedencia", "Aeropuerto").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" +
+                        "", "Aeropuertoes").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Vuelos_Procedencia", "Aeropuerto").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" +
+                        "", "Aeropuertoes").Value = value;
             }
         }
         /// <summary>
@@ -775,56 +924,58 @@ namespace ServicioWeb
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Aeropuerto> ProcedenciaReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Aeropuertoes> ProcedenciaReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Vuelos_Procedencia", "Aeropuerto");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" +
+                        "", "Aeropuertoes");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Aeropuerto>("LineaAereaModel.FK_Vuelos_Vuelos_Procedencia", "Aeropuerto", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Aeropuertoes>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" +
+                            "", "Aeropuertoes", value);
                 }
             }
         }
         /// <summary>
-        /// There are no comments for Avion in the schema.
+        /// There are no comments for Avions in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAereaModel", "FK_Vuelos_Avion", "Avion")]
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("LineaAerea.Models.LineaAereaDBModel", "FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Avions")]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Avion Avion
+        public Avions Avions
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Avion>("LineaAereaModel.FK_Vuelos_Avion", "Avion").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Avions>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Avions").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Avion>("LineaAereaModel.FK_Vuelos_Avion", "Avion").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Avions>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Avions").Value = value;
             }
         }
         /// <summary>
-        /// There are no comments for Avion in the schema.
+        /// There are no comments for Avions in the schema.
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Avion> AvionReference
+        public global::System.Data.Objects.DataClasses.EntityReference<Avions> AvionsReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Avion>("LineaAereaModel.FK_Vuelos_Avion", "Avion");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Avions>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Avions");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Avion>("LineaAereaModel.FK_Vuelos_Avion", "Avion", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Avions>("LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id", "Avions", value);
                 }
             }
         }
