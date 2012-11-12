@@ -20,24 +20,35 @@ namespace ServicioWeb
     {
 
         [WebMethod]
-        public List<Vueloes> VuelosDisponibles(String procedencia, String destino, DateTime fecha)
+        public List<Vuelo> VuelosDisponibles(String procedencia, String destino, DateTime fecha)
         {
-            LinaAereaEntities lineab = new LinaAereaEntities();
+            LineaEntities lineab = new LineaEntities();
 
-
-            List<Vueloes> vuelos = lineab.Vueloes.Where(v => v.Destino.Lugar == destino && v.Procedencia.Lugar == procedencia).ToList();
+            List<Vuelo> vuelos = lineab.Vueloes.Where(v => v.Aeropuerto1.Lugar == destino && v.Aeropuerto.Lugar == procedencia).ToList();
            
             return vuelos;
         }
 
         [WebMethod]
-        public List<Vueloes> TodosVuelos()
+        public List<Aeropuerto> Aeropuertos()
+        {
+            LineaEntities lineab = new LineaEntities();
+
+            List<Aeropuerto> aeropuertos = lineab.Aeropuertoes.ToList();
+
+            return aeropuertos;
+        }
+
+
+
+        [WebMethod]
+        public List<Vuelo> TodosVuelos()
         {
 
-            LinaAereaEntities lineab = new LinaAereaEntities();
+            LineaEntities lineab = new LineaEntities();
 
 
-            List<Vueloes> vuelos = lineab.Vueloes.ToList();
+            List<Vuelo> vuelos = lineab.Vueloes.ToList();
 
             return vuelos;
         }

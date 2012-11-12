@@ -30,7 +30,7 @@
                     <tr>
                          <td> Procedencia:</td>
                          <td>
-                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Procedencia)
+                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Select One--")
                          </td>
                          
                     </tr>
@@ -40,7 +40,7 @@
                          
                          <td>
                          
-                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Destinos)
+                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Destinos, "--Select One--")
           
                          </td>
                     

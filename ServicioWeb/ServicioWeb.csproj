@@ -62,10 +62,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModeloLinea.Designer.cs">
+    <Compile Include="LineaAerea.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloLinea.edmx</DependentUpon>
+      <DependentUpon>LineaAerea.edmx</DependentUpon>
     </Compile>
     <Compile Include="ServicioDeComunicacion.asmx.cs">
       <DependentUpon>ServicioDeComunicacion.asmx</DependentUpon>
@@ -77,9 +77,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ModeloLinea.edmx">
+    <EntityDeploy Include="LineaAerea.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloLinea.Designer.cs</LastGenOutput>
+      <LastGenOutput>LineaAerea.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

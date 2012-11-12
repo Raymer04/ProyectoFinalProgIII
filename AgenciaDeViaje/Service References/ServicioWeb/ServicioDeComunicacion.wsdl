@@ -15,25 +15,25 @@
       <s:element name="VuelosDisponiblesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="VuelosDisponiblesResult" type="tns:ArrayOfVueloes" />
+            <s:element minOccurs="0" maxOccurs="1" name="VuelosDisponiblesResult" type="tns:ArrayOfVuelo" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVueloes">
+      <s:complexType name="ArrayOfVuelo">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Vueloes" nillable="true" type="tns:Vueloes" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vuelo" nillable="true" type="tns:Vuelo" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Vueloes">
+      <s:complexType name="Vuelo">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityObject">
             <s:sequence>
               <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="Salida" type="s:dateTime" />
               <s:element minOccurs="1" maxOccurs="1" name="Llegada" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="DestinoReference" type="tns:EntityReferenceOfAeropuertoes" />
-              <s:element minOccurs="0" maxOccurs="1" name="ProcedenciaReference" type="tns:EntityReferenceOfAeropuertoes" />
-              <s:element minOccurs="0" maxOccurs="1" name="AvionsReference" type="tns:EntityReferenceOfAvions" />
+              <s:element minOccurs="0" maxOccurs="1" name="AeropuertoReference" type="tns:EntityReferenceOfAeropuerto" />
+              <s:element minOccurs="0" maxOccurs="1" name="Aeropuerto1Reference" type="tns:EntityReferenceOfAeropuerto" />
+              <s:element minOccurs="0" maxOccurs="1" name="AvionReference" type="tns:EntityReferenceOfAvion" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -66,7 +66,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="EntityReferenceOfAeropuertoes">
+      <s:complexType name="EntityReferenceOfAeropuerto">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
@@ -81,18 +81,44 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="RelatedEnd" abstract="true" />
-      <s:complexType name="EntityReferenceOfAvions">
+      <s:complexType name="EntityReferenceOfAvion">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
       </s:complexType>
+      <s:element name="Aeropuertos">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ArrayOfAeropuerto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Aeropuerto" nillable="true" type="tns:Aeropuerto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Aeropuerto">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Lugar" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AeropuertosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AeropuertosResult" type="tns:ArrayOfAeropuerto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="TodosVuelos">
         <s:complexType />
       </s:element>
       <s:element name="TodosVuelosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="TodosVuelosResult" type="tns:ArrayOfVueloes" />
+            <s:element minOccurs="0" maxOccurs="1" name="TodosVuelosResult" type="tns:ArrayOfVuelo" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -118,6 +144,12 @@
   <wsdl:message name="VuelosDisponiblesSoapOut">
     <wsdl:part name="parameters" element="tns:VuelosDisponiblesResponse" />
   </wsdl:message>
+  <wsdl:message name="AeropuertosSoapIn">
+    <wsdl:part name="parameters" element="tns:Aeropuertos" />
+  </wsdl:message>
+  <wsdl:message name="AeropuertosSoapOut">
+    <wsdl:part name="parameters" element="tns:AeropuertosResponse" />
+  </wsdl:message>
   <wsdl:message name="TodosVuelosSoapIn">
     <wsdl:part name="parameters" element="tns:TodosVuelos" />
   </wsdl:message>
@@ -135,6 +167,10 @@
       <wsdl:input message="tns:VuelosDisponiblesSoapIn" />
       <wsdl:output message="tns:VuelosDisponiblesSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Aeropuertos">
+      <wsdl:input message="tns:AeropuertosSoapIn" />
+      <wsdl:output message="tns:AeropuertosSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="TodosVuelos">
       <wsdl:input message="tns:TodosVuelosSoapIn" />
       <wsdl:output message="tns:TodosVuelosSoapOut" />
@@ -148,6 +184,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="VuelosDisponibles">
       <soap:operation soapAction="http://localhost/servicioCom/VuelosDisponibles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Aeropuertos">
+      <soap:operation soapAction="http://localhost/servicioCom/Aeropuertos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -178,6 +223,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="VuelosDisponibles">
       <soap12:operation soapAction="http://localhost/servicioCom/VuelosDisponibles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Aeropuertos">
+      <soap12:operation soapAction="http://localhost/servicioCom/Aeropuertos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

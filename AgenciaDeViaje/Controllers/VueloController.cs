@@ -38,8 +38,8 @@ namespace AgenciaDeViaje.Controllers
               foreach (var dato in b)
               {
                   Vuelo vuelo = new Vuelo();
-                  vuelo.Destino = dato.DestinoReference.ToString();
-                  vuelo.Procedencia = dato.ProcedenciaReference.ToString();
+                  vuelo.Destino = dato.AeropuertoReference.ToString();
+                  vuelo.Procedencia = dato.Aeropuerto1Reference.ToString();
                  
                   vuelos.Add(vuelo);
                   
