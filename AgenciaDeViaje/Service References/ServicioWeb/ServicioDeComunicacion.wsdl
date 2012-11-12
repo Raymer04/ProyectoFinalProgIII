@@ -15,25 +15,25 @@
       <s:element name="VuelosDisponiblesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="VuelosDisponiblesResult" type="tns:ArrayOfVuelos" />
+            <s:element minOccurs="0" maxOccurs="1" name="VuelosDisponiblesResult" type="tns:ArrayOfVueloes" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVuelos">
+      <s:complexType name="ArrayOfVueloes">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Vuelos" nillable="true" type="tns:Vuelos" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vueloes" nillable="true" type="tns:Vueloes" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Vuelos">
+      <s:complexType name="Vueloes">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityObject">
             <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="Salida" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="1" maxOccurs="1" name="Llegada" nillable="true" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="DestinoReference" type="tns:EntityReferenceOfAeropuerto" />
-              <s:element minOccurs="0" maxOccurs="1" name="ProcedenciaReference" type="tns:EntityReferenceOfAeropuerto" />
-              <s:element minOccurs="0" maxOccurs="1" name="AvionReference" type="tns:EntityReferenceOfAvion" />
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Salida" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Llegada" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="DestinoReference" type="tns:EntityReferenceOfAeropuertoes" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProcedenciaReference" type="tns:EntityReferenceOfAeropuertoes" />
+              <s:element minOccurs="0" maxOccurs="1" name="AvionsReference" type="tns:EntityReferenceOfAvions" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -66,7 +66,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="EntityReferenceOfAeropuerto">
+      <s:complexType name="EntityReferenceOfAeropuertoes">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
@@ -81,7 +81,7 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="RelatedEnd" abstract="true" />
-      <s:complexType name="EntityReferenceOfAvion">
+      <s:complexType name="EntityReferenceOfAvions">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
@@ -92,7 +92,21 @@
       <s:element name="TodosVuelosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="TodosVuelosResult" type="tns:ArrayOfVuelos" />
+            <s:element minOccurs="0" maxOccurs="1" name="TodosVuelosResult" type="tns:ArrayOfVueloes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="asientosDisponibles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idVuelo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="asientosDisponiblesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="asientosDisponiblesResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -110,6 +124,12 @@
   <wsdl:message name="TodosVuelosSoapOut">
     <wsdl:part name="parameters" element="tns:TodosVuelosResponse" />
   </wsdl:message>
+  <wsdl:message name="asientosDisponiblesSoapIn">
+    <wsdl:part name="parameters" element="tns:asientosDisponibles" />
+  </wsdl:message>
+  <wsdl:message name="asientosDisponiblesSoapOut">
+    <wsdl:part name="parameters" element="tns:asientosDisponiblesResponse" />
+  </wsdl:message>
   <wsdl:portType name="ServicioDeComunicacionSoap">
     <wsdl:operation name="VuelosDisponibles">
       <wsdl:input message="tns:VuelosDisponiblesSoapIn" />
@@ -118,6 +138,10 @@
     <wsdl:operation name="TodosVuelos">
       <wsdl:input message="tns:TodosVuelosSoapIn" />
       <wsdl:output message="tns:TodosVuelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="asientosDisponibles">
+      <wsdl:input message="tns:asientosDisponiblesSoapIn" />
+      <wsdl:output message="tns:asientosDisponiblesSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServicioDeComunicacionSoap" type="tns:ServicioDeComunicacionSoap">
@@ -140,6 +164,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="asientosDisponibles">
+      <soap:operation soapAction="http://localhost/servicioCom/asientosDisponibles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServicioDeComunicacionSoap12" type="tns:ServicioDeComunicacionSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -154,6 +187,15 @@
     </wsdl:operation>
     <wsdl:operation name="TodosVuelos">
       <soap12:operation soapAction="http://localhost/servicioCom/TodosVuelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="asientosDisponibles">
+      <soap12:operation soapAction="http://localhost/servicioCom/asientosDisponibles" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

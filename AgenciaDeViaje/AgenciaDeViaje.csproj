@@ -115,7 +115,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Vuelos.datasource">
+    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Vueloes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServicioWeb\ServicioDeComunicacion.disco" />
@@ -187,8 +187,6 @@
     <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\Boletos\Index.cshtml" />
     <Content Include="Views\Boletos\Details.cshtml" />
-    <Content Include="Views\Boletos\Create.cshtml" />
-    <Content Include="Views\Boletos\Delete.cshtml" />
     <Content Include="Views\Clients\Registro.cshtml" />
     <Content Include="Views\Clients\CambiarClave.cshtml" />
     <Content Include="Views\Clients\IniciarSesion.cshtml" />

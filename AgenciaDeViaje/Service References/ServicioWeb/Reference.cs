@@ -19,17 +19,25 @@ namespace AgenciaDeViaje.ServicioWeb {
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelos[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vueloes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
-        Vuelos[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha);
+        Vueloes[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/TodosVuelos", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelos[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vueloes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
-        Vuelos[] TodosVuelos();
+        Vueloes[] TodosVuelos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/asientosDisponibles", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vueloes[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
+        int asientosDisponibles(int idVuelo);
     }
     
     /// <remarks/>
@@ -38,35 +46,35 @@ namespace AgenciaDeViaje.ServicioWeb {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/servicioCom")]
-    public partial class Vuelos : EntityObject {
+    public partial class Vueloes : EntityObject {
         
         private int idField;
         
-        private System.Nullable<System.DateTime> salidaField;
+        private System.DateTime salidaField;
         
-        private System.Nullable<System.DateTime> llegadaField;
+        private System.DateTime llegadaField;
         
-        private EntityReferenceOfAeropuerto destinoReferenceField;
+        private EntityReferenceOfAeropuertoes destinoReferenceField;
         
-        private EntityReferenceOfAeropuerto procedenciaReferenceField;
+        private EntityReferenceOfAeropuertoes procedenciaReferenceField;
         
-        private EntityReferenceOfAvion avionReferenceField;
+        private EntityReferenceOfAvions avionsReferenceField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int ID {
+        public int Id {
             get {
                 return this.idField;
             }
             set {
                 this.idField = value;
-                this.RaisePropertyChanged("ID");
+                this.RaisePropertyChanged("Id");
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public System.Nullable<System.DateTime> Salida {
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime Salida {
             get {
                 return this.salidaField;
             }
@@ -77,8 +85,8 @@ namespace AgenciaDeViaje.ServicioWeb {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public System.Nullable<System.DateTime> Llegada {
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public System.DateTime Llegada {
             get {
                 return this.llegadaField;
             }
@@ -90,7 +98,7 @@ namespace AgenciaDeViaje.ServicioWeb {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public EntityReferenceOfAeropuerto DestinoReference {
+        public EntityReferenceOfAeropuertoes DestinoReference {
             get {
                 return this.destinoReferenceField;
             }
@@ -102,7 +110,7 @@ namespace AgenciaDeViaje.ServicioWeb {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public EntityReferenceOfAeropuerto ProcedenciaReference {
+        public EntityReferenceOfAeropuertoes ProcedenciaReference {
             get {
                 return this.procedenciaReferenceField;
             }
@@ -114,13 +122,13 @@ namespace AgenciaDeViaje.ServicioWeb {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=5)]
-        public EntityReferenceOfAvion AvionReference {
+        public EntityReferenceOfAvions AvionsReference {
             get {
-                return this.avionReferenceField;
+                return this.avionsReferenceField;
             }
             set {
-                this.avionReferenceField = value;
-                this.RaisePropertyChanged("AvionReference");
+                this.avionsReferenceField = value;
+                this.RaisePropertyChanged("AvionsReference");
             }
         }
     }
@@ -131,12 +139,12 @@ namespace AgenciaDeViaje.ServicioWeb {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/servicioCom")]
-    public partial class EntityReferenceOfAeropuerto : EntityReference {
+    public partial class EntityReferenceOfAeropuertoes : EntityReference {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAvion))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAeropuerto))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAvions))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAeropuertoes))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.450")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -267,8 +275,8 @@ namespace AgenciaDeViaje.ServicioWeb {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReference))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAvion))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAeropuerto))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAvions))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityReferenceOfAeropuertoes))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.450")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -288,7 +296,7 @@ namespace AgenciaDeViaje.ServicioWeb {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(EntityObject))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Vuelos))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Vueloes))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.450")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -307,7 +315,7 @@ namespace AgenciaDeViaje.ServicioWeb {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Vuelos))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Vueloes))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.450")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -336,7 +344,7 @@ namespace AgenciaDeViaje.ServicioWeb {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://localhost/servicioCom")]
-    public partial class EntityReferenceOfAvion : EntityReference {
+    public partial class EntityReferenceOfAvions : EntityReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -366,12 +374,16 @@ namespace AgenciaDeViaje.ServicioWeb {
                 base(binding, remoteAddress) {
         }
         
-        public Vuelos[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha) {
+        public Vueloes[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha) {
             return base.Channel.VuelosDisponibles(procedencia, destino, fecha);
         }
         
-        public Vuelos[] TodosVuelos() {
+        public Vueloes[] TodosVuelos() {
             return base.Channel.TodosVuelos();
+        }
+        
+        public int asientosDisponibles(int idVuelo) {
+            return base.Channel.asientosDisponibles(idVuelo);
         }
     }
 }

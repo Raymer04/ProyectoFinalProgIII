@@ -22,10 +22,11 @@ namespace AgenciaDeViaje.Controllers
 
         public ViewResult Index(Vuelo model)
         {
-            
+           
+           
            // return View(db.Vueloes.ToList());
             ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
-
+            
           //  DataGrid vuelosDisponibles = new DataGrid();
 
             //Vuelo.vuelosDisponibles.AutoGenerateColumns = true;

@@ -41,5 +41,14 @@ namespace ServicioWeb
 
             return vuelos;
         }
+
+        [WebMethod]
+        public int asientosDisponibles(int idVuelo)
+        {
+
+            int disponibles = 1;
+
+            return disponibles;
+        }
     }
 }

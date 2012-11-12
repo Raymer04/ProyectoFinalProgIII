@@ -31,7 +31,34 @@ namespace AgenciaDeViaje.Controllers
             
            
         }
+        public ActionResult ManejoBoleto(int tipo, int id) {
+            Boleto boleto = new Boleto();
+            ServicioWeb.ServicioDeComunicacionSoapClient sw=new ServicioWeb.ServicioDeComunicacionSoapClient();
+            Vuelo vuelo = new Vuelo();
+            var a=sw.TodosVuelos().First(v => v.Id == id);
+            vuelo.Destino = a.DestinoReference.ToString();
+            vuelo.Procedencia = a.ProcedenciaReference.ToString();
+            vuelo.Salida = (DateTime)a.Salida;
+            vuelo.Llegada =(DateTime) a.Llegada;
 
+            if(tipo==1){
+                boleto.tipo = 1;
+                boleto.vuelo=vuelo;
+                db.Boletos.Add(boleto);
+                return RedirectToAction("Index?tipo=1", "Boletos");
+            }else if(tipo==2){
+                boleto.tipo = 2;
+                boleto.vuelo=vuelo;
+                db.Boletos.Add(boleto);
+                return RedirectToAction("Index?tipo=2", "Boletos");
+            }else if(tipo==3){
+                boleto.tipo = 3;
+                boleto.vuelo = vuelo;
+                db.Boletos.Add(boleto);
+                return RedirectToAction("Index?tipo=3", "Boletos");
+            }
+            return RedirectToAction("Index","Home");
+        }
         //
         // GET: /Boletos/Details/5
 
@@ -41,74 +68,6 @@ namespace AgenciaDeViaje.Controllers
             return View(boleto);
         }
 
-        //
-        // GET: /Boletos/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Boletos/Create
-
-        [HttpPost]
-        public ActionResult Create(Boleto boleto)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Boletos.Add(boleto);
-                db.SaveChanges();
-                return RedirectToAction("Index");  
-            }
-
-            return View(boleto);
-        }
-        
-        //
-        // GET: /Boletos/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            Boleto boleto = db.Boletos.Find(id);
-            return View(boleto);
-        }
-
-        //
-        // POST: /Boletos/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Boleto boleto)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(boleto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(boleto);
-        }
-
-        //
-        // GET: /Boletos/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            Boleto boleto = db.Boletos.Find(id);
-            return View(boleto);
-        }
-
-        //
-        // POST: /Boletos/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            Boleto boleto = db.Boletos.Find(id);
-            db.Boletos.Remove(boleto);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
