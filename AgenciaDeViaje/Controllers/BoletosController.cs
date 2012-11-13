@@ -22,7 +22,17 @@ namespace AgenciaDeViaje.Controllers
             {
 
                 Cliente cliente = (Cliente)Session["usuario"];
-                return View(db.Boletos.Where(p => p.tipo == tipo).ToList());
+                List<Boleto> lista = new List<Boleto>(); 
+                
+                var a=db.Clientes.Select(p => p.boletos.Where(x => x.tipo == tipo)).ToList();
+                foreach(Boleto dato in a){
+                    Boleto boleto = new Boleto();
+                    boleto.Id = dato.Id;
+                    boleto.tipo = dato.tipo;
+                    boleto.vuelo = dato.vuelo;
+                    lista.Add(boleto);
+                }
+                return View(lista);
             }
             else
             {
@@ -92,7 +102,7 @@ namespace AgenciaDeViaje.Controllers
         public ActionResult ListaEspera(int id)
         {
                            
-            return View();
+            return View(id);
         }
 
         //

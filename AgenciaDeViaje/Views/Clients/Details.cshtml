@@ -28,6 +28,7 @@
     <div class="display-field">@Model.password</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", null, new { id=Model.Id }, new { @class = "button" })
+    @Html.ActionLink("Borra Mi Cuenta", "Delete", null, new { id=Model.Id }, new { @class = "button" }) |
+    @Html.ActionLink("Editar", "Edit", null, new { id=Model.Id }, new { @class = "button" }) 
 </p>
 

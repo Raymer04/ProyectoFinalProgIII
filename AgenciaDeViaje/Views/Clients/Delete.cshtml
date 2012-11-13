@@ -1,12 +1,12 @@
 ﻿@model AgenciaDeViaje.Models.Cliente
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Borrar";
 }
 
-<h2>Delete</h2>
+<h2>Borrar Cuenta</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Esta seguro de que desea borrar su cuenta?</h3>
 <fieldset>
     <legend>Cliente</legend>
 
@@ -30,8 +30,8 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> 
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+        <input type="submit" value="Borrar" /> 
+        @Html.ActionLink("Cancelar", "Details", null, new { @class = "button" })
     </p>
 }
 

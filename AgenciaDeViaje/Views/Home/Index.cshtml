@@ -14,6 +14,7 @@
 {
     
     @Html.ValidationSummary(true)
+  
         <div id="tabs" style="width: 300px;">
         <ul>
 			<li><a href="#tabs-1">Vuelos</a></li>
@@ -21,13 +22,7 @@
 		</ul>
             <div id="tabs-1">
                 <table style="border:hidden" cellpadding="5">
-                    <tr>
-                        <td colspan="2">
-                            <input type="radio" class="radio" name="opt" /><label for="opt">Ida y vuelta</label>
-                            <input type="radio" class="radio" name="opt"/><label for="opt">Solo ida</label>
-                        </td>
-                        <td colspan="2"></td>
-                    </tr>
+
                     <tr>
                          <td> Procedencia:</td>
                          <td>
@@ -48,26 +43,23 @@
                     
                     </tr>
                     <tr>
-                        <td><label>Salida:</label></td>
+                        <td><label>Fecha:</label></td>
                        <td> @Html.EditorFor(m => Model.Salida)</td>
                     
 	                
                     </tr>
                     <tr>
-                           <td><label>Llegada:</label></td>
-                       <td>@Html.EditorFor(m => Model.Llegada)</td>
-                    
-                    </tr>
-                    <tr>
                     <td colspan="2" align="right">
                       <input type="submit" value="Buscar Vuelo" />
+                      
                       </td>
                       </tr>
-                    
+                   
                 </table>
             </div>
            
         </div>
+      
 }
        
     

@@ -13,14 +13,7 @@ namespace AgenciaDeViaje.Controllers
     {
         private AgenciaDB db = new AgenciaDB();
 
-        //
-        // GET: /Clients/
-
-        public ViewResult Index()
-        {
-            return View(db.Clientes.ToList());
-        }
-
+        
         //
         // GET: /Clients/Details/5
 
@@ -55,9 +48,16 @@ namespace AgenciaDeViaje.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Clientes.Add(cliente);
-                db.SaveChanges();
-                return RedirectToAction("IniciarSesion", "Clients");  
+                if (db.Clientes.Count(p => p.correo == cliente.correo) == 0)
+                {
+                    db.Clientes.Add(cliente);
+                    db.SaveChanges();
+                    return RedirectToAction("IniciarSesion", "Clients");
+                }
+                else {
+                    ViewBag.msj2 = "Este Correo Ya Existe Intente Con Otro";
+                }
+                
             }
 
             return View(cliente);
@@ -82,7 +82,7 @@ namespace AgenciaDeViaje.Controllers
             {
                 db.Entry(cliente).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
             return View(cliente);
         }
@@ -101,15 +101,17 @@ namespace AgenciaDeViaje.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
+            this.Salir();
             Cliente cliente = db.Clientes.Find(id);
             db.Clientes.Remove(cliente);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult IniciarSesion()
         {
+           
             return View();
         }
 
@@ -125,6 +127,7 @@ namespace AgenciaDeViaje.Controllers
             }
             else
             {
+                ViewBag.msj = "Correo o Clave Inconrecta";
                 return View(model);
             }
         }
