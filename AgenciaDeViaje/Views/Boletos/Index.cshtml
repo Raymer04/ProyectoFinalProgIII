@@ -8,15 +8,23 @@
 <table id="listGrid">
 	<thead>
     <tr>
-        <th></th>
+        <th>ID Boleto</th>
+        <th>Procedencia</th>
+        <th>Destino</th>
+        <th>Fecha y Hora</th>
+        <th>Opciones</th>
     </tr>
 	</thead>
 	<tbody>
 @foreach (var item in Model) {
     <tr>
+        <td>@item.Id</td>
+        <td>@item.vuelo</td>
+        <td>@item.vuelo</td>
+        <td>@item.vuelo</td>
         <td>
             @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
-            @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
+            @if (item.tipo != 1) { @Html.ActionLink("Delete", "Delete", null, new { id = item.Id }, new { @class = "button" }); }
         </td>
     </tr>
 }

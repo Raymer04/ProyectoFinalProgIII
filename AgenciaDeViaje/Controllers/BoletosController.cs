@@ -32,32 +32,32 @@ namespace AgenciaDeViaje.Controllers
            
         }
         public ActionResult ManejoBoleto(int tipo, int id) {
-            Boleto boleto = new Boleto();
-            ServicioWeb.ServicioDeComunicacionSoapClient sw=new ServicioWeb.ServicioDeComunicacionSoapClient();
-            Vuelo vuelo = new Vuelo();
-            var a=sw.TodosVuelos().First(v => v.Id == id);
-            vuelo.Destino = Convert.ToInt32(a.AeropuertoReference);
-            vuelo.Procedencia = Convert.ToInt32(a.Aeropuerto1Reference);
-            vuelo.Salida = (DateTime)a.Salida;
-            vuelo.Llegada =(DateTime) a.Llegada;
+            if (Session["usuario"] != null)
+            {
+                ServicioWeb.ServicioDeComunicacionSoapClient servicio=new ServicioWeb.ServicioDeComunicacionSoapClient();
+                Boleto boleto = new Boleto();
 
-            if(tipo==1){
-                boleto.tipo = 1;
-                boleto.vuelo=vuelo;
-                db.Boletos.Add(boleto);
-                return RedirectToAction("Index?tipo=1", "Boletos");
-            }else if(tipo==2){
-                boleto.tipo = 2;
-                boleto.vuelo=vuelo;
-                db.Boletos.Add(boleto);
-                return RedirectToAction("Index?tipo=2", "Boletos");
-            }else if(tipo==3){
-                boleto.tipo = 3;
-                boleto.vuelo = vuelo;
-                db.Boletos.Add(boleto);
-                return RedirectToAction("Index?tipo=3", "Boletos");
+                if (servicio.asientosDisponibles(id)== 0)
+                {
+                    this.ListaEspera(id);
+                }else{
+                if (tipo == 1)
+                {
+                    boleto.tipo = 1;
+                    boleto.vuelo = id;
+                    db.Boletos.Add(boleto);
+                    return RedirectToAction("Index?tipo=1", "Boletos");
+                }
+                else if (tipo == 2)
+                {
+                    boleto.tipo = 2;
+                    boleto.vuelo = id;
+                    db.Boletos.Add(boleto);
+                    return RedirectToAction("Index?tipo=2", "Boletos");
+                }
+                }
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("IniciarSesion", "Clients");
         }
         //
         // GET: /Boletos/Details/5
@@ -68,6 +68,47 @@ namespace AgenciaDeViaje.Controllers
             return View(boleto);
         }
 
+        //
+        // GET: /Boletos/Delete/5
+
+        public ActionResult Delete(int id)
+        {
+            Boleto boleto = db.Boletos.Find(id);
+            return View(boleto);
+        }
+
+        //
+        // POST: /Boletos/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Boleto boleto = db.Boletos.Find(id);
+            db.Boletos.Remove(boleto);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ListaEspera(int id)
+        {
+                           
+            return View();
+        }
+
+        //
+        // POST: /Boletos/Delete/5
+
+        [HttpPost, ActionName("AgregarListaEspera")]
+        public ActionResult ListaEsperaConfirmar(int id)
+        {
+            Boleto boleto = new Boleto();
+
+            boleto.tipo = 3;
+            boleto.vuelo = id;
+            db.Boletos.Add(boleto);
+            db.SaveChanges();
+            return RedirectToAction("Index?tipo=3", "Boletos");
+        }
 
         protected override void Dispose(bool disposing)
         {

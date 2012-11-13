@@ -42,10 +42,8 @@ namespace AgenciaDeViaje.Models
         [DataType(DataType.Password)]
         [Display(Name = "Clave")]
         public string password { get; set; }
+        public List<Boleto> boletos { get; set; }
 
-        public List<Boleto> boletosComprados { get; set; }
-        public List<Boleto> reservaciones { get; set; }
-        public List<Boleto> espera { get; set; }
        
 
     }

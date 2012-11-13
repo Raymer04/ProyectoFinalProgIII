@@ -1,0 +1,19 @@
+@model AgenciaDeViaje.Models.Boleto
+
+@{
+    ViewBag.Title = "Lista de Espera";
+}
+
+<h2>Lista De Espera</h2>
+
+<h3>No hay asientos disponibles para este vuelo, desea agregarlo a su lista de espera?</h3>
+<fieldset>
+    <legend>Boleto</legend>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="AgregarListaEspera" /> 
+        @Html.ActionLink("Volver", "Index", "Home", new { @class = "button" })
+    </p>
+}
+

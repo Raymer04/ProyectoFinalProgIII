@@ -8,7 +8,7 @@ namespace AgenciaDeViaje.Models
     public class Boleto
     {
         public int Id { get; set; }
-        public Vuelo vuelo { get; set; }
+        public int vuelo { get; set; }
         public int tipo { get; set; }
     }
 
