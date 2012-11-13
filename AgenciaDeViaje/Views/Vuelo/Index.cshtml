@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AgenciaDeViaje.Models.Vuelo>
+﻿
            
 
 @{
@@ -10,51 +10,4 @@
 }
 
 
-<h2>Buscar Vuelos</h2>
-
-
-
-@if(Model.Count(p=>p.Id>0)>0){
-<table>
-    <tr>
-        <th>
-            Procedencia
-        </th>
-        <th>
-            Destino
-        </th>
-        <th>
-            Salida
-        </th>
-        <th>
-            Llegada
-        </th>
-        <th></th>
-    </tr>
-    </table>
-    }
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Procedencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Destino)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Llegada)
-        </td>
-        <td>
-        
-            @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo=1, id = item.Id }, new { @class = "label" }) |
-             @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo=2, id = item.Id }, new { @class = "label" }) |
-              @Html.ActionLink("Detalles", "Details", "Vuelo", new { id = item.Id }, new { @class = "label" })
-        </td>
-    </tr>
-}
-
-</table>
+<a href="http://localhost:9868/Views/Vuelo/">http://localhost:9868/Views/Vuelo/</a>

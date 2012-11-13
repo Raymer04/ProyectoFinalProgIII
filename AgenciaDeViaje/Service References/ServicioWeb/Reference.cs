@@ -21,7 +21,7 @@ namespace AgenciaDeViaje.ServicioWeb {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelo[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
-        Vuelo[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha);
+        Vuelo[] VuelosDisponibles(int procedencia, int destino, System.DateTime fecha);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/Aeropuertos", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -435,7 +435,7 @@ namespace AgenciaDeViaje.ServicioWeb {
                 base(binding, remoteAddress) {
         }
         
-        public Vuelo[] VuelosDisponibles(string procedencia, string destino, System.DateTime fecha) {
+        public Vuelo[] VuelosDisponibles(int procedencia, int destino, System.DateTime fecha) {
             return base.Channel.VuelosDisponibles(procedencia, destino, fecha);
         }
         

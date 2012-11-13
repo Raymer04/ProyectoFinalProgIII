@@ -36,8 +36,8 @@ namespace AgenciaDeViaje.Controllers
             ServicioWeb.ServicioDeComunicacionSoapClient sw=new ServicioWeb.ServicioDeComunicacionSoapClient();
             Vuelo vuelo = new Vuelo();
             var a=sw.TodosVuelos().First(v => v.Id == id);
-            vuelo.Destino = a.AeropuertoReference.ToString();
-            vuelo.Procedencia = a.Aeropuerto1Reference.ToString();
+            vuelo.Destino = Convert.ToInt32(a.AeropuertoReference);
+            vuelo.Procedencia = Convert.ToInt32(a.Aeropuerto1Reference);
             vuelo.Salida = (DateTime)a.Salida;
             vuelo.Llegada =(DateTime) a.Llegada;
 

@@ -12,7 +12,8 @@
 <h2>@ViewBag.Message</h2>
 @using (Html.BeginForm())
 {
- 
+    
+    @Html.ValidationSummary(true)
         <div id="tabs" style="width: 300px;">
         <ul>
 			<li><a href="#tabs-1">Vuelos</a></li>
@@ -30,7 +31,8 @@
                     <tr>
                          <td> Procedencia:</td>
                          <td>
-                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Select One--")
+                          @Html.DropDownListFor(m => Model.Procedencia, (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Selecciona--")
+                          
                          </td>
                          
                     </tr>
@@ -40,7 +42,7 @@
                          
                          <td>
                          
-                          @Html.DropDownList("Id", (IEnumerable<SelectListItem>)ViewBag.Destinos, "--Select One--")
+                          @Html.DropDownListFor(m => Model.Destino, (IEnumerable<SelectListItem>)ViewBag.Destinos, "--Selecciona--")
           
                          </td>
                     
@@ -56,8 +58,12 @@
                        <td>@Html.EditorFor(m => Model.Llegada)</td>
                     
                     </tr>
+                    <tr>
+                    <td colspan="2" align="right">
+                      <input type="submit" value="BuscarVuelo" />
+                      </td>
+                      </tr>
                     
-                    <tr><td colspan="2" align="right"><button type="submit" class="btn">Buscar</button></td></tr>
                 </table>
             </div>
            
