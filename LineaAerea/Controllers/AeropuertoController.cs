@@ -16,9 +16,16 @@ namespace LineaAerea.Controllers
         //
         // GET: /Aeropuerto/
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            return View(db.Aeropuerto.ToList());
+            if (Session["usuario"] != null)
+            {
+                return View(db.Aeropuerto.ToList());
+            }
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuarios");
+            }
         }
 
         //

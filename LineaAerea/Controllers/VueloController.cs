@@ -16,10 +16,17 @@ namespace LineaAerea.Controllers
         //
         // GET: /Vuelo/
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            var vuelo = db.Vuelo.Include(v => v.Procedencia).Include(v => v.Destino);
-            return View(vuelo.ToList());
+            if (Session["usuario"] != null)
+            {
+                var vuelo = db.Vuelo.Include(v => v.Procedencia).Include(v => v.Destino);
+                return View(vuelo.ToList());
+            }
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Usuarios");
+            }
         }
 
         //

@@ -14,10 +14,10 @@
     <tr>
         <th></th>
         <th>
-            ProcedenciaID
+            Procedencia
         </th>
         <th>
-            DestinoID
+            Destino
         </th>
         <th>
             Salida
@@ -36,10 +36,10 @@
             @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
         </td>
         <td>
-            @item.ProcedenciaID
+            @item.Procedencia.Lugar
         </td>
         <td>
-            @item.DestinoID
+            @item.Destino.Lugar
         </td>
         <td>
             @String.Format("{0:g}", item.Salida)

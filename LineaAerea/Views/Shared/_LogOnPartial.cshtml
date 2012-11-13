@@ -1,5 +1,4 @@
-﻿<body>
-</body>
+﻿
     @if(Session["usuario"]!=null) { 
     <text ><p style="color: #000000">Bienvenido/a <strong >@Session["nombre"].ToString()</strong>
     @Html.ActionLink("Salir", "Salir", "Usuarios", null, new { @class = "button" })</p></text>

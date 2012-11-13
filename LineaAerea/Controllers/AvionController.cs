@@ -16,9 +16,15 @@ namespace LineaAerea.Controllers
         //
         // GET: /Avion/
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            return View(db.Avion.ToList());
+            if (Session["usuario"] != null)
+            {
+                return View(db.Avion.ToList());
+            }
+            else {
+                return RedirectToAction("IniciarSesion", "Usuarios");
+            }
         }
 
         //
