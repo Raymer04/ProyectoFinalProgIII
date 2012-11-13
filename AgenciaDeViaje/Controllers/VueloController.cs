@@ -30,8 +30,6 @@ namespace AgenciaDeViaje.Controllers
                     vuelo.Destino=a.Aeropuertos().ToList().Find(p=>p.Id==(Int32)dato.AeropuertoReference.EntityKey.EntityKeyValues.First().Value).Lugar;
                     vuelo.Procedencia = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.Aeropuerto1Reference.EntityKey.EntityKeyValues.First().Value).Lugar;
                     vuelos.Add(vuelo);
-
-
                 }
                 
                 return View(vuelos);

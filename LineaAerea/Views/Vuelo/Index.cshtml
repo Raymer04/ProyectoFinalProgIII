@@ -25,6 +25,9 @@
         <th>
             Llegada
         </th>
+        <th>
+            Avion
+        </th>
     </tr>
 	</thead>
 	<tbody>
@@ -47,13 +50,16 @@
         <td>
             @String.Format("{0:g}", item.Llegada)
         </td>
+        <td>
+            @item.Avion.Modelo
+        </td>
     </tr>
 }
 </tbody>
 </table>
 <script type="text/javascript">
-	$(document).ready(function () {
-		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});
-	});
+    $(document).ready(function () {
+        $("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
+    });
 </script>
 

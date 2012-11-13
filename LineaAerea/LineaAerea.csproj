@@ -205,10 +205,10 @@
     <Content Include="Views\Aeropuerto\Edit.cshtml" />
     <Content Include="Views\Aeropuerto\Delete.cshtml" />
     <Content Include="Views\Vuelo\Index.cshtml" />
-    <Content Include="Views\Vuelo\Details.cshtml" />
     <Content Include="Views\Vuelo\Create.cshtml" />
-    <Content Include="Views\Vuelo\Edit.cshtml" />
     <Content Include="Views\Vuelo\Delete.cshtml" />
+    <Content Include="Views\Vuelo\Edit.cshtml" />
+    <Content Include="Views\Vuelo\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

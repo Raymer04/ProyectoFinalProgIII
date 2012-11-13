@@ -29,6 +29,7 @@ namespace LineaAerea.Models
         [Display(Name = "Llegada")]
         public DateTime Llegada { get; set; }
 
+        public int AvionID { get; set; }
         public Avion Avion { get; set;}
     }
 }

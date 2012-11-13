@@ -20,7 +20,7 @@ namespace LineaAerea.Controllers
         {
             if (Session["usuario"] != null)
             {
-                var vuelo = db.Vuelo.Include(v => v.Procedencia).Include(v => v.Destino);
+                var vuelo = db.Vuelo.Include(v => v.Procedencia).Include(v => v.Destino).Include(v => v.Avion);
                 return View(vuelo.ToList());
             }
             else
@@ -45,6 +45,7 @@ namespace LineaAerea.Controllers
         {
             ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Lugar");
             ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Lugar");
+            ViewBag.AvionID = new SelectList(db.Avion, "Id", "Modelo");
             return View();
         } 
 
@@ -54,15 +55,27 @@ namespace LineaAerea.Controllers
         [HttpPost]
         public ActionResult Create(Vuelo vuelo)
         {
-            if (ModelState.IsValid)
+            if (db.Vuelo.Count(v => v.AvionID== vuelo.AvionID && v.Salida == vuelo.Salida && v.Llegada==vuelo.Llegada) < 2)
             {
                 db.Vuelo.Add(vuelo);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
+
+            }
+            else if (db.Vuelo.Count(v => v.AvionID == vuelo.AvionID) < 3)
+            {
+                db.Vuelo.Add(vuelo);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.ProcedenciaID);
-            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.DestinoID);
+            else
+            {
+                ModelState.AddModelError("", "No se pudo crear este vuelo");
+            }
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Lugar", vuelo.ProcedenciaID);
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Lugar", vuelo.DestinoID);
+            ViewBag.AvionID = new SelectList(db.Avion, "Id", "Modelo", vuelo.AvionID);
             return View(vuelo);
         }
         
@@ -72,8 +85,9 @@ namespace LineaAerea.Controllers
         public ActionResult Edit(int id)
         {
             Vuelo vuelo = db.Vuelo.Find(id);
-            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.ProcedenciaID);
-            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.DestinoID);
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Lugar", vuelo.ProcedenciaID);
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Lugar", vuelo.DestinoID);
+            ViewBag.AvionID = new SelectList(db.Avion, "Id", "Modelo", vuelo.AvionID);
             return View(vuelo);
         }
 
@@ -89,8 +103,9 @@ namespace LineaAerea.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.ProcedenciaID);
-            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Nombre", vuelo.DestinoID);
+            ViewBag.ProcedenciaID = new SelectList(db.Aeropuerto, "Id", "Lugar", vuelo.ProcedenciaID);
+            ViewBag.DestinoID = new SelectList(db.Aeropuerto, "Id", "Lugar", vuelo.DestinoID);
+            ViewBag.AvionID = new SelectList(db.Avion, "Id", "Modelo", vuelo.AvionID);
             return View(vuelo);
         }
 
