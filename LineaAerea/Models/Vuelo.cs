@@ -19,15 +19,12 @@ namespace LineaAerea.Models
         public int DestinoID { get; set; }
         public Aeropuerto Destino { get; set; }
 
-        [Required]
         [DataType(DataType.DateTime)]
-        [Display(Name = "Salida")]
-        public DateTime Salida { get; set; }
+        public DateTime FechaSalida { get; set; }
 
-        [Required]
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Llegada")]
-        public DateTime Llegada { get; set; }
+        public String HoraSalida { get; set; }
+       
+        public Int32 Duracion { get; set; }
 
         public int AvionID { get; set; }
         public Avion Avion { get; set;}

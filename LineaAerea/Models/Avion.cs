@@ -10,6 +10,6 @@ namespace LineaAerea.Models
         public int Id { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
-        public string CapacidadPasajeros { get; set; }
+        public Int32 CapacidadPasajeros { get; set; }
     }
 }

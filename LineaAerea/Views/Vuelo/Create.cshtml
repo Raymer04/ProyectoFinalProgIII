@@ -1,10 +1,22 @@
 ﻿@model LineaAerea.Models.Vuelo
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear vuelo";
 }
 
-<h2>Create</h2>
+@section header{
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#time').timepicker({
+            showPeriod: true,
+            showLeadingZero: true
+        });
+    });
+    </script>
+
+}
+
+<h2>Crear</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -14,8 +26,8 @@
     <fieldset>
         <legend>Vuelo</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProcedenciaID)
+          <div class="editor-label">
+            @Html.LabelFor(model => model.ProcedenciaID,"Procedencia")
         </div>
          <div class="editor-field">
             @Html.DropDownListFor(model => model.ProcedenciaID, (IEnumerable<SelectListItem>)ViewBag.ProcedenciaID,"--Seleccione--")
@@ -23,7 +35,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DestinoID)
+            @Html.LabelFor(model => model.DestinoID,"Destino")
         </div>
        <div class="editor-field">
             @Html.DropDownListFor(model => model.DestinoID, (IEnumerable<SelectListItem>)ViewBag.DestinoID, "--Seleccione--")
@@ -31,25 +43,33 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Salida)
+            @Html.LabelFor(model => model.FechaSalida,"Fecha de salida")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Salida)
-            @Html.ValidationMessageFor(model => model.Salida)
+            @Html.EditorFor(model => model.FechaSalida)
+            @Html.ValidationMessageFor(model => model.FechaSalida)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Llegada)
+            @Html.LabelFor(model => model.HoraSalida,"Hora de salida")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Llegada)
-            @Html.ValidationMessageFor(model => model.Llegada)
+           <input type="text" name="hora" id="time"/>
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.AvionID)
+            @Html.LabelFor(model => model.Duracion,"Duracion(en horas)")
         </div>
-      <div class="editor-field">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Duracion)
+            @Html.ValidationMessageFor(model => model.Duracion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AvionID,"Avion")
+        </div>
+
+        <div class="editor-field">
             @Html.DropDownListFor(model => model.AvionID, (IEnumerable<SelectListItem>)ViewBag.AvionID, "--Seleccione--")
             @Html.ValidationMessageFor(model => model.AvionID)
         </div>

@@ -20,10 +20,13 @@
             Destino
         </th>
         <th>
-            Salida
+            Fecha de salida
         </th>
         <th>
-            Llegada
+            Hora de salida
+        </th>
+        <th>
+            Duracion del vuelo
         </th>
         <th>
             Avion
@@ -35,7 +38,6 @@
     <tr>
         <td>
             @Html.ActionLink("Edit", "Edit", null, new { id=item.Id }, new { @class = "button" }) 
-            @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
             @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
         </td>
         <td>
@@ -45,10 +47,13 @@
             @item.Destino.Lugar
         </td>
         <td>
-            @String.Format("{0:g}", item.Salida)
+            @String.Format("{0:g}", item.FechaSalida)
         </td>
         <td>
-            @String.Format("{0:g}", item.Llegada)
+            @item.HoraSalida
+        </td>
+        <td>
+            @item.Duracion horas
         </td>
         <td>
             @item.Avion.Modelo
@@ -58,8 +63,8 @@
 </tbody>
 </table>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
-    });
+	$(document).ready(function () {
+		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});
+	});
 </script>
 

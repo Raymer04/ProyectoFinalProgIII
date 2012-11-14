@@ -33,19 +33,27 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Salida)
+            @Html.LabelFor(model => model.FechaSalida)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Salida)
-            @Html.ValidationMessageFor(model => model.Salida)
+            @Html.EditorFor(model => model.FechaSalida)
+            @Html.ValidationMessageFor(model => model.FechaSalida)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Llegada)
+            @Html.LabelFor(model => model.HoraSalida)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Llegada)
-            @Html.ValidationMessageFor(model => model.Llegada)
+            @Html.EditorFor(model => model.HoraSalida)
+            @Html.ValidationMessageFor(model => model.HoraSalida)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Duracion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Duracion)
+            @Html.ValidationMessageFor(model => model.Duracion)
         </div>
 
         <div class="editor-label">

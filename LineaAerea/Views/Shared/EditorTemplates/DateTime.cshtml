@@ -1,28 +1,14 @@
-﻿@model Nullable<System.DateTime>
+﻿@inherits System.Web.Mvc.WebViewPage<System.DateTime?>
 @if (Model.HasValue)
 { 
-    @Html.TextBox("", String.Format("{0:yyyy-MM-dd HH:mm}", Model.Value), new { @class = "textbox", @style = "width:200px;" })
+    @Html.TextBox("", (Model.Value), new { @class = "datePicker" })
 }
 else {
-    @Html.TextBox("", String.Format("{0:yyyy-MM-dd HH:mm}", DateTime.Now), new { @class = "textbox", @style = "width:200px;" })
-}
+    @Html.TextBox("", "", new { @class = "datePicker" })
     
 }
-@{
-string name = ViewData.TemplateInfo.HtmlFieldPrefix;
-string id = name.Replace( ".", "_" );
-}
-<script type="text/javascript">
+<script type='text/javascript'>
     $(document).ready(function () {
-        $("#@id").datetimepicker
-            ({
-                numberOfMonths: 2,
-                changeMonth: true,
-                changeYear: true,
-                showAnim: "scale",
-                showOptions: {
-                    origin: ["bottom", "left"]
-                }
-            });
+        $("#@ViewData.TemplateInfo.GetFullHtmlFieldId("")").wijinputdate({ showTrigger: true, dateFormat:"dd/MM/yy"});
     });
 </script>
