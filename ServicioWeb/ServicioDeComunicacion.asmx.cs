@@ -58,7 +58,7 @@ namespace ServicioWeb
         public int asientosDisponibles(int idVuelo)
         {
 
-            int disponibles = 1;
+            int disponibles = 0;
 
             return disponibles;
         }

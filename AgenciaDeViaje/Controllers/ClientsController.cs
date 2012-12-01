@@ -123,6 +123,15 @@ namespace AgenciaDeViaje.Controllers
                 Cliente cliente = db.Clientes.Where(p => p.correo == model.Correo && p.password == model.Password).First();
                 Session["usuario"] = cliente;
                 Session["nombre"] = cliente.nombre + " " + cliente.apellido;
+                try
+                {
+                
+                   
+                }
+                catch (Exception ex)
+                {
+
+                }
                 return RedirectToAction("Index", "Home");
             }
             else

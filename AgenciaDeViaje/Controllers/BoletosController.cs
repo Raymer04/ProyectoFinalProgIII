@@ -48,7 +48,8 @@ namespace AgenciaDeViaje.Controllers
                 
                 if (servicio.asientosDisponibles(id)== 0)
                 {
-                    this.ListaEspera(id);
+
+                    return RedirectToAction("ListaEspera", "Boletos", new { id =id });
                 }else{
                 if (tipo == 1)
                 {
@@ -81,41 +82,43 @@ namespace AgenciaDeViaje.Controllers
 
         public ViewResult Details(int id)
         {
+            
             Boleto boleto = db.Boletos.Find(id);
+            boleto.BoletoCargar();
             return View(boleto);
         }
 
         //
         // GET: /Boletos/Delete/5
 
+
         public ActionResult Delete(int id)
-        {
-            Boleto boleto = db.Boletos.Find(id);
-            return View(boleto);
-        }
-
-        //
-        // POST: /Boletos/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
         {
             Boleto boleto = db.Boletos.Find(id);
             db.Boletos.Remove(boleto);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+
+                Response.Redirect(Request.UrlReferrer.ToString());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ListaEspera(int id)
         {
                            
-            return View(id);
+            return View();
         }
 
         //
         // POST: /Boletos/Delete/5
 
-        [HttpPost, ActionName("AgregarListaEspera")]
+        [HttpPost, ActionName("ListaEspera")]
         public ActionResult ListaEsperaConfirmar(int id)
         {
             Boleto boleto = new Boleto();

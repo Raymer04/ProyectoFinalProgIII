@@ -20,6 +20,7 @@ namespace AgenciaDeViaje.Controllers
                // var b = a.VuelosDisponibles(model.Procedencia, model.Destino, model.Salida);
                 var b = a.TodosVuelos();
                ViewBag.aeropuertos= a.Aeropuertos().ToList();
+              
                 List<Vuelo> vuelos = new List<Vuelo>();
                 DateTime hora = new DateTime(2012, 10, 16, 20, 0, 0, 0);
             
