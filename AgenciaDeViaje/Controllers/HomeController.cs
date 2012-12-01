@@ -15,11 +15,9 @@ namespace AgenciaDeViaje.Controllers
             ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
             ViewBag.Message = "Bienvenidos a nuestra agencia de viajes";
 
-            var aux = a.Aeropuertos().Select(x => new {x.Id,x.Lugar});
-            ViewBag.Destinos = new SelectList(aux.AsEnumerable(), "Id", "Lugar");
+            ViewBag.Destinos = new SelectList(a.Aeropuertos(), "Id", "Lugar");
+            ViewBag.Procedencia = new SelectList(a.Aeropuertos(), "Id", "Lugar");
 
-            var aux2 = a.Aeropuertos().Select(x => new { x.Id, x.Lugar });
-            ViewBag.Procedencia = new SelectList(aux2.AsEnumerable(), "Id", "Lugar");
             return View();
         }
         [HttpPost]

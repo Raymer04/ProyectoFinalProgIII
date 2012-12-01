@@ -15,25 +15,25 @@
       <s:element name="VuelosDisponiblesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="VuelosDisponiblesResult" type="tns:ArrayOfVuelo" />
+            <s:element minOccurs="0" maxOccurs="1" name="VuelosDisponiblesResult" type="tns:ArrayOfVueloes" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVuelo">
+      <s:complexType name="ArrayOfVueloes">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Vuelo" nillable="true" type="tns:Vuelo" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vueloes" nillable="true" type="tns:Vueloes" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Vuelo">
+      <s:complexType name="Vueloes">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityObject">
             <s:sequence>
               <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
               <s:element minOccurs="1" maxOccurs="1" name="Salida" type="s:dateTime" />
               <s:element minOccurs="1" maxOccurs="1" name="Llegada" type="s:dateTime" />
-              <s:element minOccurs="0" maxOccurs="1" name="AeropuertoReference" type="tns:EntityReferenceOfAeropuerto" />
-              <s:element minOccurs="0" maxOccurs="1" name="Aeropuerto1Reference" type="tns:EntityReferenceOfAeropuerto" />
-              <s:element minOccurs="0" maxOccurs="1" name="AvionReference" type="tns:EntityReferenceOfAvion" />
+              <s:element minOccurs="0" maxOccurs="1" name="DestinoReference" type="tns:EntityReferenceOfAeropuertoes" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProcedenciaReference" type="tns:EntityReferenceOfAeropuertoes" />
+              <s:element minOccurs="0" maxOccurs="1" name="AvionsReference" type="tns:EntityReferenceOfAvions" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -66,7 +66,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Value" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="EntityReferenceOfAeropuerto">
+      <s:complexType name="EntityReferenceOfAeropuertoes">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
@@ -81,7 +81,7 @@
         </s:complexContent>
       </s:complexType>
       <s:complexType name="RelatedEnd" abstract="true" />
-      <s:complexType name="EntityReferenceOfAvion">
+      <s:complexType name="EntityReferenceOfAvions">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityReference" />
         </s:complexContent>
@@ -89,12 +89,12 @@
       <s:element name="Aeropuertos">
         <s:complexType />
       </s:element>
-      <s:complexType name="ArrayOfAeropuerto">
+      <s:complexType name="ArrayOfAeropuertoes">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Aeropuerto" nillable="true" type="tns:Aeropuerto" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Aeropuertoes" nillable="true" type="tns:Aeropuertoes" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Aeropuerto">
+      <s:complexType name="Aeropuertoes">
         <s:complexContent mixed="false">
           <s:extension base="tns:EntityObject">
             <s:sequence>
@@ -108,7 +108,7 @@
       <s:element name="AeropuertosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="AeropuertosResult" type="tns:ArrayOfAeropuerto" />
+            <s:element minOccurs="0" maxOccurs="1" name="AeropuertosResult" type="tns:ArrayOfAeropuertoes" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -118,7 +118,7 @@
       <s:element name="TodosVuelosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="TodosVuelosResult" type="tns:ArrayOfVuelo" />
+            <s:element minOccurs="0" maxOccurs="1" name="TodosVuelosResult" type="tns:ArrayOfVueloes" />
           </s:sequence>
         </s:complexType>
       </s:element>

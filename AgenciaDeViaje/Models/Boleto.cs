@@ -8,8 +8,12 @@ namespace AgenciaDeViaje.Models
     public class Boleto
     {
         public int Id { get; set; }
-        public int vuelo { get; set; }
         public int tipo { get; set; }
+
+        // Navigation properties
+
+        public virtual Cliente Cliente { get; set; }
+        public virtual Vuelo Vuelo { get; set; }
     }
 
 }

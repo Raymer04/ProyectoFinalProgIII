@@ -115,10 +115,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Aeropuerto.datasource">
+    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Aeropuertoes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Vuelo.datasource">
+    <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Vueloes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServicioWeb\ServicioDeComunicacion.disco" />

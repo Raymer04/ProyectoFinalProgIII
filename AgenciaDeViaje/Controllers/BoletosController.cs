@@ -24,15 +24,11 @@ namespace AgenciaDeViaje.Controllers
                 Cliente cliente = (Cliente)Session["usuario"];
                 List<Boleto> lista = new List<Boleto>(); 
                 
-                var a=db.Clientes.Select(p => p.boletos.Where(x => x.tipo == tipo)).ToList();
-                foreach(Boleto dato in a){
-                    Boleto boleto = new Boleto();
-                    boleto.Id = dato.Id;
-                    boleto.tipo = dato.tipo;
-                    boleto.vuelo = dato.vuelo;
-                    lista.Add(boleto);
-                }
-                return View(lista);
+                var a=db.Clientes.Select(p => p.boletos.Where(x => x.tipo == tipo));//.ToList();
+                var boletoes = db.Boletos.Include(b => b.Vuelo).Where(p=>p.Cliente.Id==cliente.Id && p.tipo==tipo);
+               
+                return View(boletoes.ToList());
+              //  return View(a.ToList());
             }
             else
             {
@@ -44,9 +40,19 @@ namespace AgenciaDeViaje.Controllers
         public ActionResult ManejoBoleto(int tipo, int id) {
             if (Session["usuario"] != null)
             {
+                Cliente cliente=(Cliente)Session["usuario"];
                 ServicioWeb.ServicioDeComunicacionSoapClient servicio=new ServicioWeb.ServicioDeComunicacionSoapClient();
                 Boleto boleto = new Boleto();
+               
+                Vuelo vuelo = new Vuelo();
+                var a=servicio.TodosVuelos().Where(p => p.Id == id).First();
 
+                vuelo.Destino = servicio.Aeropuertos().ToList().Find(p => p.Id == (Int32)a.DestinoReference.EntityKey.EntityKeyValues.First().Value).Lugar;
+                vuelo.Procedencia = servicio.Aeropuertos().ToList().Find(p => p.Id == (Int32)a.ProcedenciaReference.EntityKey.EntityKeyValues.First().Value).Lugar;
+           
+                vuelo.Llegada = a.Llegada;
+                vuelo.Salida = a.Salida;
+                
                 if (servicio.asientosDisponibles(id)== 0)
                 {
                     this.ListaEspera(id);
@@ -54,16 +60,20 @@ namespace AgenciaDeViaje.Controllers
                 if (tipo == 1)
                 {
                     boleto.tipo = 1;
-                    boleto.vuelo = id;
+                    boleto.Vuelo = vuelo;
+                    boleto.Cliente = cliente;
                     db.Boletos.Add(boleto);
-                    return RedirectToAction("Index?tipo=1", "Boletos");
+                    db.SaveChanges();
+                    //return RedirectToAction("Index?tipo=1", "Boletos");
                 }
                 else if (tipo == 2)
                 {
                     boleto.tipo = 2;
-                    boleto.vuelo = id;
+                    boleto.Vuelo = vuelo;
+                    boleto.Cliente = cliente;
                     db.Boletos.Add(boleto);
-                    return RedirectToAction("Index?tipo=2", "Boletos");
+                    db.SaveChanges();
+                    //return RedirectToAction("Index?tipo=2", "Boletos");
                 }
                 }
             }
@@ -114,7 +124,7 @@ namespace AgenciaDeViaje.Controllers
             Boleto boleto = new Boleto();
 
             boleto.tipo = 3;
-            boleto.vuelo = id;
+            boleto.Vuelo.Id = id;
             db.Boletos.Add(boleto);
             db.SaveChanges();
             return RedirectToAction("Index?tipo=3", "Boletos");

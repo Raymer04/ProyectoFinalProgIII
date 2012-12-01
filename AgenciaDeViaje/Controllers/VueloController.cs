@@ -21,14 +21,17 @@ namespace AgenciaDeViaje.Controllers
                 var b = a.TodosVuelos();
                ViewBag.aeropuertos= a.Aeropuertos().ToList();
                 List<Vuelo> vuelos = new List<Vuelo>();
+                DateTime hora = new DateTime(2012, 10, 16, 20, 0, 0, 0);
+            
                 foreach (var dato in b)
                 {
+                    
                     Vuelo vuelo = new Vuelo();
-                    vuelo.Salida = dato.Salida;
-                    vuelo.Llegada = dato.Llegada;
+                    vuelo.Salida =  dato.Salida;
+                    vuelo.Llegada = hora;//dato.Llegada;
                     vuelo.Id = dato.Id;
-                    vuelo.Destino=a.Aeropuertos().ToList().Find(p=>p.Id==(Int32)dato.AeropuertoReference.EntityKey.EntityKeyValues.First().Value).Lugar;
-                    vuelo.Procedencia = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.Aeropuerto1Reference.EntityKey.EntityKeyValues.First().Value).Lugar;
+                    vuelo.Destino = a.Aeropuertos().ToList().Find(p=>p.Id==(Int32)dato.DestinoReference.EntityKey.EntityKeyValues.First().Value).Lugar;
+                    vuelo.Procedencia = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.ProcedenciaReference.EntityKey.EntityKeyValues.First().Value).Lugar;
                     vuelos.Add(vuelo);
                 }
                 

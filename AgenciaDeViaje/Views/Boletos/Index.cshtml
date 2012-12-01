@@ -12,7 +12,8 @@
         <th>ID Boleto</th>
         <th>Procedencia</th>
         <th>Destino</th>
-        <th>Fecha y Hora</th>
+        <th>Salida</th>
+        <th>Llegada</th>
         <th>Opciones</th>
     </tr>
 	</thead>
@@ -20,9 +21,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>@item.Id</td>
-        <td>@item.vuelo</td>
-        <td>@item.vuelo</td>
-        <td>@item.vuelo</td>
+        <td>@item.Vuelo.Procedencia</td>
+        <td>@item.Vuelo.Destino</td>
+        <td>@item.Vuelo.Salida</td>
+        <td>@item.Vuelo.Llegada</td>
         <td>
             @Html.ActionLink("Detalles", "Details", null, new { id=item.Id }, new { @class = "button" }) 
             @if (item.tipo != 1) { @Html.ActionLink("Borrar", "Delete", null, new { id = item.Id }, new { @class = "button" }); }
