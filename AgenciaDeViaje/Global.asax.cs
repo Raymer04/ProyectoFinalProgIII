@@ -35,6 +35,32 @@ namespace AgenciaDeViaje
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            Application["MyThread"] = new System.Threading.Timer(
+                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0,0,10, 0));
+
+
         }
+
+        private void Accion(object state){
+
+            string basedirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            string config_path = System.IO.Path.Combine(basedirectory, "Config-lapso.xml");
+
+            System.Xml.Linq.XDocument config = System.Xml.Linq.XDocument.Load(config_path);
+
+            TimeSpan diff = DateTime.Now -
+            Convert.ToDateTime(config.Root.Element("ultima-hora").Value);
+
+            if (diff.Seconds >= 10)
+            {
+                System.Diagnostics.Process.Start(@"D:\WINDOWS\NOTEPAD.EXE");
+            } 
+
+
+}
+
+
     }
 }
