@@ -23,17 +23,17 @@ namespace ServicioWeb
         public List<Vueloes> VuelosDisponibles(int procedencia, int destino, DateTime fecha)
         {
 
-            baseDatosLinea lineab = new baseDatosLinea();
+            LineaEntities lineab = new LineaEntities();
 
-            List<Vueloes> vuelos = lineab.Vueloes.Where(v => v.Destino == lineab.Aeropuertoes.Where(p => p.Id == destino).First() && v.Procedencia == lineab.Aeropuertoes.Where(p => p.Id == procedencia).First()).ToList();
-           
+            List<Vueloes> vuelos = lineab.Vueloes.Where(v => v.Aeropuertoes.Id == destino && v.Aeropuertoes1.Id == procedencia
+               && v.FechaSalida == fecha).ToList();
             return vuelos;
         }
 
         [WebMethod]
         public List<Aeropuertoes> Aeropuertos()
         {
-            baseDatosLinea lineab = new baseDatosLinea();
+            LineaEntities lineab = new LineaEntities();
 
             List<Aeropuertoes> aeropuertos = lineab.Aeropuertoes.ToList();
 
@@ -46,7 +46,7 @@ namespace ServicioWeb
         public List<Vueloes> TodosVuelos()
         {
 
-            baseDatosLinea lineab = new baseDatosLinea();
+            LineaEntities lineab = new LineaEntities();
 
 
             List<Vueloes> vuelos = lineab.Vueloes.ToList();

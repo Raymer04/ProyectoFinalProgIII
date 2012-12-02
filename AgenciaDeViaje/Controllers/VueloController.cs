@@ -17,8 +17,8 @@ namespace AgenciaDeViaje.Controllers
             
                 ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
                 
-               // var b = a.VuelosDisponibles(model.Procedencia, model.Destino, model.Salida);
-                var b = a.TodosVuelos();
+                var b = a.VuelosDisponibles(Convert.ToInt32(model.Procedencia), Convert.ToInt32(model.Destino), model.Salida);
+                //var b = a.TodosVuelos();
                ViewBag.aeropuertos= a.Aeropuertos().ToList();
               
                 List<Vuelo> vuelos = new List<Vuelo>();
@@ -28,12 +28,17 @@ namespace AgenciaDeViaje.Controllers
                 {
                     
                     Vuelo vuelo = new Vuelo();
-                    vuelo.Salida =  dato.Salida;
+                    vuelo.Salida =  dato.FechaSalida;
                     vuelo.Llegada = hora;//dato.Llegada;
                     vuelo.Id = dato.Id;
-                    vuelo.Destino = a.Aeropuertos().ToList().Find(p=>p.Id==(Int32)dato.DestinoReference.EntityKey.EntityKeyValues.First().Value).Lugar;
-                    vuelo.Procedencia = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.ProcedenciaReference.EntityKey.EntityKeyValues.First().Value).Lugar;
+                    vuelo.Destino = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.AeropuertoesReference.EntityKey.EntityKeyValues.First().Value).Lugar;
+                    vuelo.Procedencia = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.Aeropuertoes1Reference.EntityKey.EntityKeyValues.First().Value).Lugar;
                     vuelos.Add(vuelo);
+                }
+
+                if (vuelos.Count == 0) {
+                    TempData["error"] = "No encontramos ningun vuelo que coincida con tu busqueda";
+                    return RedirectToAction("Index", "Home");
                 }
                 
                 return View(vuelos);

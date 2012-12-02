@@ -62,10 +62,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModeloLineaAerea.Designer.cs">
+    <Compile Include="LineaAerea.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloLineaAerea.edmx</DependentUpon>
+      <DependentUpon>LineaAerea.edmx</DependentUpon>
     </Compile>
     <Compile Include="ServicioDeComunicacion.asmx.cs">
       <DependentUpon>ServicioDeComunicacion.asmx</DependentUpon>
@@ -80,9 +80,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="ModeloLineaAerea.edmx">
+    <EntityDeploy Include="LineaAerea.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloLineaAerea.Designer.cs</LastGenOutput>
+      <LastGenOutput>LineaAerea.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

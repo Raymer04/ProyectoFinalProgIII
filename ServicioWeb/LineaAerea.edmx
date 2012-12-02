@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LineaAerea.Models.LineaAereaDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="LineaAerea.Models.LineaAereaDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="LineaAereaModelsLineaAereaDBModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="LineaAerea.Models.LineaAereaDBModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Aeropuertoes" EntityType="LineaAerea.Models.LineaAereaDBModel.Store.Aeropuertoes" store:Type="Tables" Schema="dbo" />
@@ -19,7 +19,7 @@
             <End Role="Aeropuertoes" EntitySet="Aeropuertoes" />
             <End Role="Vueloes" EntitySet="Vueloes" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Vueloes_dbo_Avions_Avion_Id" Association="LineaAerea.Models.LineaAereaDBModel.Store.FK_dbo_Vueloes_dbo_Avions_Avion_Id">
+          <AssociationSet Name="FK_dbo_Vueloes_dbo_Avions_AvionID" Association="LineaAerea.Models.LineaAereaDBModel.Store.FK_dbo_Vueloes_dbo_Avions_AvionID">
             <End Role="Avions" EntitySet="Avions" />
             <End Role="Vueloes" EntitySet="Vueloes" />
           </AssociationSet>
@@ -47,7 +47,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Marca" Type="nvarchar(max)" />
           <Property Name="Modelo" Type="nvarchar(max)" />
-          <Property Name="CapacidadPasajeros" Type="nvarchar(max)" />
+          <Property Name="CapacidadPasajeros" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -66,9 +66,10 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProcedenciaID" Type="int" Nullable="false" />
           <Property Name="DestinoID" Type="int" Nullable="false" />
-          <Property Name="Salida" Type="datetime" Nullable="false" />
-          <Property Name="Llegada" Type="datetime" Nullable="false" />
-          <Property Name="AvionId" Type="int" />
+          <Property Name="FechaSalida" Type="datetime" Nullable="false" />
+          <Property Name="HoraSalida" Type="nvarchar(max)" />
+          <Property Name="Duracion" Type="int" Nullable="false" />
+          <Property Name="AvionID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID">
           <End Role="Aeropuertoes" Type="LineaAerea.Models.LineaAereaDBModel.Store.Aeropuertoes" Multiplicity="1" />
@@ -94,24 +95,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Vueloes_dbo_Avions_Avion_Id">
-          <End Role="Avions" Type="LineaAerea.Models.LineaAereaDBModel.Store.Avions" Multiplicity="0..1" />
+        <Association Name="FK_dbo_Vueloes_dbo_Avions_AvionID">
+          <End Role="Avions" Type="LineaAerea.Models.LineaAereaDBModel.Store.Avions" Multiplicity="1" />
           <End Role="Vueloes" Type="LineaAerea.Models.LineaAereaDBModel.Store.Vueloes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Avions">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Vueloes">
-              <PropertyRef Name="AvionId" />
+              <PropertyRef Name="AvionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LineaAerea.Models.LineaAereaDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
-        <EntityContainer Name="baseDatosLinea">
+        <EntityContainer Name="LineaEntities">
           <EntitySet Name="C__MigrationHistory" EntityType="LineaAerea.Models.LineaAereaDBModel.C__MigrationHistory" />
           <EntitySet Name="Aeropuertoes" EntityType="LineaAerea.Models.LineaAereaDBModel.Aeropuertoes" />
           <EntitySet Name="Avions" EntityType="LineaAerea.Models.LineaAereaDBModel.Avions" />
@@ -125,7 +125,7 @@
             <End Role="Aeropuertoes" EntitySet="Aeropuertoes" />
             <End Role="Vueloes" EntitySet="Vueloes" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Vueloes_dbo_Avions_Avion_Id" Association="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id">
+          <AssociationSet Name="FK_dbo_Vueloes_dbo_Avions_AvionID" Association="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_AvionID">
             <End Role="Avions" EntitySet="Avions" />
             <End Role="Vueloes" EntitySet="Vueloes" />
           </AssociationSet>
@@ -145,6 +145,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Lugar" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Vueloes" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" FromRole="Aeropuertoes" ToRole="Vueloes" />
+          <NavigationProperty Name="Vueloes1" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" FromRole="Aeropuertoes" ToRole="Vueloes" />
         </EntityType>
         <EntityType Name="Avions">
           <Key>
@@ -153,8 +155,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Marca" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Modelo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="CapacidadPasajeros" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Vueloes" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id" FromRole="Avions" ToRole="Vueloes" />
+          <Property Name="CapacidadPasajeros" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vueloes" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_AvionID" FromRole="Avions" ToRole="Vueloes" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -171,11 +173,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Salida" Type="DateTime" Nullable="false" />
-          <Property Name="Llegada" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Destino" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" FromRole="Vueloes" ToRole="Aeropuertoes" />
-          <NavigationProperty Name="Procedencia" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" FromRole="Vueloes" ToRole="Aeropuertoes" />
-          <NavigationProperty Name="Avions" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id" FromRole="Vueloes" ToRole="Avions" />
+          <Property Name="FechaSalida" Type="DateTime" Nullable="false" />
+          <Property Name="HoraSalida" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Duracion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aeropuertoes" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" FromRole="Vueloes" ToRole="Aeropuertoes" />
+          <NavigationProperty Name="Aeropuertoes1" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" FromRole="Vueloes" ToRole="Aeropuertoes" />
+          <NavigationProperty Name="Avions" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_AvionID" FromRole="Vueloes" ToRole="Avions" />
         </EntityType>
         <Association Name="FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID">
           <End Role="Aeropuertoes" Type="LineaAerea.Models.LineaAereaDBModel.Aeropuertoes" Multiplicity="1" />
@@ -185,8 +188,8 @@
           <End Role="Aeropuertoes" Type="LineaAerea.Models.LineaAereaDBModel.Aeropuertoes" Multiplicity="1" />
           <End Role="Vueloes" Type="LineaAerea.Models.LineaAereaDBModel.Vueloes" Multiplicity="*" />
         </Association>
-        <Association Name="FK_dbo_Vueloes_dbo_Avions_Avion_Id">
-          <End Role="Avions" Type="LineaAerea.Models.LineaAereaDBModel.Avions" Multiplicity="0..1" />
+        <Association Name="FK_dbo_Vueloes_dbo_Avions_AvionID">
+          <End Role="Avions" Type="LineaAerea.Models.LineaAereaDBModel.Avions" Multiplicity="1" />
           <End Role="Vueloes" Type="LineaAerea.Models.LineaAereaDBModel.Vueloes" Multiplicity="*" />
         </Association>
       </Schema>
@@ -194,7 +197,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
-        <EntityContainerMapping StorageEntityContainer="LineaAereaModelsLineaAereaDBModelStoreContainer" CdmEntityContainer="baseDatosLinea">
+        <EntityContainerMapping StorageEntityContainer="LineaAereaModelsLineaAereaDBModelStoreContainer" CdmEntityContainer="LineaEntities">
           <EntitySetMapping Name="C__MigrationHistory"><EntityTypeMapping TypeName="LineaAerea.Models.LineaAereaDBModel.C__MigrationHistory"><MappingFragment StoreEntitySet="__MigrationHistory">
             <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
             <ScalarProperty Name="Model" ColumnName="Model" />
@@ -220,8 +223,9 @@
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Vueloes"><EntityTypeMapping TypeName="LineaAerea.Models.LineaAereaDBModel.Vueloes"><MappingFragment StoreEntitySet="Vueloes">
             <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Salida" ColumnName="Salida" />
-            <ScalarProperty Name="Llegada" ColumnName="Llegada" />
+            <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+            <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+            <ScalarProperty Name="Duracion" ColumnName="Duracion" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <AssociationSetMapping Name="FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" TypeName="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" StoreEntitySet="Vueloes">
             <EndProperty Name="Aeropuertoes">
@@ -239,14 +243,13 @@
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_dbo_Vueloes_dbo_Avions_Avion_Id" TypeName="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id" StoreEntitySet="Vueloes">
+          <AssociationSetMapping Name="FK_dbo_Vueloes_dbo_Avions_AvionID" TypeName="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_AvionID" StoreEntitySet="Vueloes">
             <EndProperty Name="Avions">
-              <ScalarProperty Name="Id" ColumnName="AvionId" />
+              <ScalarProperty Name="Id" ColumnName="AvionID" />
             </EndProperty>
             <EndProperty Name="Vueloes">
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
-            <Condition ColumnName="AvionId" IsNull="false" />
           </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
@@ -262,30 +265,30 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="ModeloLineaAerea">
-        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Aeropuertoes" Width="1.5" PointX="0.75" PointY="1" Height="1.59568359375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Avions" Width="1.5" PointX="0.75" PointY="5" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Usuarios" Width="1.5" PointX="4.75" PointY="4.75" Height="1.9802864583333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Vueloes" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906249996" IsExpanded="true" />
+      <Diagram Name="LineaAerea">
+        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="4.75" Height="1.4279589843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Aeropuertoes" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Avions" Width="1.5" PointX="0.75" PointY="4.125" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Usuarios" Width="1.5" PointX="4.75" PointY="4.75" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Vueloes" Width="1.5" PointX="3" PointY="0.875" Height="2.0853483072916674" IsExpanded="true" />
         <AssociationConnector Association="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.1222863769531251" />
-          <ConnectorPoint PointX="3" PointY="2.1222863769531251" />
+          <ConnectorPoint PointX="2.25" PointY="2.0033268229166667" />
+          <ConnectorPoint PointX="3" PointY="2.0033268229166667" />
         </AssociationConnector>
         <AssociationConnector Association="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="1.4986431884765625" />
-          <ConnectorPoint PointX="3" PointY="1.4986431884765625" />
+          <ConnectorPoint PointX="2.25" PointY="1.5016634114583334" />
+          <ConnectorPoint PointX="3" PointY="1.5016634114583334" />
         </AssociationConnector>
-        <AssociationConnector Association="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_Avion_Id" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="6.6942350260416665" />
-          <ConnectorPoint PointX="4.40625" PointY="6.6942350260416665" />
-          <ConnectorPoint PointX="4.40625" PointY="3.0475878906249996" />
+        <AssociationConnector Association="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_AvionID" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.40625" />
+          <ConnectorPoint PointX="4.40625" PointY="4.40625" />
+          <ConnectorPoint PointX="4.40625" PointY="2.9603483072916674" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

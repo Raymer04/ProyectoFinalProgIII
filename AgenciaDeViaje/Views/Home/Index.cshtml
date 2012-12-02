@@ -10,11 +10,15 @@
 	</script>
 
 <h2>@ViewBag.Message</h2>
+ @if (TempData["error"] != null) {
+    <h4 style="color: #FF0000">@Html.Encode(TempData["error"])
+    </h4>
+  }
 @using (Html.BeginForm())
 {
     
-    @Html.ValidationSummary(true)
-  
+     @Html.ValidationSummary(true)
+
         <div id="tabs" style="width: 300px;">
         <ul>
 			<li><a href="#tabs-1">Vuelos</a></li>

@@ -24,7 +24,7 @@ namespace AgenciaDeViaje.Controllers
         public ActionResult Index(Vuelo model)
         {
             
-            return RedirectToAction("BuscarVuelo", "Vuelo");
+            return RedirectToAction("BuscarVuelo", "Vuelo",model);
         }
 
         public ActionResult About()
