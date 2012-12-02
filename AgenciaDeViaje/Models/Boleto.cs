@@ -13,10 +13,10 @@ namespace AgenciaDeViaje.Models
         public int RefIdCliente { get; set; }
         public int RefIdVuelo { get; set; }
         public DateTime fecha { get; set; }
+        public virtual Vuelo Vuelo { get; set; }
+        public virtual Cliente Cliente { get; set;}
         // Navigation properties
 
-        public virtual Cliente Cliente { get; set; }
-        public virtual Vuelo Vuelo { get; set; }
         public Boleto(){
         if(Id!=0){
             this.BoletoCargar();

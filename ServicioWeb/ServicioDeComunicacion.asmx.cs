@@ -57,11 +57,11 @@ namespace ServicioWeb
         [WebMethod]
         public int asientosDisponibles(int idVuelo)
         {
-            //AgenciaViajeEntities ave = new AgenciaViajeEntities();
-            //LineaEntities le = new LineaEntities();
-            //int primero = le.Avions.Where(i => i.Id == ((int)le.Vueloes.Where(p => p.Id == idVuelo).FirstOrDefault().AvionsReference.EntityKey.EntityKeyValues.FirstOrDefault().Value)).FirstOrDefault().CapacidadPasajeros;
-            //int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo).Count();
-            //int retorno = primero - segundo;
+            AgenciaViajeEntities ave = new AgenciaViajeEntities();
+            LineaAereaEntities le = new LineaAereaEntities();
+            int primero = le.Avions.Where(i => i.Id == ((int)le.Vueloes.Where(p => p.Id == idVuelo).FirstOrDefault().Avion.EntityKey.EntityKeyValues.FirstOrDefault().Value)).FirstOrDefault().CapacidadPasajeros;
+            int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo).Count();
+            int retorno = primero - segundo;
             return 0;
         }
     }

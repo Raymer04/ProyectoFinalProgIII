@@ -62,6 +62,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agencia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agencia.edmx</DependentUpon>
+    </Compile>
     <Compile Include="LineaAerea.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +88,12 @@
     <EntityDeploy Include="LineaAerea.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LineaAerea.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Agencia.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Agencia.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
