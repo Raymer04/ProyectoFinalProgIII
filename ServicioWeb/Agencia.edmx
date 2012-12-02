@@ -6,27 +6,8 @@
     <edmx:StorageModels>
       <Schema Namespace="AgenciaViajeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="AgenciaViajeModelStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="AgenciaViajeModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Boletoes" EntityType="AgenciaViajeModel.Store.Boletoes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Clientes" EntityType="AgenciaViajeModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Vueloes" EntityType="AgenciaViajeModel.Store.Vueloes" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" Association="AgenciaViajeModel.Store.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Boletoes" EntitySet="Boletoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" Association="AgenciaViajeModel.Store.FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id">
-            <End Role="Vueloes" EntitySet="Vueloes" />
-            <End Role="Boletoes" EntitySet="Boletoes" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" Nullable="false" MaxLength="32" />
-        </EntityType>
+          </EntityContainer>
         <EntityType Name="Boletoes">
           <Key>
             <PropertyRef Name="Id" />
@@ -39,79 +20,14 @@
           <Property Name="Vuelo_Id" Type="int" />
           <Property Name="Cliente_Id" Type="int" />
         </EntityType>
-        <EntityType Name="Clientes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="fechaDeNacimiento" Type="datetime" Nullable="false" />
-          <Property Name="correo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Vueloes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Procedencia" Type="nvarchar(max)" />
-          <Property Name="Destino" Type="nvarchar(max)" />
-          <Property Name="Salida" Type="datetime" Nullable="false" />
-          <Property Name="Llegada" Type="datetime" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
-          <End Role="Clientes" Type="AgenciaViajeModel.Store.Clientes" Multiplicity="0..1" />
-          <End Role="Boletoes" Type="AgenciaViajeModel.Store.Boletoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Boletoes">
-              <PropertyRef Name="Cliente_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id">
-          <End Role="Vueloes" Type="AgenciaViajeModel.Store.Vueloes" Multiplicity="0..1" />
-          <End Role="Boletoes" Type="AgenciaViajeModel.Store.Boletoes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vueloes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Boletoes">
-              <PropertyRef Name="Vuelo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AgenciaViajeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="AgenciaViajeEntities">
-          <EntitySet Name="C__MigrationHistory" EntityType="AgenciaViajeModel.C__MigrationHistory" />
           <EntitySet Name="Boletoes" EntityType="AgenciaViajeModel.Boleto" />
-          <EntitySet Name="Clientes" EntityType="AgenciaViajeModel.Cliente" />
-          <EntitySet Name="Vueloes" EntityType="AgenciaViajeModel.Vuelo" />
-          <AssociationSet Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" Association="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Boletoes" EntitySet="Boletoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" Association="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id">
-            <End Role="Vueloes" EntitySet="Vueloes" />
-            <End Role="Boletoes" EntitySet="Boletoes" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-          </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Boleto">
           <Key>
             <PropertyRef Name="Id" />
@@ -121,52 +37,13 @@
           <Property Name="RefIdCliente" Type="Int32" Nullable="false" />
           <Property Name="RefIdVuelo" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Cliente" Relationship="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" FromRole="Boletoes" ToRole="Clientes" />
-          <NavigationProperty Name="Vuelo" Relationship="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" FromRole="Boletoes" ToRole="Vueloes" />
         </EntityType>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="apellido" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="telefono" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="fechaDeNacimiento" Type="DateTime" Nullable="false" />
-          <Property Name="correo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Boletoes" Relationship="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" FromRole="Clientes" ToRole="Boletoes" />
-        </EntityType>
-        <EntityType Name="Vuelo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Procedencia" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Destino" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Salida" Type="DateTime" Nullable="false" />
-          <Property Name="Llegada" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Boletoes" Relationship="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" FromRole="Vueloes" ToRole="Boletoes" />
-        </EntityType>
-        <Association Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
-          <End Role="Clientes" Type="AgenciaViajeModel.Cliente" Multiplicity="0..1" />
-          <End Role="Boletoes" Type="AgenciaViajeModel.Boleto" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id">
-          <End Role="Vueloes" Type="AgenciaViajeModel.Vuelo" Multiplicity="0..1" />
-          <End Role="Boletoes" Type="AgenciaViajeModel.Boleto" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="AgenciaViajeModelStoreContainer" CdmEntityContainer="AgenciaViajeEntities">
-          <EntitySetMapping Name="C__MigrationHistory"><EntityTypeMapping TypeName="AgenciaViajeModel.C__MigrationHistory"><MappingFragment StoreEntitySet="__MigrationHistory">
-            <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-            <ScalarProperty Name="Model" ColumnName="Model" />
-            <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Boletoes"><EntityTypeMapping TypeName="AgenciaViajeModel.Boleto"><MappingFragment StoreEntitySet="Boletoes">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="tipo" ColumnName="tipo" />
@@ -174,41 +51,7 @@
             <ScalarProperty Name="RefIdVuelo" ColumnName="RefIdVuelo" />
             <ScalarProperty Name="fecha" ColumnName="fecha" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Clientes"><EntityTypeMapping TypeName="AgenciaViajeModel.Cliente"><MappingFragment StoreEntitySet="Clientes">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="nombre" ColumnName="nombre" />
-            <ScalarProperty Name="apellido" ColumnName="apellido" />
-            <ScalarProperty Name="telefono" ColumnName="telefono" />
-            <ScalarProperty Name="fechaDeNacimiento" ColumnName="fechaDeNacimiento" />
-            <ScalarProperty Name="correo" ColumnName="correo" />
-            <ScalarProperty Name="password" ColumnName="password" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Vueloes"><EntityTypeMapping TypeName="AgenciaViajeModel.Vuelo"><MappingFragment StoreEntitySet="Vueloes">
-            <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
-            <ScalarProperty Name="Destino" ColumnName="Destino" />
-            <ScalarProperty Name="Salida" ColumnName="Salida" />
-            <ScalarProperty Name="Llegada" ColumnName="Llegada" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <AssociationSetMapping Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" TypeName="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" StoreEntitySet="Boletoes">
-            <EndProperty Name="Clientes">
-              <ScalarProperty Name="Id" ColumnName="Cliente_Id" />
-            </EndProperty>
-            <EndProperty Name="Boletoes">
-              <ScalarProperty Name="Id" ColumnName="Id" />
-            </EndProperty>
-            <Condition ColumnName="Cliente_Id" IsNull="false" />
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" TypeName="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" StoreEntitySet="Boletoes">
-            <EndProperty Name="Vueloes">
-              <ScalarProperty Name="Id" ColumnName="Vuelo_Id" />
-            </EndProperty>
-            <EndProperty Name="Boletoes">
-              <ScalarProperty Name="Id" ColumnName="Id" />
-            </EndProperty>
-            <Condition ColumnName="Vuelo_Id" IsNull="false" />
-          </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -229,19 +72,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Agencia">
-        <EntityTypeShape EntityType="AgenciaViajeModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="4.75" Height="1.4279589843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="AgenciaViajeModel.Boleto" Width="1.5" PointX="3" PointY="1" Height="2.0853483072916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="AgenciaViajeModel.Cliente" Width="1.5" PointX="0.75" PointY="0.875" Height="2.2496956380208335" IsExpanded="true" />
-        <EntityTypeShape EntityType="AgenciaViajeModel.Vuelo" Width="1.5" PointX="0.75" PointY="5.125" Height="1.9210009765624996" IsExpanded="true" />
-        <AssociationConnector Association="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.0426741536458328" />
-          <ConnectorPoint PointX="3" PointY="2.0426741536458328" />
-        </AssociationConnector>
-        <AssociationConnector Association="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Vueloes_Vuelo_Id" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="6.64322998046875" />
-          <ConnectorPoint PointX="4.40625" PointY="6.64322998046875" />
-          <ConnectorPoint PointX="4.40625" PointY="3.0853483072916656" />
-        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

@@ -59,10 +59,11 @@ namespace ServicioWeb
         {
             AgenciaViajeEntities ave = new AgenciaViajeEntities();
             LineaAereaEntities le = new LineaAereaEntities();
-            int primero = le.Avions.Where(i => i.Id == ((int)le.Vueloes.Where(p => p.Id == idVuelo).FirstOrDefault().Avion.EntityKey.EntityKeyValues.FirstOrDefault().Value)).FirstOrDefault().CapacidadPasajeros;
+            int idAvion = (int)le.Vueloes.Where(p => p.Id == idVuelo).First().AvionReference.EntityKey.EntityKeyValues.First().Value;
+            int primero=le.Avions.Where(p=>p.Id==idAvion).First().CapacidadPasajeros;
             int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo).Count();
             int retorno = primero - segundo;
-            return 0;
+            return retorno;
         }
     }
 }
