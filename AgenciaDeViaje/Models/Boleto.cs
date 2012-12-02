@@ -12,6 +12,7 @@ namespace AgenciaDeViaje.Models
         public int tipo { get; set; }
         public int RefIdCliente { get; set; }
         public int RefIdVuelo { get; set; }
+        public DateTime fecha { get; set; }
         // Navigation properties
 
         public virtual Cliente Cliente { get; set; }
@@ -31,8 +32,8 @@ namespace AgenciaDeViaje.Models
             Vuelo vueloAux = new Vuelo();
             var aux =servicio.TodosVuelos().Where(p => p.Id == RefIdVuelo).First();
             vueloAux.Id=aux.Id;
-            vueloAux.Destino=servicio.Aeropuertos().Where(a=>a.Id==(Int32)aux.DestinoReference.EntityKey.EntityKeyValues.First().Value).First().Lugar ;
-            vueloAux.Procedencia = servicio.Aeropuertos().Where(a => a.Id == (Int32)aux.ProcedenciaReference.EntityKey.EntityKeyValues.First().Value).First().Lugar;
+            vueloAux.Destino=servicio.Aeropuertos().Where(a=>a.Id==(Int32)aux.AeropuertoReference.EntityKey.EntityKeyValues.First().Value).First().Lugar ;
+            vueloAux.Procedencia = servicio.Aeropuertos().Where(a => a.Id == (Int32)aux.Aeropuerto1Reference.EntityKey.EntityKeyValues.First().Value).First().Lugar;
             vueloAux.Salida=aux.FechaSalida;
            // vueloAux.Llegada=aux.Llegada;
             Vuelo = vueloAux;

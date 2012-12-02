@@ -125,6 +125,7 @@ namespace AgenciaDeViaje.Controllers
 
             boleto.tipo = 3;
             boleto.RefIdVuelo = id;
+            boleto.fecha = DateTime.Now;
             boleto.RefIdCliente = ((Cliente)Session["usuario"]).Id;
             db.Boletos.Add(boleto);
             db.SaveChanges();
@@ -136,5 +137,9 @@ namespace AgenciaDeViaje.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        
     }
+
+
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AgenciaDeViaje.Models;
 
 namespace AgenciaDeViaje
 {
@@ -37,30 +38,66 @@ namespace AgenciaDeViaje
             RegisterRoutes(RouteTable.Routes);
 
             Application["MyThread"] = new System.Threading.Timer(
-                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0,0,10, 0));
+                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0,0,0,10, 0));
 
 
         }
 
-        private void Accion(object state){
+        private void Accion(object state)
+        {
 
-            string basedirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-            string config_path = System.IO.Path.Combine(basedirectory, "Config-lapso.xml");
-
-            System.Xml.Linq.XDocument config = System.Xml.Linq.XDocument.Load(config_path);
-
-            TimeSpan diff = DateTime.Now -
-            Convert.ToDateTime(config.Root.Element("ultima-hora").Value);
-
-            if (diff.Seconds >= 10)
+            AgenciaDB db = new AgenciaDB();
+            try
             {
-                System.Diagnostics.Process.Start(@"D:\WINDOWS\NOTEPAD.EXE");
-            } 
+                foreach (var b in db.Boletos.Where(a => a.tipo == 3).ToList())
+                {
+                    TimeSpan diff = DateTime.Now -
+                   Convert.ToDateTime(b.fecha);
 
+                    if (diff.Seconds >= 10)
+                    {
+                        enviarCorreo(db.Clientes.Where(c=>c.Id==b.RefIdCliente).First().correo);
+                    }
+
+                }
+            }
+            catch (Exception ex) {
+                
+             Response.Redirect("Error.cshtml?source=" +  
+              HttpUtility.UrlEncode(Request.AppRelativeCurrentExecutionFilePath));
+
+    
 
 }
+            
+        }
+
+            
+
+
+        
+
+        public void enviarCorreo(string email)
+        {
+            System.Net.Mail.MailMessage correo = new System.Net.Mail.MailMessage();
+            correo.From = new System.Net.Mail.MailAddress("aerocaribedom@gmail.com");
+            correo.To.Add(email);
+            correo.Subject = "Correo de lista de espera";
+            correo.Body = "Este es un correo de aviso para informale que su reservacion ha expirado, ya que sobrepasa las 48 horas en lista de espera";
+            correo.Body = string.Format("Enviado las {0}:{1} a traves de Aero Caribe",DateTime.Now.Hour,DateTime.Now.Minute);
+            correo.IsBodyHtml = false;
+            correo.Priority = System.Net.Mail.MailPriority.Normal;
+
+
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
+
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            smtp.Credentials = new System.Net.NetworkCredential("aerocaribedom@gmail.com", "aero0000");
+            smtp.Send(correo);
+           
+        }
+        }
 
 
     }
-}
