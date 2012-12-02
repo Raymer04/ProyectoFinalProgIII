@@ -25,7 +25,7 @@ namespace ServicioWeb
 
             LineaEntities lineab = new LineaEntities();
 
-            List<Vueloes> vuelos = lineab.Vueloes.Where(v => v.Aeropuertoes.Id == destino && v.Aeropuertoes1.Id == procedencia
+            List<Vueloes> vuelos = lineab.Vueloes.Where(v => v.Destino.Id == destino && v.Procedencia.Id == procedencia
                && v.FechaSalida == fecha).ToList();
             return vuelos;
         }
@@ -57,10 +57,12 @@ namespace ServicioWeb
         [WebMethod]
         public int asientosDisponibles(int idVuelo)
         {
-
-            int disponibles = 0;
-
-            return disponibles;
+            AgenciaViajeEntities ave = new AgenciaViajeEntities();
+            LineaEntities le = new LineaEntities();
+            int primero = le.Avions.Where(i => i.Id == ((int)le.Vueloes.Where(p => p.Id == idVuelo).FirstOrDefault().AvionsReference.EntityKey.EntityKeyValues.FirstOrDefault().Value)).FirstOrDefault().CapacidadPasajeros;
+            int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo).Count();
+            int retorno = primero - segundo;
+            return retorno;
         }
     }
 }

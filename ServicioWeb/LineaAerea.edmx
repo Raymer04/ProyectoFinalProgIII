@@ -176,8 +176,8 @@
           <Property Name="FechaSalida" Type="DateTime" Nullable="false" />
           <Property Name="HoraSalida" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Duracion" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Aeropuertoes" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" FromRole="Vueloes" ToRole="Aeropuertoes" />
-          <NavigationProperty Name="Aeropuertoes1" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" FromRole="Vueloes" ToRole="Aeropuertoes" />
+          <NavigationProperty Name="Destino" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID" FromRole="Vueloes" ToRole="Aeropuertoes" />
+          <NavigationProperty Name="Procedencia" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Aeropuertoes_ProcedenciaID" FromRole="Vueloes" ToRole="Aeropuertoes" />
           <NavigationProperty Name="Avions" Relationship="LineaAerea.Models.LineaAereaDBModel.FK_dbo_Vueloes_dbo_Avions_AvionID" FromRole="Vueloes" ToRole="Avions" />
         </EntityType>
         <Association Name="FK_dbo_Vueloes_dbo_Aeropuertoes_DestinoID">
@@ -271,7 +271,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="LineaAerea">
+      <Diagram Name="LineaAerea" ZoomLevel="98">
         <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="4.75" Height="1.4279589843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Aeropuertoes" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7566536458333335" IsExpanded="true" />
         <EntityTypeShape EntityType="LineaAerea.Models.LineaAereaDBModel.Avions" Width="1.5" PointX="0.75" PointY="4.125" Height="1.7566536458333335" IsExpanded="true" />

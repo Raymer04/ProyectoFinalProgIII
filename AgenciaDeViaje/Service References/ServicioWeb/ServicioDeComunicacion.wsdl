@@ -32,8 +32,8 @@
               <s:element minOccurs="1" maxOccurs="1" name="FechaSalida" type="s:dateTime" />
               <s:element minOccurs="0" maxOccurs="1" name="HoraSalida" type="s:string" />
               <s:element minOccurs="1" maxOccurs="1" name="Duracion" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="AeropuertoesReference" type="tns:EntityReferenceOfAeropuertoes" />
-              <s:element minOccurs="0" maxOccurs="1" name="Aeropuertoes1Reference" type="tns:EntityReferenceOfAeropuertoes" />
+              <s:element minOccurs="0" maxOccurs="1" name="DestinoReference" type="tns:EntityReferenceOfAeropuertoes" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProcedenciaReference" type="tns:EntityReferenceOfAeropuertoes" />
               <s:element minOccurs="0" maxOccurs="1" name="AvionsReference" type="tns:EntityReferenceOfAvions" />
             </s:sequence>
           </s:extension>

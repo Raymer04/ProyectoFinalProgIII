@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AgenciaViajeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="AgenciaViajeModelStoreContainer">
+          <EntitySet Name="Boletoes" EntityType="AgenciaViajeModel.Store.Boletoes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Clientes" EntityType="AgenciaViajeModel.Store.Clientes" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" Association="AgenciaViajeModel.Store.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Boletoes" EntitySet="Boletoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Boletoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="RefIdCliente" Type="int" Nullable="false" />
+          <Property Name="RefIdVuelo" Type="int" Nullable="false" />
+          <Property Name="Cliente_Id" Type="int" />
+          <Property Name="Vuelo_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fechaDeNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="correo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
+          <End Role="Clientes" Type="AgenciaViajeModel.Store.Clientes" Multiplicity="0..1" />
+          <End Role="Boletoes" Type="AgenciaViajeModel.Store.Boletoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Boletoes">
+              <PropertyRef Name="Cliente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgenciaViajeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="AgenciaViajeEntities">
+          <EntitySet Name="Boletoes" EntityType="AgenciaViajeModel.Boletoes" />
+          <EntitySet Name="Clientes" EntityType="AgenciaViajeModel.Clientes" />
+          <AssociationSet Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" Association="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Boletoes" EntitySet="Boletoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Boletoes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="RefIdCliente" Type="Int32" Nullable="false" />
+          <Property Name="RefIdVuelo" Type="Int32" Nullable="false" />
+          <Property Name="Vuelo_Id" Type="Int32" />
+          <NavigationProperty Name="Clientes" Relationship="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" FromRole="Boletoes" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="telefono" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="fechaDeNacimiento" Type="DateTime" Nullable="false" />
+          <Property Name="correo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Boletoes" Relationship="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" FromRole="Clientes" ToRole="Boletoes" />
+        </EntityType>
+        <Association Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id">
+          <End Role="Clientes" Type="AgenciaViajeModel.Clientes" Multiplicity="0..1" />
+          <End Role="Boletoes" Type="AgenciaViajeModel.Boletoes" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="AgenciaViajeModelStoreContainer" CdmEntityContainer="AgenciaViajeEntities">
+          <EntitySetMapping Name="Boletoes"><EntityTypeMapping TypeName="AgenciaViajeModel.Boletoes"><MappingFragment StoreEntitySet="Boletoes">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="tipo" ColumnName="tipo" />
+            <ScalarProperty Name="RefIdCliente" ColumnName="RefIdCliente" />
+            <ScalarProperty Name="RefIdVuelo" ColumnName="RefIdVuelo" />
+            <ScalarProperty Name="Vuelo_Id" ColumnName="Vuelo_Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Clientes"><EntityTypeMapping TypeName="AgenciaViajeModel.Clientes"><MappingFragment StoreEntitySet="Clientes">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="apellido" ColumnName="apellido" />
+            <ScalarProperty Name="telefono" ColumnName="telefono" />
+            <ScalarProperty Name="fechaDeNacimiento" ColumnName="fechaDeNacimiento" />
+            <ScalarProperty Name="correo" ColumnName="correo" />
+            <ScalarProperty Name="password" ColumnName="password" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" TypeName="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" StoreEntitySet="Boletoes">
+            <EndProperty Name="Clientes">
+              <ScalarProperty Name="Id" ColumnName="Cliente_Id" />
+            </EndProperty>
+            <EndProperty Name="Boletoes">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="Cliente_Id" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="AgenciaViajes">
+        <EntityTypeShape EntityType="AgenciaViajeModel.Boletoes" Width="1.5" PointX="3" PointY="1.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenciaViajeModel.Clientes" Width="1.5" PointX="0.75" PointY="1" Height="2.5571907552083317" IsExpanded="true" />
+        <AssociationConnector Association="AgenciaViajeModel.FK_dbo_Boletoes_dbo_Clientes_Cliente_Id" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.2112939453125" />
+          <ConnectorPoint PointX="3" PointY="2.2112939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

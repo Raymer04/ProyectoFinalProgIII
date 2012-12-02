@@ -46,7 +46,7 @@ namespace AgenciaDeViaje.Controllers
                 ServicioWeb.ServicioDeComunicacionSoapClient servicio=new ServicioWeb.ServicioDeComunicacionSoapClient();
                 Boleto boleto = new Boleto();
                 
-                if (servicio.asientosDisponibles(id)== 0)
+                if (servicio.asientosDisponibles(id)<= 0)
                 {
 
                     return RedirectToAction("ListaEspera", "Boletos", new { id =id });

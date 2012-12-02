@@ -31,8 +31,8 @@ namespace AgenciaDeViaje.Models
             Vuelo vueloAux = new Vuelo();
             var aux =servicio.TodosVuelos().Where(p => p.Id == RefIdVuelo).First();
             vueloAux.Id=aux.Id;
-            vueloAux.Destino=servicio.Aeropuertos().Where(a=>a.Id==(Int32)aux.AeropuertoesReference.EntityKey.EntityKeyValues.First().Value).First().Lugar ;
-            vueloAux.Procedencia = servicio.Aeropuertos().Where(a => a.Id == (Int32)aux.Aeropuertoes1Reference.EntityKey.EntityKeyValues.First().Value).First().Lugar;
+            vueloAux.Destino=servicio.Aeropuertos().Where(a=>a.Id==(Int32)aux.DestinoReference.EntityKey.EntityKeyValues.First().Value).First().Lugar ;
+            vueloAux.Procedencia = servicio.Aeropuertos().Where(a => a.Id == (Int32)aux.ProcedenciaReference.EntityKey.EntityKeyValues.First().Value).First().Lugar;
             vueloAux.Salida=aux.FechaSalida;
            // vueloAux.Llegada=aux.Llegada;
             Vuelo = vueloAux;
