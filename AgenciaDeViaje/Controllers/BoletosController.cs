@@ -56,12 +56,10 @@ namespace AgenciaDeViaje.Controllers
                     boleto.tipo = 1;
                     boleto.RefIdVuelo = id;
                     boleto.RefIdCliente = ((Cliente)Session["usuario"]).Id;
+                    boleto.fecha = DateTime.Now;
                     db.Boletos.Add(boleto);
-                    if(db.SaveChanges()>0){
+                    db.SaveChanges();
                     
-                    }
-                    
-
                     return RedirectToAction("Index", "Boletos",new{tipo=1});
                 }
                 else if (tipo == 2)
@@ -69,6 +67,7 @@ namespace AgenciaDeViaje.Controllers
                     boleto.tipo = 2;
                     boleto.RefIdVuelo = id;
                     boleto.RefIdCliente = ((Cliente)Session["usuario"]).Id;
+                    boleto.fecha = DateTime.Now;
                     db.Boletos.Add(boleto);
                     db.SaveChanges();
                     return RedirectToAction("Index", "Boletos",new{tipo=2});

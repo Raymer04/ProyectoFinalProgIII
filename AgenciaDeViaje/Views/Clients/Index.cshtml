@@ -1,0 +1,109 @@
+﻿@model IEnumerable<AgenciaDeViaje.Models.Cliente>
+
+@{
+    ViewBag.Title = "Mantenimiento de Usuarios";
+}
+
+<h2>Mantenimiento de Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Crear Usuario", "Create")
+</p>
+<table id="listGrid">
+    <thead>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Tipo de Usuario
+        </th>
+        <th>Opciones</th>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+        @{
+    if (item.tipoUsuario == 1)
+    {
+        @Html.Label("Administrador");
+    }
+    else
+    {
+        @Html.Label("Usuario");
+    }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+            @{
+    if (item.tipoUsuario == 1)
+    {
+        @Html.ActionLink("Hacer Usuario", "Admin", new { id = item.Id }, new{id = "cambiar1"}) 
+        @Html.Label("|");
+
+    }
+    else
+    {
+       @Html.ActionLink("Hacer Administrador", "Admin", new { id = item.Id, }, new { id = "cambiar2" })
+       @Html.Label("|");
+    }
+            }
+            @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+   
+}
+ </tbody>
+</table>
+ <script type="text/javascript">
+     $(function () {
+         $('#cambiar1').click(function () {
+             if (confirm("Seguro desea Cambiar el tipo a 'Usuario'?")) {
+                 return true;
+             }
+             return false;
+         });
+         $('#cambiar2').click(function () {
+             if (confirm("Seguro desea Cambiar el tipo a 'Administrador'?")) {
+                 return true;
+             }
+             return false;
+         });
+//         $(document).ready(function () {
+//             $("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
+//         });
+     });
+    
+</script>
+

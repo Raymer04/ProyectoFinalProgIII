@@ -193,6 +193,7 @@
     <Content Include="Views\Vuelo\BuscarVuelo.cshtml" />
     <Content Include="Views\Boletos\ListaEspera.cshtml" />
     <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServicioWeb\" />

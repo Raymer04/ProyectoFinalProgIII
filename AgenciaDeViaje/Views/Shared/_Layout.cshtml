@@ -39,6 +39,11 @@
                     </li>
                     
                     <li>@Html.ActionLink("Acerca de nosotros", "About", "Home")</li>
+                   @{
+                       if(Session["usuario"]!=null){
+                    if(((int)Session["tipoUsuario"])==1){<li>@Html.ActionLink("Mantenimiento de Clientes", "Index", "Clients")</li>
+                       }}
+                       }
                 </ul>
             </div>
             <div id="main">

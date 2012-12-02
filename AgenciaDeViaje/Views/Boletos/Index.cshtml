@@ -8,7 +8,7 @@
 
 <table id="listGrid">
 	<thead>
-    <tr>
+ 
         <th>ID Boleto</th>
         <th>Procedencia</th>
         <th>Destino</th>
@@ -21,7 +21,7 @@
     { <th>Opciones</th>}
     break;
 }
-    </tr>
+    
 	</thead>
 	<tbody>
     @foreach (var item in Model) {  
@@ -31,8 +31,15 @@
         <td>@item.Vuelo.Destino</td>
         <td>@item.Vuelo.Salida</td>
         <td>@item.Vuelo.Llegada</td>
-        <td>
-        @if (item.tipo != 1) {@Html.ActionLink("Borrar", "Delete", null, new { id = item.Id }, new { @class = "button",id="borrar" }); 
+        
+        @if (item.tipo != 1) {<td> @Html.ActionLink("Borrar", "Delete", null, new { id = item.Id }, new { @class = "button",id="borrar" }); 
+              </td>                                                                                                            
+        }
+       
+    </tr>
+}
+</tbody>
+</table>
 <script type="text/javascript">
     $(function () {
         $('#borrar').click(function () {
@@ -43,13 +50,7 @@
         });
     });
 </script>
-                                                                                                                         
-        }
-        </td>
-    </tr>
-}
-</tbody>
-</table>
+
 <script type="text/javascript">
 	$(document).ready(function () {
 		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});

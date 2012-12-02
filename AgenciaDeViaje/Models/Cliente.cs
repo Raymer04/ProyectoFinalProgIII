@@ -12,7 +12,7 @@ namespace AgenciaDeViaje.Models
     public class Cliente
     {
         public int Id { get; set; }
-
+        public int tipoUsuario { get; set; }
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Nombre")]

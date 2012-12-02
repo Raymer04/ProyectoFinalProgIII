@@ -13,7 +13,19 @@ namespace AgenciaDeViaje.Controllers
     {
         private AgenciaDB db = new AgenciaDB();
 
-        
+        public ActionResult Index()
+        {
+            if (Session["usuario"] != null)
+            {
+                return View(db.Clientes.ToList());
+            }
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Clients");
+            }
+        }
+       
+
         //
         // GET: /Clients/Details/5
 
@@ -68,9 +80,41 @@ namespace AgenciaDeViaje.Controllers
  
         public ActionResult Edit(int id)
         {
-            Cliente cliente = db.Clientes.Find(id);
-            return View(cliente);
+            if (Session["usuario"] != null)
+            {
+
+                Cliente cliente = db.Clientes.Find(id);
+                return View(cliente);
+            }
+            else
+            {
+                return RedirectToAction("IniciarSesion", "Clients");
+            }
         }
+        public ActionResult Admin(int id)
+        {
+            Cliente cliente = db.Clientes.Find(id);
+            if (cliente.tipoUsuario == 0)
+            {
+                cliente.tipoUsuario = 1;
+            }
+            else
+            {
+                cliente.tipoUsuario = 0;
+            }
+            db.SaveChanges();
+            try
+            {
+
+                Response.Redirect(Request.UrlReferrer.ToString());
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
+      
 
         //
         // POST: /Clients/Edit/5
@@ -123,6 +167,7 @@ namespace AgenciaDeViaje.Controllers
                 Cliente cliente = db.Clientes.Where(p => p.correo == model.Correo && p.password == model.Password).First();
                 Session["usuario"] = cliente;
                 Session["nombre"] = cliente.nombre + " " + cliente.apellido;
+                Session["tipoUsuario"] = cliente.tipoUsuario;
                 try
                 {
                 
