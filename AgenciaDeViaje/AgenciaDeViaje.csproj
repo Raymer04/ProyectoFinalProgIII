@@ -90,6 +90,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="anuncio.png" />
     <Content Include="App_Data\wijmo\css\jquery-ui.css" />
     <Content Include="App_Data\wijmo\css\jquery-wijmo.css" />
     <Content Include="App_Data\wijmo\css\jquery.wijmo-complete.all.2.0.5.min.css" />
@@ -194,6 +195,9 @@
     <Content Include="Views\Boletos\ListaEspera.cshtml" />
     <Content Include="Views\Clients\Details.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\BuscarVuelo.cshtml" />
+    <Content Include="Views\Vuelo\Ida.cshtml" />
+    <Content Include="Views\Vuelo\IdaVuelta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServicioWeb\" />
@@ -221,7 +225,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>410</DevelopmentServerPort>
+          <DevelopmentServerPort>21610</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

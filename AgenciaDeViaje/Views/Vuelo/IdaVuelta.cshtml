@@ -1,0 +1,74 @@
+﻿@if (Session["IdaVuelta"] != null)
+{
+   
+      
+       @*@Functions public static bool disponibilidadVuelos(int idVuelo)
+        {
+            AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
+            return servicio.disponbilidadVuelo(idVuelo);
+        }*@
+
+<fieldset>
+
+    <legend>Vuelos Vuelta</legend>
+    <table id="listaG">
+
+<thead>
+    <tr>
+        <th>
+            Procedencia
+        </th>
+        <th>
+            Destino
+        </th>
+        <th>
+            Salida
+        </th>
+        <th>
+            Llegada
+        </th>
+        <th>
+            Opciones
+        </th>
+    </tr>
+    </thead>
+    
+
+    <tbody>
+@foreach (var item in (List<AgenciaDeViaje.Models.Vuelo>)Session["IdaVuelta"])
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Procedencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Llegada)
+        </td>
+       @* @if(disponibilidadVuelos(item.Id)){*@
+       
+        <td>
+            @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo = 1, id = item.Id }, new { @class = "radio", id = "verificar" }) |
+            @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo = 2, id = item.Id }, new { @class = "radio", id = "verificar" })               
+       
+       </td>
+       
+    </tr>
+}
+
+</tbody>
+
+</table>
+    
+</fieldset>
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#listaG").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
+        });
+</script>

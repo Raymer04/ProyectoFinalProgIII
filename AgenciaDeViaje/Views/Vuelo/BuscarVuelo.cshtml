@@ -2,78 +2,20 @@
 @{
     ViewBag.Title = "BuscarVuelo";
 }
-@section header{
-    <script id="scriptInit" type="text/javascript">
-        $(document).ready(function () {
-            $("#lista").wijgrid({
-                allowSorting: true,
-                allowPaging: true,
-                pageSize: 10
 
-            });
-        });
-    </script>
-}
 
-@functions{
-      
-      public static bool disponibilidadVuelos(int idVuelo){
-          AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
-        return servicio.disponbilidadVuelo(idVuelo);
-      }
-}
 
 
 
 <h2>Buscar Vuelos</h2>
 
-<table id="lista">
 
-<thead>
-    <tr>
-        <th>
-            Procedencia
-        </th>
-        <th>
-            Destino
-        </th>
-        <th>
-            Salida
-        </th>
-        <th>
-            Llegada
-        </th>
-        <th>
-            Opciones
-        </th>
-    </tr>
-    </thead>
-    
+<div>
+@Html.Partial("Ida")
+</div>
+<div>
+@Html.Partial("IdaVuelta")
+</div>
 
-    <tbody>
-@foreach (var item in Model) {
-    
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Procedencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Destino)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Llegada)
-        </td>
-        @if(disponibilidadVuelos(item.Id)){
-        <td>
-            @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo=1, id = item.Id }, new { @class = "label",id="verificar" }) |
-            @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo = 2, id = item.Id }, new { @class = "label", id = "verificar"})               
-        </td>}
-    </tr>
+       
 }
-
-</tbody>
-
-</table>

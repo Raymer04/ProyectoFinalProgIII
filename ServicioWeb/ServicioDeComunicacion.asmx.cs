@@ -21,7 +21,7 @@ namespace ServicioWeb
     {
 
         [WebMethod]
-        public List<Vuelo> VuelosIdaVuelta(int procedencia, int destino, DateTime fechaS,DateTime fechaLl)
+        public List<Vuelo> VuelosVuelta(int procedencia, int destino, DateTime fechaS, DateTime fechaLl)
         {
 
             LineaAereaEntities lineab = new LineaAereaEntities();
@@ -30,6 +30,7 @@ namespace ServicioWeb
             {
                 vuelos = lineab.Vueloes.Where(v => v.Aeropuerto.Id == procedencia && v.Aeropuerto1.Id == destino
                    && v.FechaSalida == fechaLl).ToList();
+
             }
             return vuelos;
         }
@@ -47,6 +48,7 @@ namespace ServicioWeb
             }
             return vuelos;
         }
+
 
         [WebMethod]
         public List<Aeropuerto> Aeropuertos()

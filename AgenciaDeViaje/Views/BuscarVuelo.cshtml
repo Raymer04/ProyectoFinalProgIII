@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AgenciaDeViaje.Models.Vuelo>
+@{
+    ViewBag.Title = "BuscarVuelo";
+}
+@section header{
+    <script id="scriptInit" type="text/javascript">
+        $(document).ready(function () {
+            $("#lista").wijgrid({
+                allowSorting: true,
+                allowPaging: true,
+                pageSize: 10
+
+            });
+        });
+    </script>
+}
+
+
+<h2>Buscar Vuelos</h2>
+
+
+<div>
+@Html.Partial("Ida")
+</div>
+<div>
+@Html.Partial("IdaVuelta")
+</div>
+

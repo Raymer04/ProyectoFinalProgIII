@@ -3,7 +3,7 @@
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">web service de comunicacion Proyecto Final</wsdl:documentation>
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/servicioCom">
-      <s:element name="VuelosIdaVuelta">
+      <s:element name="VuelosVuelta">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="procedencia" type="s:int" />
@@ -13,10 +13,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="VuelosIdaVueltaResponse">
+      <s:element name="VuelosVueltaResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="VuelosIdaVueltaResult" type="tns:ArrayOfVuelo" />
+            <s:element minOccurs="0" maxOccurs="1" name="VuelosVueltaResult" type="tns:ArrayOfVuelo" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -170,11 +170,11 @@
       </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="VuelosIdaVueltaSoapIn">
-    <wsdl:part name="parameters" element="tns:VuelosIdaVuelta" />
+  <wsdl:message name="VuelosVueltaSoapIn">
+    <wsdl:part name="parameters" element="tns:VuelosVuelta" />
   </wsdl:message>
-  <wsdl:message name="VuelosIdaVueltaSoapOut">
-    <wsdl:part name="parameters" element="tns:VuelosIdaVueltaResponse" />
+  <wsdl:message name="VuelosVueltaSoapOut">
+    <wsdl:part name="parameters" element="tns:VuelosVueltaResponse" />
   </wsdl:message>
   <wsdl:message name="VuelosIdaSoapIn">
     <wsdl:part name="parameters" element="tns:VuelosIda" />
@@ -207,9 +207,9 @@
     <wsdl:part name="parameters" element="tns:disponbilidadVueloResponse" />
   </wsdl:message>
   <wsdl:portType name="ServicioDeComunicacionSoap">
-    <wsdl:operation name="VuelosIdaVuelta">
-      <wsdl:input message="tns:VuelosIdaVueltaSoapIn" />
-      <wsdl:output message="tns:VuelosIdaVueltaSoapOut" />
+    <wsdl:operation name="VuelosVuelta">
+      <wsdl:input message="tns:VuelosVueltaSoapIn" />
+      <wsdl:output message="tns:VuelosVueltaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="VuelosIda">
       <wsdl:input message="tns:VuelosIdaSoapIn" />
@@ -234,8 +234,8 @@
   </wsdl:portType>
   <wsdl:binding name="ServicioDeComunicacionSoap" type="tns:ServicioDeComunicacionSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="VuelosIdaVuelta">
-      <soap:operation soapAction="http://localhost/servicioCom/VuelosIdaVuelta" style="document" />
+    <wsdl:operation name="VuelosVuelta">
+      <soap:operation soapAction="http://localhost/servicioCom/VuelosVuelta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -291,8 +291,8 @@
   </wsdl:binding>
   <wsdl:binding name="ServicioDeComunicacionSoap12" type="tns:ServicioDeComunicacionSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="VuelosIdaVuelta">
-      <soap12:operation soapAction="http://localhost/servicioCom/VuelosIdaVuelta" style="document" />
+    <wsdl:operation name="VuelosVuelta">
+      <soap12:operation soapAction="http://localhost/servicioCom/VuelosVuelta" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
