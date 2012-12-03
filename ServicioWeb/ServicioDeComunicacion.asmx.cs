@@ -58,8 +58,6 @@ namespace ServicioWeb
             return aeropuertos;
         }
 
-
-
         [WebMethod]
         public List<Vuelo> TodosVuelos()
         {
@@ -75,9 +73,6 @@ namespace ServicioWeb
         [WebMethod]
         public int asientosDisponibles(int idVuelo)
         {
-
-            //Application["MyThread"] = new System.Threading.Timer(
-            //    new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 10, 0));          
             AgenciaViajeEntities ave = new AgenciaViajeEntities();
             LineaAereaEntities le = new LineaAereaEntities();
             int idAvion = (int)le.Vueloes.Where(p => p.Id == idVuelo).First().AvionReference.EntityKey.EntityKeyValues.First().Value;
@@ -103,54 +98,5 @@ namespace ServicioWeb
             return true;
         }
 
-        private void Accion(object state)
-        {
-            AgenciaViajeEntities db = new AgenciaViajeEntities();
-            try
-            {
-                foreach (var b in db.Boletoes.ToList())
-                {
-                    TimeSpan diff = DateTime.Now -
-                   Convert.ToDateTime(b.fecha);
-
-                    if (diff.Days >= 10)
-                    {
-                        enviarCorreo(db.Clientes.Where(c => c.Id == b.RefIdCliente && b.tipo == 3).First().correo, "Este es un correo para informarle que su reservacion ha expirado ya que sobrepasa las 48 horas habiles");
-                        Boleto boleto = db.Boletoes.Where(c => c.Id == b.RefIdCliente && b.tipo == 3).First();
-                        db.DeleteObject(boleto);
-                        db.SaveChanges();
-                        enviarCorreo(db.Clientes.Where(c => c.Id == b.RefIdCliente && b.tipo == 2).First().correo, "Este es un correo para informarle que tenemos un asiento disponible para su solicitud ampliacion de vuelo");
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        }
-
-
-
-        public void enviarCorreo(string email,string cuerpo)
-        {
-            System.Net.Mail.MailMessage correo = new System.Net.Mail.MailMessage();
-            correo.From = new System.Net.Mail.MailAddress("aerocaribedom@gmail.com");
-            correo.To.Add(email);
-            correo.Subject = "Correo de lista de espera";
-            correo.Body = cuerpo;
-            correo.IsBodyHtml = false;
-            correo.Priority = System.Net.Mail.MailPriority.Normal;
-
-
-            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
-
-            smtp.Host = "smtp.gmail.com";
-            smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("aerocaribedom@gmail.com", "aero0000");
-            smtp.Send(correo);
-
-        }
     }
 }

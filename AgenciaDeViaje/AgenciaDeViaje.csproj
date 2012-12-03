@@ -75,6 +75,7 @@
     <Compile Include="Models\AgenciaDB.cs" />
     <Compile Include="Models\Boleto.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\DaemonReservaciones.cs" />
     <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
