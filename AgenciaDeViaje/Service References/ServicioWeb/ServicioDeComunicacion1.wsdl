@@ -349,10 +349,10 @@
   <wsdl:service name="ServicioDeComunicacion">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">web service de comunicacion Proyecto Final</wsdl:documentation>
     <wsdl:port name="ServicioDeComunicacionSoap" binding="tns:ServicioDeComunicacionSoap">
-      <soap:address location="http://localhost:9871/ServicioDeComunicacion.asmx" />
+      <soap:address location="http://localhost:21505/ServicioDeComunicacion.asmx" />
     </wsdl:port>
     <wsdl:port name="ServicioDeComunicacionSoap12" binding="tns:ServicioDeComunicacionSoap12">
-      <soap12:address location="http://localhost:9871/ServicioDeComunicacion.asmx" />
+      <soap12:address location="http://localhost:21505/ServicioDeComunicacion.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

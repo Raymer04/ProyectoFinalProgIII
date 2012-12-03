@@ -18,11 +18,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9871/ServicioDeComunicacion.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:21505/ServicioDeComunicacion.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServicioDeComunicacion.wsdl" MetadataType="Wsdl" ID="4b3bab1f-785b-4bee-9674-7a186b732efe" SourceId="1" SourceUrl="http://localhost:9871/ServicioDeComunicacion.asmx?wsdl" />
-    <MetadataFile FileName="ServicioDeComunicacion.disco" MetadataType="Disco" ID="6a4dc2f3-d258-4211-9f16-083b96612c51" SourceId="1" SourceUrl="http://localhost:9871/ServicioDeComunicacion.asmx?disco" />
+    <MetadataFile FileName="ServicioDeComunicacion1.wsdl" MetadataType="Wsdl" ID="e86f4ceb-ed94-4698-a77b-707fd8546d63" SourceId="1" SourceUrl="http://localhost:21505/ServicioDeComunicacion.asmx?wsdl" />
+    <MetadataFile FileName="ServicioDeComunicacion1.disco" MetadataType="Disco" ID="001558f4-84ce-42a6-8232-a5f7bdc90046" SourceId="1" SourceUrl="http://localhost:21505/ServicioDeComunicacion.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

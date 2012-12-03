@@ -1,12 +1,14 @@
-﻿@if (Session["IdaVuelta"] != null)
-{
-   
-      
-       @*@Functions public static bool disponibilidadVuelos(int idVuelo)
-        {
+﻿@functions{ 
+       public static bool disponibilidadVuelos(int idVuelo) {
             AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
             return servicio.disponbilidadVuelo(idVuelo);
-        }*@
+        }
+        
+        }
+
+@if (Session["IdaVuelta"] != null)
+{
+   
 
 <fieldset>
 
@@ -50,14 +52,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.Llegada)
         </td>
-       @* @if(disponibilidadVuelos(item.Id)){*@
+       @if (disponibilidadVuelos(item.Id))
+       {
        
         <td>
             @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo = 1, id = item.Id }, new { @class = "radio", id = "verificar" }) |
             @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo = 2, id = item.Id }, new { @class = "radio", id = "verificar" })               
        
        </td>
-       
+       }
     </tr>
 }
 
@@ -66,7 +69,7 @@
 </table>
     
 </fieldset>
-    }
+}
     <script type="text/javascript">
         $(document).ready(function () {
             $("#listaG").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });

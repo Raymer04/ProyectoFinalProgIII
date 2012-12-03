@@ -1,11 +1,14 @@
-﻿  @if (Session["Ida"] != null)
-  {
-
- @* @functions public static bool disponibilidadVuelos(int idVuelo)
-      {
+﻿ @functions{ 
+ public static bool disponibilidadVuelos(int idVuelo) {
           AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
           return servicio.disponbilidadVuelo(idVuelo);
-      }*@
+      }
+      }
+ 
+  @if (Session["Ida"] != null)
+  {
+
+
 
 <fieldset>
 
@@ -52,14 +55,15 @@
             @Html.DisplayFor(modelItem => item.Llegada)
         </td>
         
-        @* @if(disponibilidadVuelos(item.Id)){*@
+         @if (disponibilidadVuelos(item.Id))
+         {
             <td>
        
-            @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo=1, id = item.Id }, new { @class = "label",id="verificar" }) |
-            @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo = 2, id = item.Id }, new { @class = "label", id = "verificar"})               
+            @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo = 1, id = item.Id }, new { @class = "label", id = "verificar" }) |
+            @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo = 2, id = item.Id }, new { @class = "label", id = "verificar" })               
         </td>
         
-       
+         }
     </tr>
 }
 

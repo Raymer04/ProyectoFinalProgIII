@@ -123,13 +123,13 @@
     <None Include="Service References\ServicioWeb\AgenciaDeViaje.ServicioWeb.Vuelo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServicioWeb\ServicioDeComunicacion.disco" />
     <None Include="Service References\ServicioWeb\configuration91.svcinfo" />
     <None Include="Service References\ServicioWeb\configuration.svcinfo" />
     <None Include="Service References\ServicioWeb\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ServicioWeb\ServicioDeComunicacion1.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -190,7 +190,6 @@
     <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\Boletos\Index.cshtml" />
     <Content Include="Views\Clients\IniciarSesion.cshtml" />
-    <None Include="Service References\ServicioWeb\ServicioDeComunicacion.wsdl" />
     <Content Include="Views\Vuelo\BuscarVuelo.cshtml" />
     <Content Include="Views\Boletos\ListaEspera.cshtml" />
     <Content Include="Views\Clients\Details.cshtml" />
@@ -198,6 +197,7 @@
     <Content Include="Views\BuscarVuelo.cshtml" />
     <Content Include="Views\Vuelo\Ida.cshtml" />
     <Content Include="Views\Vuelo\IdaVuelta.cshtml" />
+    <None Include="Service References\ServicioWeb\ServicioDeComunicacion1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServicioWeb\" />

@@ -16,7 +16,7 @@ namespace AgenciaDeViaje.Controllers
         {
             var b = (ServicioWeb.Vuelo[])null;
             var n = (ServicioWeb.Vuelo[])null;
-            List<Vuelo> vuelos = null;
+            List<Vuelo> vuelos = new List<Vuelo>();
             ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
             if (model.Modo.Equals("Ida"))
             {
