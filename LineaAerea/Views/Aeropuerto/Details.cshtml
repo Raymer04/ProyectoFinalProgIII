@@ -1,22 +1,22 @@
 ﻿@model LineaAerea.Models.Aeropuerto
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>Aeropuerto</legend>
 
-    <div class="display-label">Nombre</div>
+    <div class="display-label" tyle="font-weight: bold">Nombre</div>
     <div class="display-field">@Model.Nombre</div>
 
-    <div class="display-label">Lugar</div>
+    <div class="display-label" tyle="font-weight: bold">Lugar</div>
     <div class="display-field">@Model.Lugar</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+    @Html.ActionLink("Editar", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
+    @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "button" })
 </p>
 

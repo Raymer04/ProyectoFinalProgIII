@@ -4,25 +4,25 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <fieldset>
     <legend>Usuarios</legend>
 
-    <div class="display-label">Nombre</div>
+    <div class="display-label" style="font-weight: bold">Nombre</div>
     <div class="display-field">@Model.Nombre</div>
 
-    <div class="display-label">Apellido</div>
+    <div class="display-label" style="font-weight: bold">Apellido</div>
     <div class="display-field">@Model.Apellido</div>
 
-    <div class="display-label">Usuario</div>
+    <div class="display-label" style="font-weight: bold">Usuario</div>
     <div class="display-field">@Model.Usuario</div>
 
-    <div class="display-label">Password</div>
+    <div class="display-label" style="font-weight: bold">Password</div>
     <div class="display-field">@Model.Password</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+    @Html.ActionLink("Editar", "Edit", null, new { id=Model.Id }, new { @class = "button" }) |
+    @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "button" })
 </p>
 

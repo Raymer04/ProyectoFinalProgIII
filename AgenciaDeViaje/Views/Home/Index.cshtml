@@ -1,6 +1,6 @@
 ﻿@model AgenciaDeViaje.Models.Vuelo
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Pagina de inicio";
 }
 
     <script id="scriptInitial" type="text/javascript">
@@ -19,7 +19,7 @@
     
      @Html.ValidationSummary(true)
 
-        <div id="tabs" style="width: 300px;">
+        <div id="tabs" style="width: 400px; height: 320px;">
         <ul>
 			<li><a href="#tabs-1">Vuelos</a></li>
            
@@ -42,7 +42,9 @@
                     <tr>
                          <td> Procedencia:</td>
                          <td>
-                            @Html.DropDownListFor(m => Model.Procedencia, (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Selecciona--")
+                            @Html.DropDownList("Procedencia", (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Selecciona--", 
+                            new { style = "width: 200px;" })
+                            
                          </td>
                          
                     </tr>
@@ -52,7 +54,7 @@
                          
                          <td>
                          
-                          @Html.DropDownListFor(m => Model.Destino, (IEnumerable<SelectListItem>)ViewBag.Destinos, "--Selecciona--")
+                          @Html.DropDownList("Destino", (IEnumerable<SelectListItem>)ViewBag.Destinos, "--Selecciona--", new { style = "width: 200px;" })
           
                          </td>
                     
@@ -78,10 +80,12 @@
                       
                       </td>
                       </tr>
-                   
                 </table>
             </div>
-            <div style="margin: -12px 0px 0px 50px"><a href="" ><img src="../../anuncio.png"/></a></div>
+            <div style="margin: -60% 0% 0px 450px;  width: 700px; height: 300px;">
+           <a href=""><img src="../../anuncio.png", alt="Edit" /></a>
+
+</div>
            
         </div>
       <script type="text/javascript">

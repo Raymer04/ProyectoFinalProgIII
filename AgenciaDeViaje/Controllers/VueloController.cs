@@ -18,6 +18,8 @@ namespace AgenciaDeViaje.Controllers
             var n = (ServicioWeb.Vuelo[])null;
             List<Vuelo> vuelos = new List<Vuelo>();
             ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
+            Session.Contents.RemoveAll();
+
             if (model.Modo.Equals("Ida"))
             {
                 b = a.VuelosIda(Convert.ToInt32(model.Procedencia),
@@ -42,7 +44,7 @@ namespace AgenciaDeViaje.Controllers
                     Session["Ida"] = vuelos;
                 }
 
-                if (vuelos.Count == 0)
+                if (vuelos==null)
                 {
                     TempData["error"] = "No encontramos ningun vuelo que coincida con tu busqueda";
                     return RedirectToAction("Index", "Home");
@@ -57,11 +59,13 @@ namespace AgenciaDeViaje.Controllers
                     Convert.ToInt32(model.Destino), model.Salida);
 
                 ViewBag.aeropuertos = a.Aeropuertos().ToList();
+                Session.Contents.RemoveAll();
 
 
 
                 foreach (var dato in b)
                 {
+                   
                     vuelos = new List<Vuelo>();
                     Vuelo vuelo = new Vuelo();
                     string[] time = dato.HoraSalida.Split(':');
@@ -105,6 +109,8 @@ namespace AgenciaDeViaje.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
     }
     
 }

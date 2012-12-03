@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Inicio</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "button" })
+    @Html.ActionLink("Crear Nuevo", "Create", null, new { @class = "button" })
 </p>
 <table id="listGrid">
 	<thead>
@@ -32,7 +32,6 @@
     <tr>
         <td>
             @Html.ActionLink("Edit", "Edit", null, new { id=item.Id }, new { @class = "button" }) 
-            @Html.ActionLink("Details", "Details", null, new { id=item.Id }, new { @class = "button" }) 
             @Html.ActionLink("Delete", "Delete", null, new { id=item.Id }, new { @class = "button" })
         </td>
         <td>

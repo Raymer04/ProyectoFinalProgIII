@@ -1,31 +1,31 @@
 ﻿@model LineaAerea.Models.Usuarios
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Esta seguro que desea eliminar esto?</h3>
 <fieldset>
     <legend>Usuarios</legend>
 
-    <div class="display-label">Nombre</div>
+    <div class="display-label" style="font-weight: bold">Nombre</div>
     <div class="display-field">@Model.Nombre</div>
 
-    <div class="display-label">Apellido</div>
+    <div class="display-label" style="font-weight: bold">Apellido</div>
     <div class="display-field">@Model.Apellido</div>
 
-    <div class="display-label">Usuario</div>
+    <div class="display-label" style="font-weight: bold">Usuario</div>
     <div class="display-field">@Model.Usuario</div>
 
-    <div class="display-label">Password</div>
+    <div class="display-label" style="font-weight: bold">Password</div>
     <div class="display-field">@Model.Password</div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> 
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+        @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "button" })
     </p>
 }
 

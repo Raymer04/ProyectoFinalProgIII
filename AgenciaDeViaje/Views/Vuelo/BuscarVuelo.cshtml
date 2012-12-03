@@ -2,6 +2,20 @@
 @{
     ViewBag.Title = "BuscarVuelo";
 }
+<<<<<<< HEAD
+=======
+
+
+@functions{
+      
+      public static bool disponibilidadVuelos(int idVuelo){
+          AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
+        return servicio.disponbilidadVuelo(idVuelo);
+      }
+}
+
+
+>>>>>>> last commit
 <h2>Buscar Vuelos</h2>
 
 <div>
@@ -9,4 +23,8 @@
 </div>
 <div>
 @Html.Partial("IdaVuelta")
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> last commit
