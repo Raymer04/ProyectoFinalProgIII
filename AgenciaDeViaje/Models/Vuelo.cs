@@ -18,6 +18,7 @@ namespace AgenciaDeViaje.Models
         public int Id { get; set; }
         public string Procedencia { get; set; }
         public string Destino { get; set; }
+        public string Modo { get; set; }
         public System.DateTime Salida { get; set; }
         public System.DateTime Llegada { get; set; }
     

@@ -14,22 +14,29 @@ namespace AgenciaDeViaje.Controllers
         
         public ActionResult BuscarVuelo(Vuelo model)
         {
-            
-                ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
-                
-                var b = a.VuelosDisponibles(Convert.ToInt32(model.Procedencia), Convert.ToInt32(model.Destino), model.Salida);
-                //var b = a.TodosVuelos();
-               ViewBag.aeropuertos= a.Aeropuertos().ToList();
+            var b = (ServicioWeb.Vuelo[])null;
+               ServicioWeb.ServicioDeComunicacionSoapClient a = new ServicioWeb.ServicioDeComunicacionSoapClient();
+               if (model.Modo.Equals("Ida")) {
+                   b=a.VuelosIda(Convert.ToInt32(model.Procedencia),
+                       Convert.ToInt32(model.Destino), model.Salida);
+               }
+               else if (model.Modo.Equals("Ida y Vuelta")) {
+                  b = a.VuelosIdaVuelta(Convert.ToInt32(model.Procedencia),
+                      Convert.ToInt32(model.Destino), model.Salida, model.Llegada);
+               }
+              
+            ViewBag.aeropuertos= a.Aeropuertos().ToList();
               
                 List<Vuelo> vuelos = new List<Vuelo>();
-                DateTime hora = new DateTime(2012, 10, 16, 20, 0, 0, 0);
             
                 foreach (var dato in b)
                 {
                     
                     Vuelo vuelo = new Vuelo();
-                    vuelo.Salida =  dato.FechaSalida;
-                    vuelo.Llegada = hora;//dato.Llegada;
+                    string[] time=dato.HoraSalida.Split(':');
+                    string[] min = time[1].Split(' ');
+                    vuelo.Salida = dato.FechaSalida.AddHours(Convert.ToInt32(time[0])).AddMinutes(Convert.ToInt32(min[0]));
+                    vuelo.Llegada = vuelo.Salida.AddHours(dato.Duracion);
                     vuelo.Id = dato.Id;
                     vuelo.Destino = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.AeropuertoReference.EntityKey.EntityKeyValues.First().Value).Lugar;
                     vuelo.Procedencia = a.Aeropuertos().ToList().Find(p => p.Id == (Int32)dato.Aeropuerto1Reference.EntityKey.EntityKeyValues.First().Value).Lugar;

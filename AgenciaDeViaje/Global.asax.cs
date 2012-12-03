@@ -28,6 +28,7 @@ namespace AgenciaDeViaje
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+
         }
 
         protected void Application_Start()
@@ -38,44 +39,62 @@ namespace AgenciaDeViaje
             RegisterRoutes(RouteTable.Routes);
 
             Application["MyThread"] = new System.Threading.Timer(
-                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0,0,0,10, 0));
+                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 10, 0)); 
+
             
 
         }
 
         private void Accion(object state)
         {
-
             AgenciaDB db = new AgenciaDB();
             try
             {
-                foreach (var b in db.Boletos.Where(a => a.tipo == 3).ToList())
-                {
-                    TimeSpan diff = DateTime.Now -
-                   Convert.ToDateTime(b.fecha);
+                //foreach (var b in db.Boletos.ToList())
+                //{
+                //    TimeSpan diff = DateTime.Now -
+                //   Convert.ToDateTime(b.fecha);
 
-                    if (diff.Seconds >= 10)
-                    {
-                        enviarCorreo(db.Clientes.Where(c=>c.Id==b.RefIdCliente).First().correo);
-                    }
+                //    if (diff.Days >= 10)
+                //    {
+                //        enviarCorreo(db.Clientes.Where(c => c.Id == b.RefIdCliente && b.tipo == 3).First().correo, "Este es un correo para informarle que su reservacion ha expirado ya que sobrepasa las 48 horas habiles");
+                //        Boleto boleto = db.Boletos.Where(c => c.Id == b.RefIdCliente && b.tipo == 3).First();
+                //        db.Boletos.Remove(boleto);
+                //        db.SaveChanges();
+                //        db.SaveChanges();
+                //        enviarCorreo(db.Clientes.Where(c => c.Id == b.RefIdCliente && b.tipo == 2).First().correo, "Este es un correo para informarle que tenemos un asiento disponible para su solicitud ampliacion de vuelo");
+                //    }
 
-                }
+                //}
+
+
+                //foreach (var b in db.Boletos.Where(a => a.tipo == 3).ToList())
+                //{
+                //    TimeSpan diff = DateTime.Now -
+                //   Convert.ToDateTime(b.fecha);
+ 
+          
+                //   if (diff.Seconds >= 10)
+                //   {
+                //        enviarCorreo(db.Clientes.Where(c=>c.Id==b.RefIdCliente).First().correo,"klk");
+                //    }
+ 
+                //}
+                      enviarCorreo("saby.decrease@gmail.com");
             }
             catch (Exception ex) {
                 
-             Response.Redirect("Error.cshtml?source=" +  
+             Response.Redirect("Error.cshtml?source="+  
               HttpUtility.UrlEncode(Request.AppRelativeCurrentExecutionFilePath));
+ 
 
-    
+ 
 
-}
+            }
             
         }
 
-            
 
-
-        
 
         public void enviarCorreo(string email)
         {
@@ -99,5 +118,7 @@ namespace AgenciaDeViaje
         }
         }
 
+        }
 
-    }
+       
+        

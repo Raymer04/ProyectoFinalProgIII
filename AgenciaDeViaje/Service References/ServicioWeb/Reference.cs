@@ -15,13 +15,21 @@ namespace AgenciaDeViaje.ServicioWeb {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost/servicioCom", ConfigurationName="ServicioWeb.ServicioDeComunicacionSoap")]
     public interface ServicioDeComunicacionSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/VuelosDisponibles", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/VuelosIdaVuelta", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelo[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
-        Vuelo[] VuelosDisponibles(int procedencia, int destino, System.DateTime fecha);
+        Vuelo[] VuelosIdaVuelta(int procedencia, int destino, System.DateTime fechaS, System.DateTime fechaLl);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/VuelosIda", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(RelatedEnd))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(StructuralObject))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Vuelo[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EntityKeyMember[]))]
+        Vuelo[] VuelosIda(int procedencia, int destino, System.DateTime fechaS);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://localhost/servicioCom/Aeropuertos", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -449,8 +457,12 @@ namespace AgenciaDeViaje.ServicioWeb {
                 base(binding, remoteAddress) {
         }
         
-        public Vuelo[] VuelosDisponibles(int procedencia, int destino, System.DateTime fecha) {
-            return base.Channel.VuelosDisponibles(procedencia, destino, fecha);
+        public Vuelo[] VuelosIdaVuelta(int procedencia, int destino, System.DateTime fechaS, System.DateTime fechaLl) {
+            return base.Channel.VuelosIdaVuelta(procedencia, destino, fechaS, fechaLl);
+        }
+        
+        public Vuelo[] VuelosIda(int procedencia, int destino, System.DateTime fechaS) {
+            return base.Channel.VuelosIda(procedencia, destino, fechaS);
         }
         
         public Aeropuerto[] Aeropuertos() {

@@ -128,7 +128,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Config-lapso.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

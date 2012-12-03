@@ -26,12 +26,23 @@
 		</ul>
             <div id="tabs-1">
                 <table style="border:hidden" cellpadding="5">
-
+                    <tr>
+                        <td>
+                           @Html.RadioButton("Modo", "Ida", true, new { @onclick = "ocultar(this.value)" }) Ida
+                            
+                           
+                        </td>
+                        <td>
+                           @Html.RadioButton("Modo", "Ida y Vuelta", false, new { @onclick = "ocultar(this.value)" }) Ida y Vuelta
+                           
+                        </td>
+                        
+                    </tr>
+                    
                     <tr>
                          <td> Procedencia:</td>
                          <td>
-                          @Html.DropDownListFor(m => Model.Procedencia, (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Selecciona--")
-                          
+                            @Html.DropDownListFor(m => Model.Procedencia, (IEnumerable<SelectListItem>)ViewBag.Procedencia, "--Selecciona--")
                          </td>
                          
                     </tr>
@@ -47,11 +58,19 @@
                     
                     </tr>
                     <tr>
-                        <td><label>Fecha:</label></td>
+                        <td>Fecha salida:</td>
                        <td> @Html.EditorFor(m => Model.Salida)</td>
-                    
-	                
+                   </tr>
+                    <tr>
+                        <td><div id="loculto" style="display:none">Fecha llegada:</div></td>
+                       <td><div id="toculto" style="display:none">
+                           @Html.EditorFor(m => Model.Llegada)
+                       </div>
+                       </td>
                     </tr>
+	                
+                    
+                    
                     <tr>
                     <td colspan="2" align="right">
                     
@@ -64,7 +83,27 @@
             </div>
            
         </div>
-      
+      <script type="text/javascript">
+<!--
+          function ocultar(e) {
+              var d1 = "none";
+              switch (e) {
+                  case "Ida":
+                      {
+                          d1 = "none";
+                      }
+                      break;
+                  case "Ida y Vuelta":
+                      {
+                          d1 = "block";
+                      }
+                      break;
+              }
+              document.getElementById('toculto').style.display = d1;
+              document.getElementById('loculto').style.display = d1;
+          }
+//-->
+</script>
 }
        
     
