@@ -76,15 +76,31 @@ namespace ServicioWeb
         public int asientosDisponibles(int idVuelo)
         {
 
-            Application["MyThread"] = new System.Threading.Timer(
-                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 10, 0));          
+            //Application["MyThread"] = new System.Threading.Timer(
+            //    new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 10, 0));          
             AgenciaViajeEntities ave = new AgenciaViajeEntities();
             LineaAereaEntities le = new LineaAereaEntities();
             int idAvion = (int)le.Vueloes.Where(p => p.Id == idVuelo).First().AvionReference.EntityKey.EntityKeyValues.First().Value;
             int primero=le.Avions.Where(p=>p.Id==idAvion).First().CapacidadPasajeros;
             int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo && p.tipo!=3).Count();
             int retorno = primero - segundo;
-            return 0;
+            TimeSpan salida;
+            TimeSpan.TryParse(le.Vueloes.Where(p => p.Id == idVuelo).First().HoraSalida,out salida);
+            if(le.Vueloes.Where(p=>p.Id==idVuelo).First().FechaSalida<DateTime.Now.Date && salida<DateTime.Now.TimeOfDay){
+                retorno = 0;
+            }
+            return retorno;
+        }
+        [WebMethod]
+        public bool disponbilidadVuelo(int idVuelo) {
+            LineaAereaEntities le = new LineaAereaEntities();
+            TimeSpan salida;
+            TimeSpan.TryParse(le.Vueloes.Where(p => p.Id == idVuelo).First().HoraSalida, out salida);
+            if (le.Vueloes.Where(p => p.Id == idVuelo).First().FechaSalida < DateTime.Now.Date && salida < DateTime.Now.TimeOfDay)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void Accion(object state)

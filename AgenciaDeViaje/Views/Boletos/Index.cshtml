@@ -10,6 +10,11 @@
           AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
           return servicio.asientosDisponibles(idVuelo);
       }
+      
+      public static bool disponibilidadVuelos(int idVuelo){
+          AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
+        return servicio.disponbilidadVuelo(idVuelo);
+      }
 }
 
 
@@ -45,7 +50,7 @@
               @if (item.tipo != 1){ 
                   <text><td></text>
                   @Html.ActionLink("Borrar", "Delete", null, new { id = item.Id }, new { @class = "button", id = "borrar" }) 
-                if (item.tipo == 2 || asientos(item.Vuelo.Id)>0) { @Html.ActionLink("Comprar", "ComprarReserva", null, new { id = item.Id }, new { @class = "button", id = "comprar" })}
+                if ((item.tipo == 2 && disponibilidadVuelos(item.Vuelo.Id)) || asientos(item.Vuelo.Id)>0) { @Html.ActionLink("Comprar", "ComprarReserva", null, new { id = item.Id }, new { @class = "button", id = "comprar" })}
             @:</td>
               }
            

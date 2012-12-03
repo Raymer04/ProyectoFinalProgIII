@@ -38,19 +38,19 @@ namespace AgenciaDeViaje
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            Application["MyThread"] = new System.Threading.Timer(
-                new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 10, 0)); 
+            //Application["MyThread"] = new System.Threading.Timer(
+            //    new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0, 0, 0, 10, 0)); 
 
             
 
         }
 
-        private void Accion(object state)
-        {
-            AgenciaDB db = new AgenciaDB();
-            try
-            {
-                //foreach (var b in db.Boletos.ToList())
+        //private void Accion(object state)
+        //{
+        //    AgenciaDB db = new AgenciaDB();
+        //    try
+        //    {
+               //foreach (var b in db.Boletos.ToList())
                 //{
                 //    TimeSpan diff = DateTime.Now -
                 //   Convert.ToDateTime(b.fecha);
@@ -80,42 +80,42 @@ namespace AgenciaDeViaje
                 //    }
  
                 //}
-                      enviarCorreo("saby.decrease@gmail.com");
-            }
-            catch (Exception ex) {
+        //              enviarCorreo("saby.decrease@gmail.com");
+        //    }
+        //    catch (Exception ex) {
                 
-             Response.Redirect("Error.cshtml?source="+  
-              HttpUtility.UrlEncode(Request.AppRelativeCurrentExecutionFilePath));
+        //     Response.Redirect("Error.cshtml?source="+  
+        //      HttpUtility.UrlEncode(Request.AppRelativeCurrentExecutionFilePath));
  
 
  
 
-            }
+        //    }
             
-        }
+        //}
 
 
 
-        public void enviarCorreo(string email)
-        {
-            System.Net.Mail.MailMessage correo = new System.Net.Mail.MailMessage();
-            correo.From = new System.Net.Mail.MailAddress("aerocaribedom@gmail.com");
-            correo.To.Add(email);
-            correo.Subject = "Correo de lista de espera";
-            correo.Body = "Este es un correo de aviso para informale que su reservacion ha expirado, ya que sobrepasa las 48 horas en lista de espera";
-            correo.Body = string.Format("Enviado las {0}:{1} a traves de Aero Caribe",DateTime.Now.Hour,DateTime.Now.Minute);
-            correo.IsBodyHtml = false;
-            correo.Priority = System.Net.Mail.MailPriority.Normal;
+        //public void enviarCorreo(string email)
+        //{
+        //    System.Net.Mail.MailMessage correo = new System.Net.Mail.MailMessage();
+        //    correo.From = new System.Net.Mail.MailAddress("aerocaribedom@gmail.com");
+        //    correo.To.Add(email);
+        //    correo.Subject = "Correo de lista de espera";
+        //    correo.Body = "Este es un correo de aviso para informale que su reservacion ha expirado, ya que sobrepasa las 48 horas en lista de espera";
+        //    correo.Body = string.Format("Enviado las {0}:{1} a traves de Aero Caribe",DateTime.Now.Hour,DateTime.Now.Minute);
+        //    correo.IsBodyHtml = false;
+        //    correo.Priority = System.Net.Mail.MailPriority.Normal;
 
 
-            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
+        //    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
 
-            smtp.Host = "smtp.gmail.com";
-            smtp.EnableSsl = true;
-            smtp.Credentials = new System.Net.NetworkCredential("aerocaribedom@gmail.com", "aero0000");
-            smtp.Send(correo);
+        //    smtp.Host = "smtp.gmail.com";
+        //    smtp.EnableSsl = true;
+        //    smtp.Credentials = new System.Net.NetworkCredential("aerocaribedom@gmail.com", "aero0000");
+        //    smtp.Send(correo);
            
-        }
+        //}
         }
 
         }

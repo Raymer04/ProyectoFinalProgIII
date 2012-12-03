@@ -15,6 +15,15 @@
     </script>
 }
 
+@functions{
+      
+      public static bool disponibilidadVuelos(int idVuelo){
+          AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
+        return servicio.disponbilidadVuelo(idVuelo);
+      }
+}
+
+
 
 <h2>Buscar Vuelos</h2>
 
@@ -57,11 +66,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Llegada)
         </td>
-        
+        @if(disponibilidadVuelos(item.Id)){
         <td>
             @Html.ActionLink("Comprar", "ManejoBoleto", "Boletos", new { tipo=1, id = item.Id }, new { @class = "label",id="verificar" }) |
             @Html.ActionLink("Reservar", "ManejoBoleto", "Boletos", new { tipo = 2, id = item.Id }, new { @class = "label", id = "verificar"})               
-        </td>
+        </td>}
     </tr>
 }
 
