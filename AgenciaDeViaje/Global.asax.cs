@@ -39,7 +39,7 @@ namespace AgenciaDeViaje
 
             Application["MyThread"] = new System.Threading.Timer(
                 new System.Threading.TimerCallback(Accion), null, new TimeSpan(0, 0, 0, 0, 0), new TimeSpan(0,0,0,10, 0));
-
+            
 
         }
 

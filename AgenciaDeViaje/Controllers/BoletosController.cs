@@ -35,6 +35,7 @@ namespace AgenciaDeViaje.Controllers
             }
             else
             {
+                Session["direccion"] = Request.Url.AbsoluteUri;
                 return RedirectToAction("IniciarSesion", "Clients");
             }
             
@@ -46,7 +47,7 @@ namespace AgenciaDeViaje.Controllers
                 ServicioWeb.ServicioDeComunicacionSoapClient servicio=new ServicioWeb.ServicioDeComunicacionSoapClient();
                 Boleto boleto = new Boleto();
                 
-                if (servicio.asientosDisponibles(id)<= 0)
+                if (servicio.asientosDisponibles(id)== 0)
                 {
 
                     return RedirectToAction("ListaEspera", "Boletos", new { id =id });
@@ -74,11 +75,26 @@ namespace AgenciaDeViaje.Controllers
                 }
                 }
             }
+            Session["direccion"] = Request.Url.AbsoluteUri;
             return RedirectToAction("IniciarSesion", "Clients");
         }
         //
         // GET: /Boletos/Details/5
+        public ActionResult ComprarReserva(int id)
+        {
+            db.Boletos.Where(p => p.Id == id).First().tipo = 1;
+            db.SaveChanges();
+            try
+            {
 
+                return RedirectToAction("Index", "Boletos", new { tipo = 1 });
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
         public ViewResult Details(int id)
         {
             

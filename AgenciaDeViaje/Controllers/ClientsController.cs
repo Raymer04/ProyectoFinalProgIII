@@ -88,6 +88,7 @@ namespace AgenciaDeViaje.Controllers
             }
             else
             {
+                Session["direccion"] = Request.Url.AbsoluteUri;
                 return RedirectToAction("IniciarSesion", "Clients");
             }
         }
@@ -114,7 +115,8 @@ namespace AgenciaDeViaje.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-      
+
+       
 
         //
         // POST: /Clients/Edit/5
@@ -168,14 +170,8 @@ namespace AgenciaDeViaje.Controllers
                 Session["usuario"] = cliente;
                 Session["nombre"] = cliente.nombre + " " + cliente.apellido;
                 Session["tipoUsuario"] = cliente.tipoUsuario;
-                try
-                {
-                
-                   
-                }
-                catch (Exception ex)
-                {
-
+                if(Session["direccion"]!=null){
+                Response.Redirect(Session["direccion"].ToString());      
                 }
                 return RedirectToAction("Index", "Home");
             }

@@ -48,7 +48,7 @@ namespace LineaAerea.Controllers
             {
                 db.Usuario.Add(usuarios);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("IniciarSesion");  
             }
 
             return View(usuarios);

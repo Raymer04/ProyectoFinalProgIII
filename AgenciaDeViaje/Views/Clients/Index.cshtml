@@ -87,6 +87,10 @@
  </tbody>
 </table>
  <script type="text/javascript">
+  $(document).ready(function () {
+             $("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
+         });
+   
      $(function () {
          $('#cambiar1').click(function () {
              if (confirm("Seguro desea Cambiar el tipo a 'Usuario'?")) {
@@ -100,9 +104,6 @@
              }
              return false;
          });
-//         $(document).ready(function () {
-//             $("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
-//         });
      });
     
 </script>

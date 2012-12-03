@@ -4,6 +4,13 @@
    
     ViewBag.Title = "Manejo De Boletos";
 }
+@functions{
+      public static int asientos(int idVuelo)
+      {
+          AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient servicio = new AgenciaDeViaje.ServicioWeb.ServicioDeComunicacionSoapClient();
+          return servicio.asientosDisponibles(idVuelo);
+      }
+}
 
 
 <table id="listGrid">
@@ -24,7 +31,8 @@
     
 	</thead>
 	<tbody>
-    @foreach (var item in Model) {  
+    @foreach (var item in Model)
+    {  
     <tr>
         <td>@item.Id</td>
         <td>@item.Vuelo.Procedencia</td>
@@ -32,15 +40,25 @@
         <td>@item.Vuelo.Salida</td>
         <td>@item.Vuelo.Llegada</td>
         
-        @if (item.tipo != 1) {<td> @Html.ActionLink("Borrar", "Delete", null, new { id = item.Id }, new { @class = "button",id="borrar" }); 
-              </td>                                                                                                            
-        }
-       
+     
+      
+              @if (item.tipo != 1){ 
+                  <text><td></text>
+                  @Html.ActionLink("Borrar", "Delete", null, new { id = item.Id }, new { @class = "button", id = "borrar" }) 
+                if (item.tipo == 2 || asientos(item.Vuelo.Id)>0) { @Html.ActionLink("Comprar", "ComprarReserva", null, new { id = item.Id }, new { @class = "button", id = "comprar" })}
+            @:</td>
+              }
+           
+                
     </tr>
-}
+    }
 </tbody>
 </table>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20 });
+    });
+
     $(function () {
         $('#borrar').click(function () {
             if (confirm("Desea Borrar El Boleto?")) {
@@ -48,12 +66,17 @@
             }
             return false;
         });
-    });
-</script>
 
-<script type="text/javascript">
-	$(document).ready(function () {
-		$("#listGrid").wijgrid({ allowSorting: true, allowPaging: true, pageSize: 20});
-	});
+    });
+  
+    $(function () {
+        $('#comprar').click(function () {
+            if (confirm("Desea Comprar El Boleto?")) {
+                return true;
+            }
+            return false;
+        });
+
+    });
 </script>
 

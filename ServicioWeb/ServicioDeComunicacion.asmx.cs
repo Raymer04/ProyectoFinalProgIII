@@ -61,7 +61,7 @@ namespace ServicioWeb
             LineaAereaEntities le = new LineaAereaEntities();
             int idAvion = (int)le.Vueloes.Where(p => p.Id == idVuelo).First().AvionReference.EntityKey.EntityKeyValues.First().Value;
             int primero=le.Avions.Where(p=>p.Id==idAvion).First().CapacidadPasajeros;
-            int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo).Count();
+            int segundo = ave.Boletoes.Where(p => p.RefIdVuelo == idVuelo && p.tipo!=3).Count();
             int retorno = primero - segundo;
             return retorno;
         }
